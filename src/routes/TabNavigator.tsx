@@ -3,10 +3,12 @@ import { StackExplore } from './StackExplore';
 import { StackProfile } from './StackProfile';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useAppTheme } from '../shared/hooks';
 
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = () => {
+  const { tabBar } = useAppTheme()
   return (
     <Tab.Navigator
         screenOptions={{
@@ -21,7 +23,8 @@ export const TabNavigator = () => {
             },
             tabBarStyle: {
                 borderTopWidth: 0,
-                elevation: 0
+                elevation: 0,
+                backgroundColor: tabBar.backgroundColor
             }
         }}
     >

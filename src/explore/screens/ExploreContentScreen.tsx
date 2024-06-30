@@ -1,18 +1,28 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Button, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Button, FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { StackExploreParams } from '../../routes/StackExplore'
+import { BackpackItem } from '../components/BackpackItem'
 
 const ExploreContentScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()
 
   return (
     <View>
-      <Text>Contenido a explorar por materia</Text>
+      
+      <FlatList
+        data={['fisica', 'algebra']}
+        numColumns={2}
+        contentContainerStyle={{ gap: 10, margin:5 }}
+        columnWrapperStyle={{ gap: 10, margin:5 }}
+        renderItem={({ item, index }) => (
+          <BackpackItem 
+            name={item}
+            onPress={() => Alert.alert('Hola ' + index)}
+            />
+        )}
+      />
 
-      <Button title='navegar a vista de mochila' onPress={() => {
-        navigation.navigate('Backpack')
-      }}/>
     </View>
   )
 }
