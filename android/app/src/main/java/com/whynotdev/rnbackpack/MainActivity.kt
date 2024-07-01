@@ -1,4 +1,4 @@
-package com.backpack
+package com.whynotdev.rnbackpack
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity
