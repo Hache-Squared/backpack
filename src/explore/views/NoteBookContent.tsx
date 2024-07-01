@@ -9,7 +9,7 @@ export const NoteBookContent = () => {
    const [modalVisible, setModalVisible] = useState(false)
    const { menuNotebookContent, headerMenuNotebookContent } = useAppTheme()
   return (
-    <View className='w-full '>
+    <>
         <View className='w-full flex flex-row items-center justify-between'>
             <TouchableOpacity 
             onPress={() => setModalVisible(true)}
@@ -38,6 +38,6 @@ export const NoteBookContent = () => {
                     onCloseContent={() => setModalVisible(false)}
                 />
         </Modal>
-    </View>
+    </>
   )
 }

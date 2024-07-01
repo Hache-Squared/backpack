@@ -52,7 +52,7 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
         <View className='w-full flex flex-col mt-1'>
             <Text 
             style={{ backgroundColor: headerMenuNotebookContent.backgroundColor, color: headerMenuNotebookContent.textColor}}
-            className='text-3xl font-bold mx-3 p-2 rounded-lg'>Ley de ohm y las resistenciasLey de ohm y las resistencias Ley de ohm y las resistencias </Text>
+            className='text-2xl font-bold mx-3 p-2 rounded-lg'>Ley de ohm y las resistenciasLey de ohm y las resistencias Ley de ohm y las resistencias </Text>
         </View>
 
 

@@ -28,6 +28,11 @@ const colorsForApp = {
         textColor: '#fff',
         buttonMenuLabelColor: "#111"
     },
+    sheetContent:{
+        textTitleColor: '#111',
+        textSubtitleColor: '#111',
+        textColor: '#111',
+    }
 }
 
 export const useAppTheme = () => {

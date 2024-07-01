@@ -1,16 +1,48 @@
 import React, { useState } from 'react'
-import { Modal, Text, TouchableOpacity, View } from 'react-native'
-import { ImageWithZoom } from '../components'
-import { ImageWithZoomNative } from '../components/SheetComponents/ImageWithZoomNative'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ImageWithPan } from '../components/SheetComponents/ImageWithPan';
-import { GestureDetector } from 'react-native-gesture-handler';
+import { FlatList, View } from 'react-native';
+import { SheetExampleData } from '../../data/SheetExampleData';
+import { SheetContentType } from '../../types/SheetContentTypes';
+import { SheetContentSubtitle, SheetContentText } from '../components';
 
 export const SheetContent = () => {
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <>
-       <ImageWithPan  image='https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
+        <FlatList
+          data={SheetExampleData}
+          ListFooterComponent={() => (
+            <View className='my-14'/>
+          )}
+          renderItem={({item, index}) => {
+            if(item?.type === SheetContentType.Image){
+              return(
+                <ImageWithPan
+                  key={index}
+                  image={item?.content}
+                />
+              )
+            }else if(item?.type === SheetContentType.Subtitle) {
+              return(
+                <SheetContentSubtitle
+                  subtitle={item?.content}
+                  key={index}
+                />
+              )
+            }
+            else if(item?.type === SheetContentType.Text) {
+              return(
+                <SheetContentText
+                  content={item?.content}
+                  key={index}
+                />
+              )
+            }else{
+              return null;
+            }
+          }}
+        />
 
        {
         /*
