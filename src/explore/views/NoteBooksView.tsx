@@ -12,7 +12,7 @@ export const NoteBooksView = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()
   return (
     <>
-        <Text>{dataTest.length}</Text>
+      <View className='my-2'/>
       <FlatList
         data={dataTest}
         ItemSeparatorComponent={() => <View className='my-1'/>}

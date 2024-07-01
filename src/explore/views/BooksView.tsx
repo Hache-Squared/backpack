@@ -9,7 +9,7 @@ const dataTest = [
 export const BooksView = () => {
   return (
     <>
-        <Text>{dataTest.length}</Text>
+      <View className='my-2'/>
       <FlatList
         data={dataTest}
         ItemSeparatorComponent={() => <View className='my-1'/>}

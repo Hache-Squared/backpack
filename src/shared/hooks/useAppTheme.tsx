@@ -8,7 +8,7 @@ const colorsForApp = {
     },
     buttons: {
         backgroundColor: '#fff',
-        textColor: '#1B9CFC'
+        textColor: '#111'
     },
     texts: {
         labelColor: '#1B9CFC'
@@ -24,7 +24,7 @@ const colorsForApp = {
         colorStatusInactive: '#747d8c',
     },
     headerMenuNotebookContent: {
-        backgroundColor: '#1B9CFC',
+        backgroundColor: '#111',
         textColor: '#fff',
         buttonMenuLabelColor: "#111"
     },

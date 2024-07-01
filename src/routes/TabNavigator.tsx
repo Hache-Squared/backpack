@@ -19,7 +19,7 @@ export const TabNavigator = () => {
             tabBarStyle: {
                 borderTopWidth: 0,
                 elevation: 0,
-                //backgroundColor: tabBar.backgroundColor,
+                backgroundColor: '#fff',
                 borderTopRightRadius: 15,
                 borderTopLeftRadius: 15
             },

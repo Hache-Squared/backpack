@@ -23,7 +23,7 @@ export const StackExplore = () => {
       },
     }}
     >
-      <Stack.Screen name="ExploreContent" component={ExploreContentScreen} />
+      <Stack.Screen name="ExploreContent" options={{title: 'Explorar Contenido'}} component={ExploreContentScreen} />
       <Stack.Screen name="Backpack" component={BackpackScreen} />
       <Stack.Screen name="Notebook" component={NotebookScreen} />
     </Stack.Navigator>
