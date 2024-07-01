@@ -18,7 +18,9 @@ export const NoteBookContent = () => {
             </TouchableOpacity>
 
             <View className='mx-2'>
-                <Text className='font-semibold text-md'>Nombre de la libreta / Titulo de la hoja actual </Text>
+                <Text 
+                style={{color: headerMenuNotebookContent.buttonMenuLabelColor}}
+                className='font-semibold text-md'>Nombre de la libreta / Titulo de la hoja actual </Text>
             </View>
         </View>
         <SheetContent/>
