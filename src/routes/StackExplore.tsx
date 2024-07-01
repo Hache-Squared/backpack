@@ -14,11 +14,13 @@ export const StackExplore = () => {
   return (
     <Stack.Navigator
     screenOptions={{
-      headerShown: false,
-      headerStyle:{
-        elevation: 0,
-        shadowColor: 'transparent'
-      }
+      headerShown: true,
+      headerTitleAlign: 'center',
+      headerStyle: {
+          elevation: 0,
+          borderColor: 'transparent',
+          shadowColor: 'transparent'
+      },
     }}
     >
       <Stack.Screen name="ExploreContent" component={ExploreContentScreen} />

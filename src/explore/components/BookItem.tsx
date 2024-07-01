@@ -1,0 +1,28 @@
+import React, { FC } from 'react'
+import { Alert, Text, TouchableOpacity, View } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useAppTheme } from '../../shared/hooks';
+
+interface BookItemProps {
+    logoImg?: string,
+    name: string,
+    onPress: () => void
+}
+
+const BookItem: FC<BookItemProps> = ({ name, logoImg, onPress }) => {
+  const { buttons } = useAppTheme()
+  return (
+    <TouchableOpacity 
+    onPress={onPress}
+    style={{ backgroundColor: buttons.backgroundColor }}
+    className='w-11/12 py-3 rounded-lg flex self-center flex-row items-center gap-1 shadow-md shadow-purple-100'>
+        {logoImg ? <Text>logo</Text> : <Icon name="albums-outline" size={40} color={buttons.textColor} />} 
+        
+        <Text 
+        style={{color: buttons.textColor}}
+        className='font-semibold text-lg ml-2'>{name}</Text>
+    </TouchableOpacity>
+  )
+}
+
+export  {BookItem}

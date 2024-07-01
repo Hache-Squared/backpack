@@ -12,12 +12,7 @@ export const TabNavigator = () => {
   return (
     <Tab.Navigator
         screenOptions={{
-            headerTitleAlign: 'center',
-            headerStyle: {
-                elevation: 0,
-                borderColor: 'transparent',
-                shadowColor: 'transparent'
-            },
+            headerShown:false,
             tabBarLabelStyle: {
                 marginBottom: 5
             },

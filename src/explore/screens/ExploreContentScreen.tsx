@@ -18,7 +18,7 @@ const ExploreContentScreen = () => {
         renderItem={({ item, index }) => (
           <BackpackItem 
             name={item}
-            onPress={() => Alert.alert('Hola ' + index)}
+            onPress={() => navigation.navigate('Backpack')}
             />
         )}
       />
