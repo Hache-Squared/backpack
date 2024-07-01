@@ -1,11 +1,15 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { SafeAreaView, Text, View } from 'react-native'
+import { FullSpaceInScreen } from '../../shared/components'
 
 const NotebookScreen = () => {
+
   return (
-    <View>
-      <Text>NotebookScreen</Text>
-    </View>
+    <FullSpaceInScreen>
+      <SafeAreaView>
+        <Text>NotebookScreen</Text>
+      </SafeAreaView>
+    </FullSpaceInScreen>
   )
 }
 

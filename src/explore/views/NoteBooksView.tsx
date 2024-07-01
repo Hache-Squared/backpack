@@ -1,12 +1,15 @@
 import React from 'react'
 import { FlatList, Text, View } from 'react-native'
 import { NotebookItem } from '../components'
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { StackExploreParams } from '../../routes/StackExplore';
 const dataTest = [
     'libreta', 'libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta',
     'libreta', 'libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta','libreta'
 ];
 
 export const NoteBooksView = () => {
+  const navigation = useNavigation<NavigationProp<StackExploreParams>>()
   return (
     <>
         <Text>{dataTest.length}</Text>
@@ -16,7 +19,7 @@ export const NoteBooksView = () => {
         renderItem={({item, index}) => (
             <NotebookItem
                 name={item + ' ' + index}
-                onPress={() => null}
+                onPress={() => navigation.navigate('Notebook')}
 
             />
         )}
