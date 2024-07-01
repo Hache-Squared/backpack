@@ -19,8 +19,16 @@ export const TabNavigator = () => {
             tabBarStyle: {
                 borderTopWidth: 0,
                 elevation: 0,
-                backgroundColor: tabBar.backgroundColor
-            }
+                //backgroundColor: tabBar.backgroundColor,
+                borderTopRightRadius: 15,
+                borderTopLeftRadius: 15
+            },
+            tabBarIconStyle: {
+              //color: tabBar.labelColor
+            },
+            //tabBarActiveTintColor: tabBar.labelColorActive,
+            //tabBarInactiveTintColor: tabBar.labelColorInactive,
+            
         }}
     >
       <Tab.Screen name="Explore" options={{ title: 'Explorar', tabBarIcon: ({ color }) => ( <Icon name="school-outline" size={30} color={color} />) }} component={StackExplore} />

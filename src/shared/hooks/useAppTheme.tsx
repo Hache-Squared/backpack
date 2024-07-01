@@ -14,8 +14,20 @@ const colorsForApp = {
         labelColor: '#1B9CFC'
     },
     tabBar: {
-        backgroundColor: '#fff',
-    }
+        backgroundColor: '#1B9CFC',
+        labelColorActive: '#fff',
+        labelColorInactive: '#111'
+    },
+    menuNotebookContent: {
+
+        colorStatusActive: '#1B9CFC',
+        colorStatusInactive: '#747d8c',
+    },
+    headerMenuNotebookContent: {
+        backgroundColor: '#1B9CFC',
+        textColor: '#fff',
+        buttonMenuLabelColor: "#111"
+    },
 }
 
 export const useAppTheme = () => {
