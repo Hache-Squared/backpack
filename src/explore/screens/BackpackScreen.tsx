@@ -6,8 +6,7 @@ import { StackExploreParams } from '../../routes/StackExplore';
 import { useAppTheme } from '../../shared/hooks';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { SelectViewFromBackpack } from '../../shared/components';
-import { NoteBooksView } from '../views/NoteBooksView';
-import { BooksView } from '../views/BooksView';
+import { NoteBooksView, BooksView } from '../views';
 
 
 const BackpackScreen = () => {

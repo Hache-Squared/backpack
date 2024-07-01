@@ -2,7 +2,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Alert, Button, FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { StackExploreParams } from '../../routes/StackExplore'
-import { BackpackItem } from '../components/BackpackItem'
+import { BackpackItem } from '../components'
 
 const ExploreContentScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()

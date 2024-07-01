@@ -2,8 +2,7 @@ import React, { FC, useState } from 'react'
 import { Modal, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppTheme } from '../../shared/hooks';
-import { SheetMenuItem } from '../components';
-import { MenuContentForNotebook } from './MenuContentForNotebook';
+import { MenuContentForNotebook, SheetContent } from './';
 
 
 export const NoteBookContent = () => {
@@ -18,12 +17,11 @@ export const NoteBookContent = () => {
                 <Icon name='list-outline' size={40} color={headerMenuNotebookContent.buttonMenuLabelColor}/>
             </TouchableOpacity>
 
-
             <View className='mx-2'>
                 <Text className='font-semibold text-md'>Nombre de la libreta / Titulo de la hoja actual </Text>
             </View>
         </View>
-
+        <SheetContent/>
 
 
         <Modal
@@ -31,7 +29,6 @@ export const NoteBookContent = () => {
                 setModalVisible(false)
             }}
             animationType="fade"
-            
             transparent={false} 
             visible={modalVisible} >
 
@@ -39,10 +36,6 @@ export const NoteBookContent = () => {
                     onCloseContent={() => setModalVisible(false)}
                 />
         </Modal>
-
-
-        
-
     </View>
   )
 }
