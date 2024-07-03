@@ -1,10 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { BackpackScreen, ExploreContentScreen, NotebookScreen } from '../explore/screens';
+import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScreen } from '../explore/screens';
 
 export type StackExploreParams = {
   ExploreContent: undefined,
   Backpack: undefined,
-  Notebook: undefined
+  Notebook: undefined,
+  ResourceView: undefined
 }
 
 
@@ -26,6 +27,7 @@ export const StackExplore = () => {
       <Stack.Screen name="ExploreContent" options={{title: 'Explorar Contenido'}} component={ExploreContentScreen} />
       <Stack.Screen name="Backpack" component={BackpackScreen} />
       <Stack.Screen name="Notebook" component={NotebookScreen} />
+      <Stack.Screen name="ResourceView" component={ResourceViewScreen} />
     </Stack.Navigator>
   );
 }
