@@ -6,5 +6,6 @@ export interface SheetContent {
 export enum SheetContentType {
     Image = "Imagen",
     Text = "Texto",
-    Subtitle = "Subtitulo"
+    Subtitle = "Subtitulo",
+    YoutubeVideo = "YoutubeVideo"
 }

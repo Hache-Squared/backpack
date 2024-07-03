@@ -10,7 +10,6 @@ export const SheetContent = () => {
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <>
-      <SheetContentYoutubeVideo/>
         <FlatList
           data={SheetExampleData}
           ListFooterComponent={() => (
@@ -39,7 +38,13 @@ export const SheetContent = () => {
                   key={index}
                 />
               )
-            }else{
+            }
+            else if(item?.type === SheetContentType.YoutubeVideo) {
+              return(
+                <SheetContentYoutubeVideo videoId={item?.content}/>
+              )
+            }
+            else{
               return null;
             }
           }}

@@ -1,30 +1,42 @@
-import React, { useState, useCallback, useRef } from "react";
-import { Button, View, Alert } from "react-native";
+import React, { useState, useCallback, useRef, FC } from "react";
+import { Button, View, Alert, Dimensions } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 
-export  const  SheetContentYoutubeVideo = () => {
+interface SheetContentYoutubeVideoProps {
+    videoId: string;
+}
+
+export  const  SheetContentYoutubeVideo: FC<SheetContentYoutubeVideoProps> = ({ videoId = ''}) => {
   const [playing, setPlaying] = useState(false);
+  const { width, height } = Dimensions.get("window");
 
   const onStateChange = useCallback((state: any) => {
     if (state === "ended") {
       setPlaying(false);
-      Alert.alert("video has finished playing!");
+      //Alert.alert("video has finished playing!");
     }
   }, []);
 
-  const togglePlaying = useCallback(() => {
-    setPlaying((prev) => !prev);
-  }, []);
+  // const togglePlaying = useCallback(() => {
+  //   setPlaying((prev) => !prev);
+  // }, []);
 
   return (
-    <View className="w-full my-3">
+    <View className="w-full items-center justify-center m-0 b-red-400">
       <YoutubePlayer
-        height={300}
+        width={width * 0.95}
+        height={250}
         play={playing}
-        videoId={"9x0ktT1zmlo"}
+        videoId={videoId}
         onChangeState={onStateChange}
+        webViewStyle={{margin: 0, padding: 0}}
+        
       />
-      <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />
+      {
+        /*
+        <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />
+        */
+      }
     </View>
   );
 }
