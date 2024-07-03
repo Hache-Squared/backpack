@@ -4,12 +4,13 @@ import { ImageWithPan } from '../components/SheetComponents/ImageWithPan';
 import { FlatList, View } from 'react-native';
 import { SheetExampleData } from '../../data/SheetExampleData';
 import { SheetContentType } from '../../types/SheetContentTypes';
-import { SheetContentSubtitle, SheetContentText } from '../components';
+import { SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo } from '../components';
 
 export const SheetContent = () => {
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <>
+      <SheetContentYoutubeVideo/>
         <FlatList
           data={SheetExampleData}
           ListFooterComponent={() => (
