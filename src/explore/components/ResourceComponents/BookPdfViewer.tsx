@@ -1,10 +1,14 @@
 
-import React from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, Dimensions, View } from 'react-native';
 import Pdf from 'react-native-pdf';
 
-export const BookPdfViewer = () => {
-    const source = { uri: 'https://southbend.iu.edu/students/academic-success-programs/academic-centers-for-excellence/docs/Basic%20Math%20Review%20Card.pdf', cache: true };
+interface BookPdfViewerProps {
+    uriBook: string;
+}
+
+export const BookPdfViewer: FC<BookPdfViewerProps> = ({ uriBook = '' }) => {
+    const source = { uri: uriBook, cache: true };
         //const source = require('./test.pdf');  // ios only
         //const source = {uri:'bundle-assets://test.pdf' };
         //const source = {uri:'file:///sdcard/test.pdf'};

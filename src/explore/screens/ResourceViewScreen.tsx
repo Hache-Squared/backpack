@@ -5,7 +5,7 @@ import { BookPdfViewer } from '../components';
 export const ResourceViewScreen = () => {
   return (
     <View style={styles.container}>
-        <BookPdfViewer/>
+        <BookPdfViewer uriBook={'https://southbend.iu.edu/students/academic-success-programs/academic-centers-for-excellence/docs/Basic%20Math%20Review%20Card.pdf'}/>
     </View>
   )
 }
