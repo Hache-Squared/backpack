@@ -32,7 +32,11 @@ const colorsForApp = {
         textTitleColor: '#111',
         textSubtitleColor: '#111',
         textColor: '#111',
-    }
+    },
+    publications:{
+        backgroundColor: '#fff',
+        textColor: '#111',
+    },
 }
 
 export const useAppTheme = () => {
