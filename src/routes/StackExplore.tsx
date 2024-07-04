@@ -5,7 +5,9 @@ export type StackExploreParams = {
   ExploreContent: undefined,
   Backpack: undefined,
   Notebook: undefined,
-  ResourceView: undefined,
+  ResourceView: {
+    uriResource: string,
+  },
   Publications: undefined
 }
 

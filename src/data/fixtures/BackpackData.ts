@@ -3,8 +3,8 @@
 import { BackpackContents, BackpackListItem, BookListItem, NotebookListItem, PublicationListItem } from "../../types";
 
 export const backpackListExample: BackpackListItem[] = [
-    { id: "1", title: "Mochila de Estudio", image: "https://example.com/backpack1.png" },
-    { id: "2", title: "Mochila de Viaje", image: "https://example.com/backpack2.png" }
+    { id: "1", title: "Mochila de Estudio", image: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg" },
+    { id: "2", title: "Mochila de Viaje", image: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg" }
 ];
 
 export const notebookListExample: NotebookListItem[] = [
@@ -20,9 +20,9 @@ export const bookListExample: BookListItem[] = [
 ];
 
 export const publicationListExample: PublicationListItem[] = [
-    { id: "1", title: "Artículo sobre Ecuaciones Diferenciales", link: "https://example.com/article1", image: "https://example.com/article1.png" },
-    { id: "2", title: "Publicación sobre Física Cuántica", link: "https://example.com/publication2", image: "https://example.com/publication2.png" },
-    { id: "3", title: "Revista de Química Orgánica", link: "https://example.com/magazine3", image: "https://example.com/magazine3.png" }
+    { id: "1", title: "Artículo sobre Ecuaciones Diferenciales", link: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg", image: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg" },
+    { id: "2", title: "Publicación sobre Física Cuántica", link: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg", image: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg" },
+    { id: "3", title: "Revista de Química Orgánica", link: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg", image: "https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg" }
 ];
 
 export const backpackContents: BackpackContents = {

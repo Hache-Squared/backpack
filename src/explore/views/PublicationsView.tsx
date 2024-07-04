@@ -1,33 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import { PublicationItem } from '../components'
+import { useBackpackStore } from '../../shared/hooks'
 
 export const PublicationsView = () => {
+  const { publicationList, startLoadingPublications } = useBackpackStore();
+  useEffect(() => {
+    startLoadingPublications();
+  }, []);
   return (
     <>
       <View className='my-2'/>
       <FlatList
-        data={[1,2,3,4,5,6,7,8,9,10,11]}
+        data={publicationList}
         ItemSeparatorComponent={() => <View className='my-1'/>}
-        renderItem={({item, index}) => {
-          if(index % 2 === 0) {
-            return(
-              <PublicationItem
-              title={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum recusandae mollitia, repudiandae amet vero blanditiis adipisci repellendus minima expedita maxime ut veniam laborum asperiores distinctio optio, velit vel suscipit quasi!'} 
-              image={'https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg'}
-              link='https://www.linguee.es/espanol-ingles/traduccion/publicaci%C3%B3n.html'
+        renderItem={({item, index}) => (
+          <PublicationItem
+              key={item.id}
+              title={item.title}
+              image={item.image}
+              link={item.link}
               />
-            )
-          }
-          return(
-            <PublicationItem
-            title={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum recusandae mollitia, repudiandae amet vero blanditiis adipisci repellendus minima expedita maxime ut veniam laborum asperiores distinctio optio, velit vel suscipit quasi!'} 
-            // image={'https://todoseguros.com.mx/wp-content/uploads/2021/10/img1-1.jpg'}
-            link='https://www.linguee.es/espanol-ingles/traduccion/publicaci%C3%B3n.html'
-            />
-          )
-          
-        }}
+        )}
         ListFooterComponent={() => <View className='my-10' />}
         
       />

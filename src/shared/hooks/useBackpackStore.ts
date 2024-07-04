@@ -2,7 +2,7 @@ import { onLoadCurrentBackpack, onLoadBackpackList, onLoadBooks, onLoadNotebooks
 import { backpackListExample, bookListExample, notebookListExample, publicationListExample } from '../../data/fixtures';
 
 export const useBackpackStore = () => {
-    const { currentBackpack, backpackList, notebookList, bookList, publicationList } = useAppSelector(state => state.backpack);
+    const { currentBackpack, backpackList, notebookList, bookList,publicationList } = useAppSelector(state => state.backpack);
     const dispatch = useAppDispatch();
 
     const startLoadingCurrentBackpack = async (id: string) => {
@@ -13,6 +13,8 @@ export const useBackpackStore = () => {
     };
 
     const startLoadingBackpackList = async () => {
+        console.log("Hola iniciando carga de mochila");
+        
         dispatch(onLoadBackpackList(backpackListExample));
     };
 
