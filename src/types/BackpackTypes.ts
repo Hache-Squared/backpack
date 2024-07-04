@@ -20,6 +20,7 @@ export interface NotebookListItem {
 export interface BookListItem {
     id: string;
     title: string;
+    uriDocument: string;
 }
 
 export interface PublicationListItem {

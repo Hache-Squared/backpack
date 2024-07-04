@@ -35,4 +35,4 @@ export const backpackSlice = createSlice({
     }
 });
 
-export const { onLoadBooks, onLoadNotebooks, onLoadPublications } = backpackSlice.actions;
+export const { onLoadBooks, onLoadNotebooks, onLoadPublications, onLoadBackpackList, onLoadCurrentBackpack } = backpackSlice.actions;
