@@ -5,13 +5,15 @@ import { FlatList, View } from 'react-native';
 import { SheetExampleData } from '../../data/SheetExampleData';
 import { SheetContentType } from '../../types/SheetContentTypes';
 import { SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo } from '../components';
+import { useNotebookStore } from '../../shared/hooks';
 
 export const SheetContent = () => {
   const [modalVisible, setModalVisible] = useState(false)
+  const { currentSheetShowing } = useNotebookStore()
   return (
     <>
         <FlatList
-          data={SheetExampleData}
+          data={currentSheetShowing?.content}
           ListFooterComponent={() => (
             <View className='my-14'/>
           )}

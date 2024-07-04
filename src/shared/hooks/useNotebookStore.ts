@@ -1,21 +1,22 @@
 import React from 'react'
 import { onLoadNotebook, onLoadSheet, useAppDispatch, useAppSelector } from '../../store'
-import { currentSheetShowingExample, initialStateNotebookExample } from '../../data/fixtures'
+import { currentSheetShowingExample, initialStateNotebookExample, notebookListExample } from '../../data/fixtures'
 
 
 
 export const useNotebookStore = () => {
     const { currentSheetShowing, menuSheetItemList, title } = useAppSelector(state => state.notebook)
     const dispatch = useAppDispatch()
-    const startLoadingNotebook = async(id: string) => {
 
+    const startLoadingNotebook = async(id: string) => {
+        // const notebook = notebookListExample.find(notebook => notebook.id === id)
         dispatch( onLoadNotebook(initialStateNotebookExample) ) 
         
     }
 
     const startLoadingSheet = async(id: string) => {
-
-        dispatch( onLoadSheet(currentSheetShowingExample[0]) ) 
+        const sheet = currentSheetShowingExample.find(sheet => sheet.id === id)
+        if(sheet) dispatch( onLoadSheet(sheet) ) 
         
     }
     

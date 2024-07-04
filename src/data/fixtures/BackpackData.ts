@@ -8,15 +8,14 @@ export const backpackListExample: BackpackListItem[] = [
 ];
 
 export const notebookListExample: NotebookListItem[] = [
-    { id: "1", title: "Cuaderno de Matemáticas" },
-    { id: "2", title: "Cuaderno de Física" },
-    { id: "3", title: "Cuaderno de Química" }
+    { id: "1", title: "Cuaderno de React Native" },
+    
 ];
 
 export const bookListExample: BookListItem[] = [
     { id: "1", title: "Libro de Álgebra", uriDocument:'https://southbend.iu.edu/students/academic-success-programs/academic-centers-for-excellence/docs/Basic%20Math%20Review%20Card.pdf' },
-    { id: "2", title: "Libro de Mecánica", uriDocument:'https://southbend.iu.edu/students/academic-success-programs/academic-centers-for-excellence/docs/Basic%20Math%20Review%20Card.pdf' },
-    { id: "3", title: "Libro de Termodinámica", uriDocument:'https://southbend.iu.edu/students/academic-success-programs/academic-centers-for-excellence/docs/Basic%20Math%20Review%20Card.pdf' }
+    { id: "2", title: "Libro de Mecánica", uriDocument:'https://www.fime.uanl.mx/wp-content/uploads/2023/03/Fisica-I.pdf' },
+    { id: "3", title: "Libro de Termodinámica", uriDocument:'https://www.aqa.org.ar/images/EducacionQuimica/Calor%20y%20Termodinmica%20Qumica%20libro%20AQA.pdf' }
 ];
 
 export const publicationListExample: PublicationListItem[] = [

@@ -7,6 +7,7 @@ export interface NotebookState {
 }
 
 export interface InitNotebookState {
+    id: string;
     title: string;
     menuSheetItemList: SheetItem[];
 }

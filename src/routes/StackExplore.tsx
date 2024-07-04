@@ -4,7 +4,9 @@ import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScree
 export type StackExploreParams = {
   ExploreContent: undefined,
   Backpack: undefined,
-  Notebook: undefined,
+  Notebook: {
+    id: string,
+  },
   ResourceView: {
     uriResource: string,
   },

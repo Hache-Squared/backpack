@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Modal, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useAppTheme } from '../../shared/hooks';
+import { useAppTheme, useNotebookStore } from '../../shared/hooks';
 import { MenuContentForNotebook, SheetContent } from './';
 
 
 export const NoteBookContent = () => {
-   const [modalVisible, setModalVisible] = useState(false)
-   const { menuNotebookContent, headerMenuNotebookContent } = useAppTheme()
+   const [modalVisible, setModalVisible] = useState(false);
+   const { menuNotebookContent, headerMenuNotebookContent } = useAppTheme();
+   const { title, currentSheetShowing } = useNotebookStore();
+   
   return (
     <>
         <View className='w-full flex flex-row items-center justify-between'>
@@ -20,7 +22,8 @@ export const NoteBookContent = () => {
             <View className='mx-2'>
                 <Text 
                 style={{color: headerMenuNotebookContent.buttonMenuLabelColor}}
-                className='font-semibold text-md'>Nombre de la libreta / Titulo de la hoja actual </Text>
+                className='font-semibold text-md'>{title} {currentSheetShowing ? " / Titulo de la hoja actual " : " / Bienvenido"}
+                </Text>
             </View>
         </View>
         <SheetContent/>

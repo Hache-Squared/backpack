@@ -23,7 +23,9 @@ export const NoteBooksView = () => {
             <NotebookItem
                 name={item.title}
                 key={item.id}
-                onPress={() => navigation.navigate('Notebook')}
+                onPress={() => navigation.navigate('Notebook', {
+                  id: item.id
+                })}
             />
         )}
         ListFooterComponent={() => <View className='my-10' />}

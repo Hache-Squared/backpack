@@ -1,34 +1,8 @@
 import React, { FC } from 'react'
-import { useAppTheme } from '../../shared/hooks'
+import { useAppTheme, useNotebookStore } from '../../shared/hooks'
 import { Alert, FlatList, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SheetMenuItem } from '../components';
-
-const subtitles = [
-    "Implementación de Seguridad Informática en una Empresa Análisis de Impacto Ambiental para Proyectos de Construcción",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    "Implementación de un Sistema de Gestión de Inventarios",
-    "Desarrollo de una Aplicación Móvil para el Seguimiento de la Salud",
-    
-];
 
 interface MenuContentForNotebook {
     onCloseContent: () => void
@@ -36,7 +10,12 @@ interface MenuContentForNotebook {
 
 export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseContent }) => {
 
-   const { menuNotebookContent, headerMenuNotebookContent } = useAppTheme()
+  const { menuNotebookContent, headerMenuNotebookContent } = useAppTheme()
+  const { menuSheetItemList, title, startLoadingSheet } = useNotebookStore()
+  const handleSheetToLoad = (id: string) => {
+    startLoadingSheet(id)
+    onCloseContent()
+  }
   return (
 
     <SafeAreaView className='flex-1'>
@@ -52,18 +31,18 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
         <View className='w-full flex flex-col mt-1'>
             <Text 
             style={{ backgroundColor: headerMenuNotebookContent.backgroundColor, color: headerMenuNotebookContent.textColor}}
-            className='text-2xl font-bold mx-3 p-2 rounded-lg'>Ley de ohm y las resistenciasLey de ohm y las resistencias Ley de ohm y las resistencias </Text>
+            className='text-2xl font-bold mx-3 p-2 rounded-lg'>{title}</Text>
         </View>
 
 
         <View className='w-full flex flex-col items-end'>
 
         {
-            subtitles.map((subtitle, index) => (
+            menuSheetItemList.map((sheet, index) => (
                 <SheetMenuItem 
-                onPress={() => Alert.alert('click en subtema')}
+                onPress={() => handleSheetToLoad(sheet.id)}
                 colorStatus={index < 5? menuNotebookContent.colorStatusActive : menuNotebookContent.colorStatusInactive}
-                title={subtitle + ' ' + index} key={index}/>
+                title={sheet.title} key={sheet.title}/>
             ))
         }
     
