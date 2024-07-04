@@ -5,7 +5,8 @@ export type StackExploreParams = {
   ExploreContent: undefined,
   Backpack: undefined,
   Notebook: undefined,
-  ResourceView: undefined
+  ResourceView: undefined,
+  Publications: undefined
 }
 
 
@@ -28,6 +29,7 @@ export const StackExplore = () => {
       <Stack.Screen name="Backpack" component={BackpackScreen} />
       <Stack.Screen name="Notebook" component={NotebookScreen} />
       <Stack.Screen name="ResourceView" component={ResourceViewScreen} />
+      
     </Stack.Navigator>
   );
 }

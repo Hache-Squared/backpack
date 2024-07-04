@@ -6,12 +6,13 @@ import Icon from 'react-native-vector-icons/Ionicons'
 interface SelectViewFromBackpackProps {
   ViewForNotebooks:  ReactElement,
   ViewForBooks:  ReactElement,
+  ViewForPublications:  ReactElement,
 }
 
-type selectedView = 'notebooks' | 'books';
+type selectedView = 'notebooks' | 'books' | 'publications';
 
 
-export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewForBooks, ViewForNotebooks }) => {
+export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewForBooks, ViewForNotebooks, ViewForPublications }) => {
   const { buttons, screens } = useAppTheme()
   const [selectedView, setSelectedView] = useState<selectedView>('notebooks')
   return (
@@ -35,13 +36,23 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
             textColor={selectedView === 'books' ? buttons.backgroundColor : buttons.textColor}
           />
           
+
+          <ButtonSelectView
+            iconName='albums-outline'
+            onPress={() => setSelectedView('publications')}
+            titile='Publicaciones'
+            backgroundColor={selectedView === 'publications' ? buttons.textColor : buttons.backgroundColor}
+            textColor={selectedView === 'publications' ? buttons.backgroundColor : buttons.textColor}
+          />
           
       </View>
 
       {
         selectedView === 'notebooks' ?
-        ( ViewForNotebooks ) 
-        : ( ViewForBooks )
+        ( ViewForNotebooks ) : 
+        selectedView === 'books' ?
+        ( ViewForBooks ) :
+        ( ViewForPublications )
       }
 
 
@@ -63,12 +74,12 @@ const ButtonSelectView: FC<ButtonSelectViewProps> = ({iconName, backgroundColor,
     <TouchableOpacity
     onPress={onPress}
     style={{ backgroundColor: backgroundColor }}
-    className='w-6/12  flex flex-row flex-nowrap items-center justify-center py-2'
+    className='w-4/12  flex flex-row flex-nowrap items-center justify-center py-2'
     >
-      <Icon name={iconName} size={30} color={textColor} />
+      <Icon name={iconName} size={25} color={textColor} />
       <Text
       style={{color: textColor}}
-      className='font-semibold text-lg ml-1'>{titile}</Text>
+      className='font-semibold text-sm ml-1'>{titile}</Text>
   </TouchableOpacity>
   )
 }

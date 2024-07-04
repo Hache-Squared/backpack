@@ -5,9 +5,9 @@ import { BookPdfViewer, DocOfficeViewer } from '../components';
 export const ResourceViewScreen = () => {
   return (
     <View style={styles.container}>
-        {/* <BookPdfViewer uriBook={'https://southbend.iu.edu/students/academic-success-programs/academic-centers-for-excellence/docs/Basic%20Math%20Review%20Card.pdf'}/> */}
+        <BookPdfViewer uriBook={'https://southbend.iu.edu/students/academic-success-programs/academic-centers-for-excellence/docs/Basic%20Math%20Review%20Card.pdf'}/>
         {/* <DocOfficeViewer uriDoc={'https://www.slideshare.net/slideshow/embed_code/key/qU5u9smJ3IBinM?startSlide=1'}/> */}
-        <DocOfficeViewer uriDoc={'https://ctb.ku.edu/sites/default/files/chapter_files/26.9_1.ppt'}/>
+        {/* <DocOfficeViewer uriDoc={'https://ctb.ku.edu/sites/default/files/chapter_files/26.9_1.ppt'}/> */}
     </View>
   )
 }
