@@ -32,7 +32,7 @@ export const StackProfile = () => {
       }
     }}
     >
-      <Stack.Screen name="ProfileCard" options={{title: 'Perfil De Aplicacion'}} component={ProfileCardScreen} />
+      <Stack.Screen name="ProfileCard" options={{title: 'Perfil De Aplicación'}} component={ProfileCardScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       
     </Stack.Navigator>

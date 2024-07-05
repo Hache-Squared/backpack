@@ -23,7 +23,7 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
           <ButtonSelectView
             iconName='book-outline'
             onPress={() => setSelectedView('notebooks')}
-            titile='Libretas'
+            title='Libretas'
             backgroundColor={selectedView === 'notebooks' ? buttons.textColor : buttons.backgroundColor}
             textColor={selectedView === 'notebooks' ? buttons.backgroundColor : buttons.textColor}
           />
@@ -31,7 +31,7 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
           <ButtonSelectView
             iconName='library-outline'
             onPress={() => setSelectedView('books')}
-            titile='Libros'
+            title='Libros'
             backgroundColor={selectedView === 'books' ? buttons.textColor : buttons.backgroundColor}
             textColor={selectedView === 'books' ? buttons.backgroundColor : buttons.textColor}
           />
@@ -40,7 +40,7 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
           <ButtonSelectView
             iconName='albums-outline'
             onPress={() => setSelectedView('publications')}
-            titile='Publicaciones'
+            title='Publicaciones'
             backgroundColor={selectedView === 'publications' ? buttons.textColor : buttons.backgroundColor}
             textColor={selectedView === 'publications' ? buttons.backgroundColor : buttons.textColor}
           />
@@ -62,13 +62,13 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
 }
 interface ButtonSelectViewProps {
   iconName: string,
-  titile: string,
+  title: string,
   onPress: () => void,
   textColor: string,
   backgroundColor:string
 
 }
-const ButtonSelectView: FC<ButtonSelectViewProps> = ({iconName, backgroundColor, textColor,onPress,titile}) => {
+const ButtonSelectView: FC<ButtonSelectViewProps> = ({iconName, backgroundColor, textColor,onPress,title}) => {
   
   return(
     <TouchableOpacity
@@ -79,7 +79,7 @@ const ButtonSelectView: FC<ButtonSelectViewProps> = ({iconName, backgroundColor,
       <Icon name={iconName} size={25} color={textColor} />
       <Text
       style={{color: textColor}}
-      className='font-semibold text-sm ml-1'>{titile}</Text>
+      className='font-semibold text-sm ml-1'>{title}</Text>
   </TouchableOpacity>
   )
 }

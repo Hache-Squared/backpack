@@ -4,6 +4,7 @@ import { Alert, Button, FlatList, Text, TouchableOpacity, View } from 'react-nat
 import { StackExploreParams } from '../../routes/StackExplore'
 import { BackpackItem } from '../components'
 import { useBackpackStore, useExploreStore } from '../../shared/hooks'
+import { HeaderLogo } from '../../shared/components'
 
 const ExploreContentScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()
@@ -11,6 +12,13 @@ const ExploreContentScreen = () => {
   const { startLoadingCurrentBackpack } = useBackpackStore();
 
   useEffect(() => {
+    navigation.setOptions({
+      headerTitle:() => {
+        return(
+          <HeaderLogo/>
+        )
+      },
+    })
     startLoadingBackpackList();
   }, [])
 

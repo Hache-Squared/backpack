@@ -1,6 +1,9 @@
 import { ColorsTheme } from "../../types"
 
 export const lightColorsTheme: ColorsTheme = {
+    primaryColor: '#20bf6b',
+    secondaryColor: '#fff',
+
     screens: {
         primaryColor: "#fff",
         secondaryColor: "#f1f2f6",
@@ -12,11 +15,11 @@ export const lightColorsTheme: ColorsTheme = {
         textColor: '#111'
     },
     texts: {
-        labelColor: '#1B9CFC'
+        labelColor: '#111'
     },
     tabBar: {
         backgroundColor: '#fff',
-        labelColorActive: '#1B9CFC',
+        labelColorActive: '#20bf6b',
         labelColorInactive: '#111'
     },
     menuNotebookContent: {
@@ -42,6 +45,8 @@ export const lightColorsTheme: ColorsTheme = {
 }
 
 export const darkColorsTheme: ColorsTheme = {
+    primaryColor: '#BB86FC',
+    secondaryColor: '#111',
     screens: {
         primaryColor: "#000000",
         secondaryColor: "#121212",
@@ -53,7 +58,7 @@ export const darkColorsTheme: ColorsTheme = {
         textColor: '#fff'
     },
     texts: {
-        labelColor: '#1B9CFC'
+        labelColor: '#FFF'
     },
     tabBar: {
         backgroundColor: '#111',

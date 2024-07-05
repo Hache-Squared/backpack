@@ -1,5 +1,8 @@
 // types.ts
 export interface ColorsTheme {
+
+    primaryColor: string,
+    secondaryColor: string,
     screens: {
       primaryColor: string;
       secondaryColor: string;

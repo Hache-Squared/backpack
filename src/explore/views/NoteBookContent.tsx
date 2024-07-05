@@ -3,6 +3,7 @@ import { Modal, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppTheme, useNotebookStore } from '../../shared/hooks';
 import { MenuContentForNotebook, SheetContent } from './';
+import { WelcomeToNoteBook } from './WelcomeToNoteBook';
 
 
 export const NoteBookContent = () => {
@@ -23,11 +24,16 @@ export const NoteBookContent = () => {
             <View className='mx-2'>
                 <Text 
                 style={{color: sheetContent.sheetTitle}}
-                className='font-semibold text-md'>{currentSheetShowing ? `${currentSheetShowing?.title}` : "Bienvenido"}
+                className='font-semibold text-md'>{currentSheetShowing ? `${currentSheetShowing?.title}` : ""}
                 </Text>
             </View>
         </View>
-        <SheetContent/>
+        {
+            currentSheetShowing ? 
+            (
+                <SheetContent/>
+            ) : <WelcomeToNoteBook/>
+        }
 
 
         <Modal

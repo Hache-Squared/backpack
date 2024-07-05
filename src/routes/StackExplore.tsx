@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScreen } from '../explore/screens';
 import { useAppTheme } from '../shared/hooks';
+import { HeaderLogo } from '../shared/components';
 
 export type StackExploreParams = {
   ExploreContent: undefined,
@@ -20,7 +21,7 @@ export type StackExploreParams = {
 const Stack = createStackNavigator<StackExploreParams>();
 
 export const StackExplore = () => {
-  const { screens } = useAppTheme()
+  const { screens, themeSeleted } = useAppTheme()
   return (
     <Stack.Navigator
     screenOptions={{
@@ -29,6 +30,7 @@ export const StackExplore = () => {
       headerTitleStyle: {
         color: screens.titleColor,
       },
+      
       headerStyle: {
           elevation: 0,
           borderColor: 'transparent',
@@ -43,7 +45,7 @@ export const StackExplore = () => {
       <Stack.Screen name="ExploreContent" options={{title: 'Explorar Contenido'}} component={ExploreContentScreen} />
       <Stack.Screen name="Backpack" component={BackpackScreen} />
       <Stack.Screen name="Notebook" component={NotebookScreen} />
-      <Stack.Screen name="ResourceView" component={ResourceViewScreen} />
+      <Stack.Screen name="ResourceView" options={{title: 'Viendo Libro'}} component={ResourceViewScreen} />
       
     </Stack.Navigator>
   );

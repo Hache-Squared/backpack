@@ -1,11 +1,11 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppTheme } from '../../shared/hooks';
 
 export const SwitchThemeButtons = () => {
-    const { buttons, screens, changeTheme, themeSeleted } = useAppTheme()
-  
+    const { buttons, screens, changeTheme, themeSeleted, primaryColor, secondaryColor } = useAppTheme()
+    
   return (
     <>
          <View
@@ -14,24 +14,24 @@ export const SwitchThemeButtons = () => {
           <ButtonSelectTheme
             iconName='sunny-outline'
             onPress={() => changeTheme('light')}
-            titile='Claro'
-            backgroundColor={themeSeleted === 'light' ? buttons.backgroundColor : buttons.textColor}
-            textColor={themeSeleted === 'light' ? buttons.textColor : buttons.backgroundColor}
+            title='Claro'
+            backgroundColor={themeSeleted === 'light' ? primaryColor : buttons.backgroundColor}
+            textColor={themeSeleted === 'light' ? secondaryColor : buttons.textColor}
           />
           
           <ButtonSelectTheme
             iconName='moon'
             onPress={() => changeTheme('dark')}
-            titile='Oscuro'
-            backgroundColor={themeSeleted === 'dark' ? buttons.backgroundColor : buttons.textColor}
-            textColor={themeSeleted === 'dark' ? buttons.textColor : buttons.backgroundColor}
+            title='Oscuro'
+            backgroundColor={themeSeleted === 'dark' ? primaryColor : buttons.backgroundColor}
+            textColor={themeSeleted === 'dark' ? secondaryColor : buttons.textColor}
           />
           
 {/* 
           <ButtonSelectTheme
             iconName='sunny-outline'
             onPress={() => changeTheme('dark')}
-            titile='Fime'
+            title='Fime'
             backgroundColor={themeSeleted === 'fime' ? '#05c46b' : buttons.backgroundColor}
             textColor={themeSeleted === 'fime' ? '#111' : buttons.textColor}
           /> */}
@@ -44,13 +44,13 @@ export const SwitchThemeButtons = () => {
 
 interface ButtonSelectThemeProps {
     iconName: string,
-    titile: string,
+    title: string,
     onPress: () => void,
     textColor: string,
     backgroundColor:string
   
   }
-  const ButtonSelectTheme: FC<ButtonSelectThemeProps> = ({iconName, backgroundColor, textColor,onPress,titile}) => {
+  const ButtonSelectTheme: FC<ButtonSelectThemeProps> = ({iconName, backgroundColor, textColor,onPress,title}) => {
     
     return(
       <TouchableOpacity
@@ -61,7 +61,7 @@ interface ButtonSelectThemeProps {
         <Icon name={iconName} size={25} color={textColor} />
         <Text
         style={{color: textColor}}
-        className='font-semibold text-sm ml-1'>{titile}</Text>
+        className='font-semibold text-sm ml-1'>{title}</Text>
     </TouchableOpacity>
     )
   }

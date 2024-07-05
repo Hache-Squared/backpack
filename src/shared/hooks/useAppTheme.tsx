@@ -20,7 +20,7 @@ export const useAppTheme = () => {
           colors: {
             ...lightColorsTheme
           },
-          themeSelected: themeSelected
+          theme: 'light'
         }));
     }
     if(themeSelected === 'dark'){
@@ -29,7 +29,7 @@ export const useAppTheme = () => {
           colors: {
             ...darkColorsTheme
           },
-          themeSelected: themeSelected
+          theme: 'dark'
         }));
     }
     
