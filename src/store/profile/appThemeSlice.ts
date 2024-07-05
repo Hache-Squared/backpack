@@ -3,16 +3,18 @@ import { AppThemeState } from "../../types";
 import { lightColorsTheme } from "../../shared/utils";
 
 
-export type themeSelected = 'light' | 'dark' | 'fime';
+const initialState: AppThemeState = {
+    colors: lightColorsTheme,
+    theme: 'light',
+}
+
 export const appThemeSlice = createSlice({
     name: "appTheme",
-    initialState: {
-        colors: lightColorsTheme,
-        theme: 'light' as themeSelected,
-    },
+    initialState: initialState,
     reducers: {
-        onChangeTheme: (state, { payload}) => {
-            state.colors = {...payload}
+        onChangeTheme: (state, action) => {
+            state.colors = {...action.payload.colors}
+            state.theme = action.payload.theme
         }
     }
 });

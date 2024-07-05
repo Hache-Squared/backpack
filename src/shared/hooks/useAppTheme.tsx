@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { darkColorsTheme, lightColorsTheme } from '../utils';
-import { onChangeTheme, themeSelected, useAppDispatch, useAppSelector } from '../../store';
+import { onChangeTheme, useAppDispatch, useAppSelector } from '../../store';
+import { ThemeSelected } from '../../types';
 
 
 
@@ -12,13 +13,24 @@ export const useAppTheme = () => {
   const dispatch = useAppDispatch();
   
   
-  const changeTheme = (themeSelected: themeSelected) => {
+  const changeTheme = (themeSelected: ThemeSelected) => {
     console.log(themeSelected)
     if(themeSelected === 'light'){
-        dispatch( onChangeTheme({ ...lightColorsTheme }) );
+        dispatch( onChangeTheme({ 
+          colors: {
+            ...lightColorsTheme
+          },
+          themeSelected: themeSelected
+        }));
     }
     if(themeSelected === 'dark'){
-        dispatch( onChangeTheme({...darkColorsTheme}) );
+      
+        dispatch( onChangeTheme({ 
+          colors: {
+            ...darkColorsTheme
+          },
+          themeSelected: themeSelected
+        }));
     }
     
   }
