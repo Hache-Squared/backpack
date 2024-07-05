@@ -10,7 +10,7 @@ interface MenuContentForNotebook {
 
 export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseContent }) => {
 
-  const { menuNotebookContent, headerMenuNotebookContent } = useAppTheme()
+  const { menuNotebookContent, headerMenuNotebookContent, screens } = useAppTheme()
   const { menuSheetItemList, title, startLoadingSheet } = useNotebookStore()
   const handleSheetToLoad = (id: string) => {
     startLoadingSheet(id)
@@ -18,11 +18,12 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
   }
   return (
 
-    <SafeAreaView className='flex-1'>
+    <SafeAreaView className='flex-1' style={{backgroundColor: screens.primaryColor}}>
     <View className='w-full flex flex-row items-center justify-end '>
         <TouchableOpacity
         onPress={onCloseContent}
-        className='p-1 mr-2 mt-2 rounded-lg bg-gray-200'>
+        style={{ backgroundColor: headerMenuNotebookContent.buttonMenuBackgroundColor}}
+        className='p-1 mr-2 mt-2 rounded-lg '>
             <Icon name='close-circle-outline' size={40} color={headerMenuNotebookContent.buttonMenuLabelColor}/>
         </TouchableOpacity>
     </View>
@@ -30,7 +31,7 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
 
         <View className='w-full flex flex-col mt-1'>
             <Text 
-            style={{ backgroundColor: headerMenuNotebookContent.backgroundColor, color: headerMenuNotebookContent.textColor}}
+            style={{ backgroundColor: menuNotebookContent.titleBackgroundColor, color: menuNotebookContent.titleTextColor}}
             className='text-2xl font-bold mx-3 p-2 rounded-lg'>{title}</Text>
         </View>
 

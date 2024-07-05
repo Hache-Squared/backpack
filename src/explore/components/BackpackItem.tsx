@@ -15,7 +15,7 @@ const BackpackItem: FC<BackpackItemProps> = ({ name, logoImg, onPress }) => {
     <TouchableOpacity 
     onPress={onPress}
     style={{ backgroundColor: buttons.backgroundColor }}
-    className='w-6/12 py-3 rounded-lg flex flex-col items-center justify-center gap-1 shadow-md shadow-purple-100'>
+    className='w-6/12 py-3 rounded-lg flex flex-col items-center justify-center gap-1 shadow-sm shadow-purple-50'>
         {logoImg ? <Text>logo</Text> : <Icon name="briefcase-outline" size={40} color={buttons.textColor} />} 
         
         <Text 

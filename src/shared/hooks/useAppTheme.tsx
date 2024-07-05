@@ -1,49 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { darkColorsTheme, lightColorsTheme } from '../utils';
+import { onChangeTheme, themeSelected, useAppDispatch, useAppSelector } from '../../store';
 
 
-const colorsForApp = {
-    screens: {
-        primaryColor: "#fff",
-        secondaryColor: "#f1f2f6",
-    },
-    buttons: {
-        backgroundColor: '#fff',
-        textColor: '#111'
-    },
-    texts: {
-        labelColor: '#1B9CFC'
-    },
-    tabBar: {
-        backgroundColor: '#1B9CFC',
-        labelColorActive: '#fff',
-        labelColorInactive: '#111'
-    },
-    menuNotebookContent: {
 
-        colorStatusActive: '#1B9CFC',
-        colorStatusInactive: '#747d8c',
-    },
-    headerMenuNotebookContent: {
-        backgroundColor: '#111',
-        textColor: '#fff',
-        buttonMenuLabelColor: "#111"
-    },
-    sheetContent:{
-        textTitleColor: '#111',
-        textSubtitleColor: '#111',
-        textColor: '#111',
-    },
-    publications:{
-        backgroundColor: '#fff',
-        textColor: '#111',
-    },
-}
+
 
 export const useAppTheme = () => {
-  const [appTheme, setAppTheme] = useState(colorsForApp)
   
+  const { colors, theme: themeSeleted} = useAppSelector(state => state.appTheme)
+  const dispatch = useAppDispatch();
+  
+  
+  const changeTheme = (themeSelected: themeSelected) => {
+    console.log(themeSelected)
+    if(themeSelected === 'light'){
+        dispatch( onChangeTheme({ ...lightColorsTheme }) );
+    }
+    if(themeSelected === 'dark'){
+        dispatch( onChangeTheme({...darkColorsTheme}) );
+    }
+    
+  }
+
+  useEffect(() => {
+
+  },[])
+
   return {
-    ...appTheme
+    //properties
+    ...colors,
+    themeSeleted,
+    
+
+    //actions
+    changeTheme
   }
 }
 

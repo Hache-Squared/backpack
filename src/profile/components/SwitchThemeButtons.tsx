@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppTheme } from '../../shared/hooks';
 
 export const SwitchThemeButtons = () => {
-    const { buttons, screens } = useAppTheme()
-  const [selectedView, setSelectedView] = useState('notebooks')
+    const { buttons, screens, changeTheme, themeSeleted } = useAppTheme()
+  
   return (
     <>
          <View
@@ -13,27 +13,27 @@ export const SwitchThemeButtons = () => {
       className='w-full flex flex-row justify-end '>
           <ButtonSelectTheme
             iconName='sunny-outline'
-            onPress={() => setSelectedView('notebooks')}
+            onPress={() => changeTheme('light')}
             titile='Claro'
-            backgroundColor={selectedView === 'notebooks' ? buttons.textColor : buttons.backgroundColor}
-            textColor={selectedView === 'notebooks' ? buttons.backgroundColor : buttons.textColor}
+            backgroundColor={themeSeleted === 'light' ? buttons.backgroundColor : buttons.textColor}
+            textColor={themeSeleted === 'light' ? buttons.textColor : buttons.backgroundColor}
           />
           
           <ButtonSelectTheme
-            iconName='sunny'
-            onPress={() => setSelectedView('books')}
+            iconName='moon'
+            onPress={() => changeTheme('dark')}
             titile='Oscuro'
-            backgroundColor={selectedView === 'books' ? buttons.textColor : buttons.backgroundColor}
-            textColor={selectedView === 'books' ? buttons.backgroundColor : buttons.textColor}
+            backgroundColor={themeSeleted === 'dark' ? buttons.backgroundColor : buttons.textColor}
+            textColor={themeSeleted === 'dark' ? buttons.textColor : buttons.backgroundColor}
           />
           
 
           <ButtonSelectTheme
             iconName='sunny-outline'
-            onPress={() => setSelectedView('publications')}
+            onPress={() => changeTheme('dark')}
             titile='Fime'
-            backgroundColor={selectedView === 'publications' ? buttons.textColor : buttons.backgroundColor}
-            textColor={selectedView === 'publications' ? buttons.backgroundColor : buttons.textColor}
+            backgroundColor={themeSeleted === 'fime' ? '#05c46b' : buttons.backgroundColor}
+            textColor={themeSeleted === 'fime' ? '#111' : buttons.textColor}
           />
           
       </View>

@@ -12,6 +12,7 @@ export const LinkToAnotherSite: FC<LinkToAnotherSiteProps> = ({to: link}) => {
         if(link?.length <= 0){
             return;
         }
+        //dominio.com tambien es posible
         const supported = supportedUrls?.includes(link?.split(':')[0]);
         if(!supported){
             Alert.alert('Link no valido', 'Este link no es un link permitido');

@@ -4,11 +4,17 @@ import { StackProfile } from './StackProfile';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppTheme } from '../shared/hooks';
+import { useEffect } from 'react';
 
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = () => {
   const { tabBar } = useAppTheme()
+
+  useEffect(()=>{
+
+  },[])
+
   return (
     <Tab.Navigator
         screenOptions={{
@@ -19,15 +25,15 @@ export const TabNavigator = () => {
             tabBarStyle: {
                 borderTopWidth: 0,
                 elevation: 0,
-                backgroundColor: '#fff',
+                backgroundColor: tabBar.backgroundColor,
                 borderTopRightRadius: 15,
                 borderTopLeftRadius: 15
             },
             tabBarIconStyle: {
-              //color: tabBar.labelColor
+              // color: tabBar.labelColorActive
             },
-            //tabBarActiveTintColor: tabBar.labelColorActive,
-            //tabBarInactiveTintColor: tabBar.labelColorInactive,
+            tabBarActiveTintColor: tabBar.labelColorActive,
+            tabBarInactiveTintColor: tabBar.labelColorInactive,
             
         }}
     >

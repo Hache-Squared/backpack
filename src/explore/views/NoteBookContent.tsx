@@ -7,7 +7,7 @@ import { MenuContentForNotebook, SheetContent } from './';
 
 export const NoteBookContent = () => {
    const [modalVisible, setModalVisible] = useState(false);
-   const { menuNotebookContent, headerMenuNotebookContent } = useAppTheme();
+   const { sheetContent, headerMenuNotebookContent } = useAppTheme();
    const { title, currentSheetShowing } = useNotebookStore();
    
   return (
@@ -15,13 +15,14 @@ export const NoteBookContent = () => {
         <View className='w-full flex flex-row items-center justify-between'>
             <TouchableOpacity 
             onPress={() => setModalVisible(true)}
-            className='p-1 ml-2 mt-2 rounded-lg bg-gray-200'>
+            style={{ backgroundColor: headerMenuNotebookContent.buttonMenuBackgroundColor}}
+            className='p-1 ml-2 mt-2 rounded-lg '>
                 <Icon name='list-outline' size={40} color={headerMenuNotebookContent.buttonMenuLabelColor}/>
             </TouchableOpacity>
 
             <View className='mx-2'>
                 <Text 
-                style={{color: headerMenuNotebookContent.buttonMenuLabelColor}}
+                style={{color: sheetContent.sheetTitle}}
                 className='font-semibold text-md'>{currentSheetShowing ? `${currentSheetShowing?.title}` : "Bienvenido"}
                 </Text>
             </View>

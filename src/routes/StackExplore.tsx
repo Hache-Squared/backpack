@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScreen } from '../explore/screens';
+import { useAppTheme } from '../shared/hooks';
 
 export type StackExploreParams = {
   ExploreContent: undefined,
@@ -19,16 +20,24 @@ export type StackExploreParams = {
 const Stack = createStackNavigator<StackExploreParams>();
 
 export const StackExplore = () => {
+  const { screens } = useAppTheme()
   return (
     <Stack.Navigator
     screenOptions={{
       headerShown: true,
       headerTitleAlign: 'center',
+      headerTitleStyle: {
+        color: screens.titleColor,
+      },
       headerStyle: {
           elevation: 0,
           borderColor: 'transparent',
-          shadowColor: 'transparent'
+          shadowColor: 'transparent',
+          backgroundColor: screens.primaryColor,
       },
+      cardStyle: {
+        backgroundColor: screens.secondaryColor
+      }
     }}
     >
       <Stack.Screen name="ExploreContent" options={{title: 'Explorar Contenido'}} component={ExploreContentScreen} />

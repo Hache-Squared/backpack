@@ -1,17 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThemeState } from "../../types";
+import { lightColorsTheme } from "../../shared/utils";
 
 
-const initialState: AppThemeState = {
-
-};
-
+export type themeSelected = 'light' | 'dark' | 'fime';
 export const appThemeSlice = createSlice({
     name: "appTheme",
-    initialState: initialState,
+    initialState: {
+        colors: lightColorsTheme,
+        theme: 'light' as themeSelected,
+    },
     reducers: {
-
+        onChangeTheme: (state, { payload}) => {
+            state.colors = {...payload}
+        }
     }
 });
 
-export const { } = appThemeSlice.actions;
+export const { onChangeTheme } = appThemeSlice.actions;

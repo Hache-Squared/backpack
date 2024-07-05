@@ -14,7 +14,7 @@ export const PublicationItem: FC<PublicationItemProps> = ({ title = '', link, im
   const { publications } = useAppTheme()
    
   return (
-    <View className='w-11/12  self-center rounded-sm shadow-sm shadow-purple-200 py-2 b-red-400 flex-col' style={{backgroundColor: publications.backgroundColor}}>
+    <View className='w-11/12  self-center rounded-sm shadow-sm shadow-purple-50 py-2 b-red-400 flex-col' style={{backgroundColor: publications.backgroundColor}}>
         <Text className='mx-2 text-base font-semibold' style={{color: publications.textColor}}>{title}</Text>
         {/* The content can be image or url */}
         {
