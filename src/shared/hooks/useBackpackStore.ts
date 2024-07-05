@@ -1,9 +1,15 @@
-import { onLoadCurrentBackpack, onLoadBackpackList, onLoadBooks, onLoadNotebooks, onLoadPublications, useAppDispatch, useAppSelector } from '../../store';
-import { backpackListExample, bookListExample, notebookListExample, publicationListExample } from '../../data/fixtures';
+import { onLoadCurrentBackpack, onLoadBooks, onLoadNotebooks, onLoadPublications, useAppDispatch, useAppSelector } from '../../store';
+import {  backpackListContentExample, backpackListExample } from '../../data/fixtures';
+import { useEffect } from 'react';
 
 export const useBackpackStore = () => {
-    const { currentBackpack, backpackList, notebookList, bookList,publicationList } = useAppSelector(state => state.backpack);
+    const { currentBackpack, currentBackpackNotebookList, currentBackpackBookList, currentBackpackPublicationList } = useAppSelector(state => state.backpack);
     const dispatch = useAppDispatch();
+
+    // useEffect(() => {
+    //     console.log('Re-render usebackpack');
+        
+    // },[currentBackpack]);
 
     const startLoadingCurrentBackpack = async (id: string) => {
         const backpackItem = backpackListExample.find(item => item.id === id);
@@ -12,35 +18,39 @@ export const useBackpackStore = () => {
         }
     };
 
-    const startLoadingBackpackList = async () => {
-        console.log("Hola iniciando carga de mochila");
+    const startLoadingNotebooks = async (backpackId: string) => {
+        const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
+        if(backpack) {
+            dispatch(onLoadNotebooks(backpack.currentBackpackNotebookList));
+        }
+    };
+
+    const startLoadingBooks = async (backpackId: string) => {
+
+        const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
+        if(backpack) {
+            dispatch(onLoadBooks(backpack.currentBackpackBookList));
+        }
+    };
+
+    const startLoadingPublications = async (backpackId: string) => {
         
-        dispatch(onLoadBackpackList(backpackListExample));
-    };
-
-    const startLoadingNotebooks = async () => {
-        dispatch(onLoadNotebooks(notebookListExample));
-    };
-
-    const startLoadingBooks = async () => {
-        dispatch(onLoadBooks(bookListExample));
-    };
-
-    const startLoadingPublications = async () => {
-        dispatch(onLoadPublications(publicationListExample));
+        const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
+        if(backpack) {
+            dispatch(onLoadPublications(backpack.currentBackpackPublicationList));
+        }
     };
 
     return {
         // props
         currentBackpack,
-        backpackList,
-        notebookList,
-        bookList,
-        publicationList,
+        currentBackpackBookList,
+        currentBackpackPublicationList,
+        currentBackpackNotebookList,
+        
 
         // actions
         startLoadingCurrentBackpack,
-        startLoadingBackpackList,
         startLoadingNotebooks,
         startLoadingBooks,
         startLoadingPublications

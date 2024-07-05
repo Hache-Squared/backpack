@@ -7,16 +7,16 @@ import { useBackpackStore } from '../../shared/hooks';
 
 export const BooksView = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>();
-  const { bookList, startLoadingBooks } = useBackpackStore();  
+  const { currentBackpackBookList, currentBackpack, startLoadingBooks } = useBackpackStore();  
   useEffect(() => {
-    startLoadingBooks();
+    startLoadingBooks(currentBackpack?.id ?? '');
   }, []);
 
   return (
     <>
       <View className='my-2'/>
       <FlatList
-        data={bookList}
+        data={currentBackpackBookList}
         ItemSeparatorComponent={() => <View className='my-1'/>}
         renderItem={({item, index}) => (
             <BookItem

@@ -4,10 +4,9 @@ import { BackpackContents, BackpackListItem, BookListItem, NotebookListItem, Pub
 
 const initialState: BackpackContents = {
     currentBackpack: null,
-    backpackList: [],
-    notebookList: [],
-    bookList: [],
-    publicationList: [],
+    currentBackpackNotebookList: [],
+    currentBackpackBookList: [],
+    currentBackpackPublicationList: [],
 };
 
 export const backpackSlice = createSlice({
@@ -18,21 +17,18 @@ export const backpackSlice = createSlice({
           state.currentBackpack = { ...action.payload }
        },
 
-       onLoadBackpackList: (state, action: PayloadAction<BackpackListItem[]>) => {
-          state.backpackList = [ ...action.payload ]
-       },
 
        onLoadNotebooks: (state, action: PayloadAction<NotebookListItem[]>) => {
-            state.notebookList = [...action.payload]
+            state.currentBackpackNotebookList = [...action.payload]
        },
        onLoadBooks: (state, action: PayloadAction<BookListItem[]>) => {
-            state.bookList = [...action.payload]
+            state.currentBackpackBookList = [...action.payload]
        },
        onLoadPublications: (state, action: PayloadAction<PublicationListItem[]>) => {
-            state.publicationList = [...action.payload]
+            state.currentBackpackPublicationList = [...action.payload]
        },
        
     }
 });
 
-export const { onLoadBooks, onLoadNotebooks, onLoadPublications, onLoadBackpackList, onLoadCurrentBackpack } = backpackSlice.actions;
+export const { onLoadBooks, onLoadNotebooks, onLoadPublications, onLoadCurrentBackpack } = backpackSlice.actions;

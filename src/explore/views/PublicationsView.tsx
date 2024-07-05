@@ -4,15 +4,15 @@ import { PublicationItem } from '../components'
 import { useBackpackStore } from '../../shared/hooks'
 
 export const PublicationsView = () => {
-  const { publicationList, startLoadingPublications } = useBackpackStore();
+  const { currentBackpackPublicationList, currentBackpack, startLoadingPublications } = useBackpackStore();
   useEffect(() => {
-    startLoadingPublications();
+    startLoadingPublications(currentBackpack?.id ?? '');
   }, []);
   return (
     <>
       <View className='my-2'/>
       <FlatList
-        data={publicationList}
+        data={currentBackpackPublicationList}
         ItemSeparatorComponent={() => <View className='my-1'/>}
         renderItem={({item, index}) => (
           <PublicationItem

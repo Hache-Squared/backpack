@@ -3,6 +3,7 @@ import { CurrentSheetShowing, InitNotebookState, NotebookState, SheetItem } from
 
 
 const initialState: NotebookState = {
+    id: '',
     title: '',
     currentSheetShowing: null,
     menuSheetItemList: []
@@ -18,6 +19,7 @@ export const notebookSlice = createSlice({
             };
         },
         onLoadNotebook: (state, action: PayloadAction<InitNotebookState>) => {
+            state.id = action.payload.id;
             state.title = action.payload.title;
             state.menuSheetItemList = [ ...action.payload.menuSheetItemList ];
         }

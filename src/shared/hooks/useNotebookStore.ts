@@ -1,6 +1,6 @@
 import React from 'react'
 import { onLoadNotebook, onLoadSheet, useAppDispatch, useAppSelector } from '../../store'
-import { currentSheetShowingExample, initialStateNotebookExample, notebookListExample } from '../../data/fixtures'
+import { currentSheetShowingExample, menuSheetItemNotebookListExample } from '../../data/fixtures'
 
 
 
@@ -9,8 +9,10 @@ export const useNotebookStore = () => {
     const dispatch = useAppDispatch()
 
     const startLoadingNotebook = async(id: string) => {
-        // const notebook = notebookListExample.find(notebook => notebook.id === id)
-        dispatch( onLoadNotebook(initialStateNotebookExample) ) 
+        const notebook = menuSheetItemNotebookListExample.find(notebook => notebook.id === id)
+        if(notebook) {
+            dispatch( onLoadNotebook(notebook) ) 
+        }
         
     }
 

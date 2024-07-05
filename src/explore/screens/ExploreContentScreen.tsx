@@ -3,11 +3,11 @@ import React, { useEffect } from 'react'
 import { Alert, Button, FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { StackExploreParams } from '../../routes/StackExplore'
 import { BackpackItem } from '../components'
-import { useBackpackStore } from '../../shared/hooks'
+import { useBackpackStore, useExploreStore } from '../../shared/hooks'
 
 const ExploreContentScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()
-  const { backpackList, startLoadingBackpackList } = useBackpackStore();
+  const { backpackList, startLoadingBackpackList } = useExploreStore();
 
   useEffect(() => {
     startLoadingBackpackList();
@@ -24,7 +24,9 @@ const ExploreContentScreen = () => {
         renderItem={({ item, index }) => (
           <BackpackItem 
             name={item.title}
-            onPress={() => navigation.navigate('Backpack')}
+            onPress={() => navigation.navigate('Backpack',{
+              id: item.id,
+            })}
             />
         )}
       />

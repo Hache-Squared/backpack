@@ -4,20 +4,23 @@ import { NotebookItem } from '../components'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackExploreParams } from '../../routes/StackExplore';
 import { useBackpackStore } from '../../shared/hooks';
+import { menuSheetItemNotebookListExample } from '../../data/fixtures';
 
 
 export const NoteBooksView = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>();
-  const { notebookList, startLoadingNotebooks } = useBackpackStore();  
+  const { currentBackpackNotebookList, currentBackpack, startLoadingNotebooks } = useBackpackStore();  
   useEffect(() => {
-    startLoadingNotebooks();
+    console.log("currentBackpackId: ", currentBackpack?.id);
+    
+    startLoadingNotebooks(currentBackpack?.id ?? '');
   }, []);
 
   return (
     <>
       <View className='my-2'/>
       <FlatList
-        data={notebookList}
+        data={currentBackpackNotebookList}
         ItemSeparatorComponent={() => <View className='my-1'/>}
         renderItem={({item, index}) => (
             <NotebookItem

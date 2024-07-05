@@ -1,9 +1,10 @@
+
+
 export interface BackpackContents {
     currentBackpack: BackpackListItem | null;
-    backpackList: BackpackListItem[];
-    notebookList: NotebookListItem[];
-    bookList: BookListItem[];
-    publicationList: PublicationListItem[];
+    currentBackpackNotebookList: NotebookListItem[];
+    currentBackpackBookList: BookListItem[];
+    currentBackpackPublicationList: PublicationListItem[];
 }
 
 export interface BackpackListItem {
