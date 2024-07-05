@@ -27,14 +27,14 @@ export const SwitchThemeButtons = () => {
             textColor={themeSeleted === 'dark' ? buttons.textColor : buttons.backgroundColor}
           />
           
-
+{/* 
           <ButtonSelectTheme
             iconName='sunny-outline'
             onPress={() => changeTheme('dark')}
             titile='Fime'
             backgroundColor={themeSeleted === 'fime' ? '#05c46b' : buttons.backgroundColor}
             textColor={themeSeleted === 'fime' ? '#111' : buttons.textColor}
-          />
+          /> */}
           
       </View>
     </>
@@ -56,7 +56,7 @@ interface ButtonSelectThemeProps {
       <TouchableOpacity
       onPress={onPress}
       style={{ backgroundColor: backgroundColor }}
-      className='w-4/12  flex flex-row flex-nowrap items-center justify-center py-2'
+      className='w-6/12  flex flex-row flex-nowrap items-center justify-center py-2'
       >
         <Icon name={iconName} size={25} color={textColor} />
         <Text

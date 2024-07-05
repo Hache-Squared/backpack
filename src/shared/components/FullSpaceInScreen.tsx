@@ -14,36 +14,39 @@ export const FullSpaceInScreen: FC<PropsWithChildren> = ({children}) => {
     const optionsForTab: BottomTabNavigationOptions = {
       tabBarStyle: {
         display: 'none'
-      }
+      },
+      
   
     }
   useEffect(() => {
     navigation.setOptions(optionsForStack)
-    navigation.getParent()?.setOptions(optionsForTab)
+    // navigation.getParent()?.setOptions(optionsForTab)
   
     return () => {
       navigation.setOptions({
         headerShown: true,
       })
-      navigation.getParent()?.setOptions({
-            headerShown:false,
-            tabBarLabelStyle: {
-                marginBottom: 5
-            },
-            tabBarStyle: {
+      
+      // navigation.getParent()?.setOptions({
+
+      //       headerShown:false,
+      //       tabBarLabelStyle: {
+      //           marginBottom: 5
+      //       },
+      //       tabBarStyle: {
               
-                borderTopWidth: 0,
-                elevation: 0,
-                backgroundColor: tabBar.backgroundColor,
-                borderTopRightRadius: 15,
-                borderTopLeftRadius: 15
-            },
-            tabBarIconStyle: {
-              // color: tabBar.labelColorActive
-            },
-            tabBarActiveTintColor: tabBar.labelColorActive,
-            tabBarInactiveTintColor: tabBar.labelColorInactive,
-      })
+      //           borderTopWidth: 0,
+      //           elevation: 0,
+      //           backgroundColor: tabBar.backgroundColor,
+      //           // borderTopRightRadius: 15,
+      //           // borderTopLeftRadius: 15
+      //       },
+      //       tabBarIconStyle: {
+      //         // color: tabBar.labelColorActive
+      //       },
+      //       tabBarActiveTintColor: tabBar.labelColorActive,
+      //       tabBarInactiveTintColor: tabBar.labelColorInactive,
+      // })
     }
   },[])
   return (
