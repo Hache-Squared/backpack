@@ -1,5 +1,5 @@
 import React from 'react'
-import { onLoadNotebook, onLoadSheet, useAppDispatch, useAppSelector } from '../../store'
+import { onLoadNotebook, onLoadSheet, onResetNotebookState, useAppDispatch, useAppSelector } from '../../store'
 import { currentSheetShowingExample, menuSheetItemNotebookListExample } from '../../data/fixtures'
 
 
@@ -21,6 +21,10 @@ export const useNotebookStore = () => {
         if(sheet) dispatch( onLoadSheet(sheet) ) 
         
     }
+
+    const startResetingNotebook = async() => { 
+        dispatch( onResetNotebookState() )
+    }
     
     return {
         //props
@@ -30,6 +34,7 @@ export const useNotebookStore = () => {
         
         //actions
         startLoadingNotebook,
-        startLoadingSheet
+        startLoadingSheet,
+        startResetingNotebook
     }
 }

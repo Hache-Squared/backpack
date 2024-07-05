@@ -8,10 +8,19 @@ import { useBackpackStore, useExploreStore } from '../../shared/hooks'
 const ExploreContentScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()
   const { backpackList, startLoadingBackpackList } = useExploreStore();
+  const { startLoadingCurrentBackpack } = useBackpackStore();
 
   useEffect(() => {
     startLoadingBackpackList();
   }, [])
+
+  const handleClickBackpack = (backpackId: string) => {
+    startLoadingCurrentBackpack(backpackId);
+    navigation.navigate('Backpack',{
+      id: backpackId,
+    })
+
+  }
 
   return (
     <View>
@@ -24,9 +33,7 @@ const ExploreContentScreen = () => {
         renderItem={({ item, index }) => (
           <BackpackItem 
             name={item.title}
-            onPress={() => navigation.navigate('Backpack',{
-              id: item.id,
-            })}
+            onPress={() => handleClickBackpack(item.id)}
             />
         )}
       />

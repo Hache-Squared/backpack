@@ -22,7 +22,7 @@ export const NoteBookContent = () => {
             <View className='mx-2'>
                 <Text 
                 style={{color: headerMenuNotebookContent.buttonMenuLabelColor}}
-                className='font-semibold text-md'>{title} {currentSheetShowing ? " / Titulo de la hoja actual " : " / Bienvenido"}
+                className='font-semibold text-md'>{currentSheetShowing ? `${currentSheetShowing?.title}` : "Bienvenido"}
                 </Text>
             </View>
         </View>

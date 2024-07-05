@@ -8,9 +8,13 @@ import { useNotebookStore } from '../../shared/hooks'
 
 const NotebookScreen = () => {
   const { id } = useRoute<RouteProp<StackExploreParams, 'Notebook'>>().params;
-  const { startLoadingNotebook } = useNotebookStore();
+  const { startLoadingNotebook, startResetingNotebook } = useNotebookStore();
   useEffect(()=>{
     startLoadingNotebook(id)
+
+    return () => {
+      startResetingNotebook();
+    }
    },[])
   return (
     <FullSpaceInScreen>

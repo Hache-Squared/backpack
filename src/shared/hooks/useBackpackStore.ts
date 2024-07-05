@@ -1,4 +1,4 @@
-import { onLoadCurrentBackpack, onLoadBooks, onLoadNotebooks, onLoadPublications, useAppDispatch, useAppSelector } from '../../store';
+import { onLoadCurrentBackpack, onLoadBooks, onLoadNotebooks, onLoadPublications, useAppDispatch, useAppSelector, onResetBackpackState } from '../../store';
 import {  backpackListContentExample, backpackListExample } from '../../data/fixtures';
 import { useEffect } from 'react';
 
@@ -14,7 +14,9 @@ export const useBackpackStore = () => {
     const startLoadingCurrentBackpack = async (id: string) => {
         const backpackItem = backpackListExample.find(item => item.id === id);
         if (backpackItem) {
-            dispatch(onLoadCurrentBackpack(backpackItem));
+            dispatch(onLoadCurrentBackpack({
+                ...backpackItem
+            }));
         }
     };
 
@@ -40,6 +42,10 @@ export const useBackpackStore = () => {
             dispatch(onLoadPublications(backpack.currentBackpackPublicationList));
         }
     };
+    
+    const startResetingBackpack = async () => {
+        dispatch( onResetBackpackState() );
+    };
 
     return {
         // props
@@ -53,6 +59,7 @@ export const useBackpackStore = () => {
         startLoadingCurrentBackpack,
         startLoadingNotebooks,
         startLoadingBooks,
-        startLoadingPublications
+        startLoadingPublications,
+        startResetingBackpack
     };
 };

@@ -22,8 +22,14 @@ export const notebookSlice = createSlice({
             state.id = action.payload.id;
             state.title = action.payload.title;
             state.menuSheetItemList = [ ...action.payload.menuSheetItemList ];
+        },
+        onResetNotebookState: (state) => {
+            state.id =  '';
+            state.title =  '';
+            state.currentSheetShowing =  null;
+            state.menuSheetItemList =  [];
         }
     }
 });
 
-export const { onLoadSheet, onLoadNotebook } = notebookSlice.actions;
+export const { onLoadSheet, onLoadNotebook, onResetNotebookState } = notebookSlice.actions;

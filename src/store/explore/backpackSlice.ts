@@ -27,8 +27,14 @@ export const backpackSlice = createSlice({
        onLoadPublications: (state, action: PayloadAction<PublicationListItem[]>) => {
             state.currentBackpackPublicationList = [...action.payload]
        },
+       onResetBackpackState: (state) => {
+          state.currentBackpack = null;
+          state.currentBackpackNotebookList = [];
+          state.currentBackpackBookList = [];
+          state.currentBackpackPublicationList = [];
+       }
        
     }
 });
 
-export const { onLoadBooks, onLoadNotebooks, onLoadPublications, onLoadCurrentBackpack } = backpackSlice.actions;
+export const { onLoadBooks, onLoadNotebooks, onLoadPublications, onLoadCurrentBackpack, onResetBackpackState } = backpackSlice.actions;
