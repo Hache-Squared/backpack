@@ -5,6 +5,8 @@ export interface ColorsTheme {
       secondaryColor: string;
       titleColor: string;
     };
+
+    statusBarColor: string,
     buttons: {
       backgroundColor: string;
       textColor: string;

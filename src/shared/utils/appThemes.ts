@@ -1,10 +1,12 @@
+import { ColorsTheme } from "../../types"
 
-export const lightColorsTheme = {
+export const lightColorsTheme: ColorsTheme = {
     screens: {
         primaryColor: "#fff",
         secondaryColor: "#f1f2f6",
         titleColor: "#111",
     },
+    statusBarColor: '#20bf6b',
     buttons: {
         backgroundColor: '#fff',
         textColor: '#111'
@@ -39,12 +41,13 @@ export const lightColorsTheme = {
     },
 }
 
-export const darkColorsTheme = {
+export const darkColorsTheme: ColorsTheme = {
     screens: {
         primaryColor: "#000000",
         secondaryColor: "#121212",
         titleColor: "#fff",
     },
+    statusBarColor: '#BB86FC',
     buttons: {
         backgroundColor: '#111',
         textColor: '#fff'
@@ -54,7 +57,7 @@ export const darkColorsTheme = {
     },
     tabBar: {
         backgroundColor: '#111',
-        labelColorActive: '#1B9CFC',
+        labelColorActive: '#BB86FC',
         labelColorInactive: '#fff'
     },
     menuNotebookContent: {
