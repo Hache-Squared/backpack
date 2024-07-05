@@ -11,7 +11,7 @@ export const useExploreStore = () => {
 
 
     const startLoadingBackpackList = async () => {
-        console.log("Hola iniciando carga de mochila");
+        // console.log("Hola iniciando carga de mochila");
         
         dispatch(onLoadBackpackList(backpackListExample));
     };

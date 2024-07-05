@@ -1,8 +1,10 @@
 import React from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { ButtonInProfile, SwitchThemeButtons } from '../components'
+import { useAppTheme } from '../../shared/hooks'
 
 const ProfileCardScreen = () => {
+  const { texts } = useAppTheme()
   return (
     <ScrollView>
       
@@ -29,7 +31,7 @@ const ProfileCardScreen = () => {
       }
             <Text style={{
               fontWeight:"bold",
-              color:"#111"
+              color:texts.labelColor
             }}>
                 ¡Bienvenido A Backpack!
             </Text>

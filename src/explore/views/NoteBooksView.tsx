@@ -11,7 +11,7 @@ export const NoteBooksView = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>();
   const { currentBackpackNotebookList, currentBackpack, startLoadingNotebooks } = useBackpackStore();  
   useEffect(() => {
-    console.log("currentBackpackId: ", currentBackpack?.id);
+    // console.log("currentBackpackId: ", currentBackpack?.id);
     
     startLoadingNotebooks(currentBackpack?.id ?? '');
   }, []);
