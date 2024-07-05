@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { ButtonInProfile, SwitchThemeButtons } from '../components'
 
 const ProfileCardScreen = () => {
   return (
@@ -34,37 +35,25 @@ const ProfileCardScreen = () => {
             </Text>
         </View>
       
-        <TouchableOpacity className='w-11/12 self-center my-2 rounded-md shadow-md shadow-purple-300 bg-white py-2 items-center justify-center'>
-            <Text style={{
-              fontWeight:"bold",
-              color:"#111",
-              textAlign:"center",
-            }}>
-                Tema Claro / Oscuro
-            </Text>
-        </TouchableOpacity>
-        <TouchableOpacity className='w-11/12 self-center my-2 rounded-md shadow-md shadow-purple-300 bg-white py-2 items-center justify-center'>
-            <Text style={{
-              fontWeight:"bold",
-              color:"#111",
-              textAlign:"center",
-            }}>
-                Libretas Guardadas
-            </Text>
-        </TouchableOpacity>
-        <TouchableOpacity className='w-11/12 self-center my-2 rounded-md shadow-md shadow-purple-300 bg-white py-2 items-center justify-center'>
-            <Text style={{
-              fontWeight:"bold",
-              color:"#111",
-              textAlign:"center",
-            }}>
-                Libros Guardados
-            </Text>
-        </TouchableOpacity>
+        
+        <SwitchThemeButtons/>
+        
+        <ButtonInProfile
+          title='Libretas Guardadas'
+          icon='book'
+          onPress={() => null}
+        />
+        <ButtonInProfile
+          title='Libros Guardados'
+          icon='library'
+          onPress={() => null}
+        />
 
       </View>
     </ScrollView>
   )
 }
+
+
 
 export { ProfileCardScreen }

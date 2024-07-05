@@ -29,7 +29,7 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
           />
           
           <ButtonSelectView
-            iconName='albums-outline'
+            iconName='library-outline'
             onPress={() => setSelectedView('books')}
             titile='Libros'
             backgroundColor={selectedView === 'books' ? buttons.textColor : buttons.backgroundColor}

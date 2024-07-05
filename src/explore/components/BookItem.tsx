@@ -16,7 +16,7 @@ const BookItem: FC<BookItemProps> = ({ name, logoImg, onPress }) => {
     onPress={onPress}
     style={{ backgroundColor: buttons.backgroundColor }}
     className='w-11/12 py-3 rounded-lg flex self-center flex-row items-center gap-1 shadow-md shadow-purple-100'>
-        {logoImg ? <Text>logo</Text> : <Icon name="albums-outline" size={40} color={buttons.textColor} />} 
+        {logoImg ? <Text>logo</Text> : <Icon name="library" size={40} color={buttons.textColor} />} 
         
         <Text 
         style={{color: buttons.textColor}}
