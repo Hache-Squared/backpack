@@ -8,7 +8,12 @@
 		<string>Ionicons.ttf</string>
 	</array>
 
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Esta aplicación necesita acceso a la biblioteca de fotos para leer archivos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Esta aplicación necesita acceso para agregar archivos a la biblioteca de fotos.</string>
 
+  
 
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
