@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { ButtonInProfile, SwitchThemeButtons } from '../components'
 import { useAppTheme } from '../../shared/hooks'
+import { usePermissionsStore } from '../../shared/hooks/usePermissionsStore'
 
 const ProfileCardScreen = () => {
   const { texts } = useAppTheme()
+  const { permissionStorageStatus, startRequestStoragePermission } = usePermissionsStore()
+  
   return (
     <ScrollView>
       
@@ -35,8 +38,20 @@ const ProfileCardScreen = () => {
             }}>
                 ¡Bienvenido A Backpack!
             </Text>
+            
+            <Text style={{
+              fontWeight:"bold",
+              color:texts.labelColor
+            }}>
+                {permissionStorageStatus}
+            </Text>
         </View>
-      
+        
+        <ButtonInProfile
+          title='Habilitar permiso '
+          icon='book'
+          onPress={() => startRequestStoragePermission()}
+        />
         
         <SwitchThemeButtons/>
         

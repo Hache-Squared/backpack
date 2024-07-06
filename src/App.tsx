@@ -4,13 +4,16 @@ import React from 'react';
 import { TabNavigator } from './routes/TabNavigator';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { PermissionsChecker } from './shared/components/PermissionsChecker';
 function App(): React.JSX.Element {
 
   return (
     <Provider store={store}>
 
       <NavigationContainer>
-        <TabNavigator/>
+        <PermissionsChecker>
+          <TabNavigator/>
+        </PermissionsChecker>
       </NavigationContainer>
     </Provider>
   );
