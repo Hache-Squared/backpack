@@ -1,11 +1,15 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { ProfileCardScreen, SettingsScreen } from '../profile/screens';
 import { useAppTheme } from '../shared/hooks';
+import { LocalSheetScreen, MyBackpackScreen, LocalNotebookScreen } from '../myBackpack/screens';
 
 
 export type StackProfileParams = {
   ProfileCard: undefined,
-  Settings: undefined
+  MyBackpack: undefined,
+  LocalNotebook: undefined,
+  LocalSheet: undefined,
+  Settings: undefined,
 }
 
 
@@ -33,6 +37,10 @@ export const StackProfile = () => {
     }}
     >
       <Stack.Screen name="ProfileCard" options={{title: 'Perfil De Aplicación'}} component={ProfileCardScreen} />
+      <Stack.Screen name="MyBackpack" options={{title: 'Mi Mochila'}} component={MyBackpackScreen} />
+      <Stack.Screen name="LocalNotebook" options={{title: 'Libreta'}} component={LocalNotebookScreen} />
+      <Stack.Screen name="LocalSheet" options={{title: 'Libreta'}} component={LocalSheetScreen} />
+
       <Stack.Screen name="Settings" component={SettingsScreen} />
       
     </Stack.Navigator>

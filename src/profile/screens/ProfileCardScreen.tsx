@@ -3,11 +3,14 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { ButtonInProfile, SwitchThemeButtons } from '../components'
 import { useAppTheme, useLocalStorage } from '../../shared/hooks'
 import { usePermissionsStore } from '../../shared/hooks/usePermissionsStore'
+import { StackProfileParams } from '../../routes/StackProfile'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
 
 const ProfileCardScreen = () => {
   const { texts } = useAppTheme()
   const { permissionStorageStatus, startRequestStoragePermission } = usePermissionsStore()
   const { createDirectories } = useLocalStorage()
+  const navigation = useNavigation<NavigationProp<StackProfileParams>>();
   return (
     <ScrollView>
       
@@ -57,6 +60,11 @@ const ProfileCardScreen = () => {
           title='Crear Carpetas'
           icon='book'
           onPress={() => createDirectories()}
+        />
+        <ButtonInProfile
+          title='Mi Mochila'
+          icon='book'
+          onPress={() => navigation.navigate('MyBackpack')}
         />
         
         <SwitchThemeButtons/>

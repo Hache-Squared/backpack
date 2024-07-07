@@ -1,6 +1,6 @@
 import React from 'react'
 import RNFS from 'react-native-fs';
-import { SheetContent, SheetContentType } from '../../types';
+import { NotebookFolder, NotebookStuctureFolders, SheetContent, SheetContentType, SheetFolder } from '../../types';
 
 // Task
 /*
@@ -13,22 +13,6 @@ import { SheetContent, SheetContentType } from '../../types';
 */
 
 
-interface NotebookStuctureFolders {
-  notebook_id: string,
-  notebook_title: string,
-  sheet_id: string,
-  sheet_title: string,
-}
-
-interface NotebookFolder {
-  id: string,
-  title: string
-}
-
-interface SheetFolder {
-  id: string,
-  title: string
-}
 
 export const useLocalStorage = () => {
     // Define the base path for the application

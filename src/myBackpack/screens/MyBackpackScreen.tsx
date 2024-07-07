@@ -3,20 +3,30 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { SwitchSectionButtons } from '../components'
 import { useAppTheme, useLocalStorage } from '../../shared/hooks'
 import { usePermissionsStore } from '../../shared/hooks/usePermissionsStore'
+import { SelectViewFromBackpack } from '../../shared/components'
+import { LocalNotebooksView } from '../views/LocalNotebooksView'
 
 const MyBackpackScreen = () => {
   const { texts } = useAppTheme()
   const { permissionStorageStatus, startRequestStoragePermission } = usePermissionsStore()
   const { createDirectories } = useLocalStorage()
   return (
-    <ScrollView>
+    <>
       
-      <View className='w-full -red-300'>
+      
        
-        <SwitchSectionButtons/>
+        <SelectViewFromBackpack
+          ViewForNotebooks={
+            <LocalNotebooksView/>
+          }
+          ViewForBooks={
+            <></>
+          }
+          applyPublications={false}
+        />
 
-      </View>
-    </ScrollView>
+      
+    </>
   )
 }
 
