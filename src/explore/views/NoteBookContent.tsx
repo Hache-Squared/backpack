@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppTheme, useNotebookStore } from '../../shared/hooks';
 import { MenuContentForNotebook, SheetContent } from './';
 import { WelcomeToNoteBook } from './WelcomeToNoteBook';
+import { SheetDownloadButton } from '../../shared/components/SheetComponents/SheetDownloadButton';
 
 
 export const NoteBookContent = () => {
@@ -27,6 +28,11 @@ export const NoteBookContent = () => {
                 className='font-semibold text-md'>{currentSheetShowing ? `${currentSheetShowing?.title}` : ""}
                 </Text>
             </View>
+            {
+                currentSheetShowing && (
+                    <SheetDownloadButton/>
+                )
+            }
         </View>
         {
             currentSheetShowing ? 

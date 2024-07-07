@@ -5,7 +5,7 @@ import { currentSheetShowingExample, menuSheetItemNotebookListExample } from '..
 
 
 export const useNotebookStore = () => {
-    const { currentSheetShowing, menuSheetItemList, title } = useAppSelector(state => state.notebook)
+    const { currentSheetShowing, menuSheetItemList, title, id } = useAppSelector(state => state.notebook)
     const dispatch = useAppDispatch()
 
     const startLoadingNotebook = async(id: string) => {
@@ -28,6 +28,7 @@ export const useNotebookStore = () => {
     
     return {
         //props
+        id,
         title,
         currentSheetShowing,
         menuSheetItemList,

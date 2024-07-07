@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import RNFS from 'react-native-fs';
 import { NotebookFolder, NotebookStuctureFolders, SheetContent, SheetContentType, SheetFolder } from '../../types';
 
@@ -18,6 +18,11 @@ export const useLocalStorage = () => {
     // Define the base path for the application
     const appBasePath = `${RNFS.DocumentDirectoryPath}/miApp`;
     const notebooksPath = `${appBasePath}/notebooks`;
+    const downloadPath = `${RNFS.DocumentDirectoryPath}/temporal`;
+
+    useEffect(() => {
+      createInitialFolders();
+    },[])
 
     // notebooks / notebook_id_names / sheet_id_names / files.txt
 
@@ -25,6 +30,35 @@ export const useLocalStorage = () => {
       return `${notebooksPath}/${structure.notebook_id}_${structure.notebook_title}/${structure.sheet_id}_${structure.sheet_title}`;
     }
     
+    const createInitialFolders = async() => {
+      try {
+        // Verificar y crear appBasePath si no existe
+        const appBasePathExists = await RNFS.exists(appBasePath);
+        if (!appBasePathExists) {
+          await RNFS.mkdir(appBasePath);
+          console.log(`${appBasePath} creado`);
+        }
+    
+        // Verificar y crear notebooksPath si no existe
+        const notebooksPathExists = await RNFS.exists(notebooksPath);
+        if (!notebooksPathExists) {
+          await RNFS.mkdir(notebooksPath);
+          console.log(`${notebooksPath} creado`);
+        }
+    
+        // Verificar y crear downloadPath si no existe
+        const downloadPathExists = await RNFS.exists(downloadPath);
+        if (!downloadPathExists) {
+          await RNFS.mkdir(downloadPath);
+          console.log(`${downloadPath} creado`);
+        }
+        
+        // console.log("Directorios iniciales creados");
+        
+      } catch (error) {
+        console.log('Error al crear los directorios iniciales:', error);
+      }
+    };
     // Create the directories
     const createDirectories = async () => {
       const structure: NotebookStuctureFolders = {
@@ -87,7 +121,9 @@ export const useLocalStorage = () => {
           return false;
         }
 
-        let filePath = `${folderStructureForSheet}/${element.id}_${element.numOrder}_${element.type}.txt`;        
+        let filePath = `${folderStructureForSheet}/${element.id}_${element.numOrder}_${element.type}.txt`; 
+        console.log("Guardando txt: ", filePath);
+               
         await RNFS.writeFile(filePath, element.content, 'utf8');
         return true;
         
@@ -98,7 +134,11 @@ export const useLocalStorage = () => {
     }
     const createImageElementFile = async (structure: NotebookStuctureFolders, element: SheetContent): Promise<boolean> => {
       //crear folder si no existe 
+      
+      
       try {
+        // console.log(structure);
+        // console.log(element);
         if(element.type !== SheetContentType.Image) {
           console.log("No es imagen ");
           return false;
@@ -112,18 +152,21 @@ export const useLocalStorage = () => {
 
         let filePath = `${folderStructureForSheet}/${element.id}_${element.numOrder}_${element.type}.png`;        
 
-        const downloadPath = `${RNFS.DocumentDirectoryPath}/tempDownload`;
-  
+        
+        await createInitialFolders();
         // Download the file
+        const folderForDownload = `${downloadPath}/${element.id}_${element.numOrder}_${element.type}.png`;
+        
         const downloadResult = await RNFS.downloadFile({
           fromUrl: element.content,
-          toFile: downloadPath
+          toFile: folderForDownload,
         }).promise;
   
         if (downloadResult.statusCode === 200) {
           // Move the file to the destination path
-          await RNFS.moveFile(downloadPath, filePath);
-          console.log('Archivo descargado y movido exitosamente');
+          await RNFS.moveFile(folderForDownload, filePath);
+          console.log("Guardando image: ", filePath);
+          // console.log('Archivo descargado y movido exitosamente');
           return true;
         } else {
           console.log('Error al descargar el archivo');
@@ -149,7 +192,8 @@ export const useLocalStorage = () => {
             title: notebookTitle
           }
         })
-
+        console.log("Notebooks saved: ", notebooks);
+        
         return notebooks;
         
       } catch (e) {
@@ -172,7 +216,8 @@ export const useLocalStorage = () => {
             title: sheetTitle
           }
         })
-
+        console.log("sheets: ", sheets);
+        
         return sheets;
         
       } catch (e) {

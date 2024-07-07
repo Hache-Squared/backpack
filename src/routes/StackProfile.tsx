@@ -38,8 +38,8 @@ export const StackProfile = () => {
     >
       <Stack.Screen name="ProfileCard" options={{title: 'Perfil De Aplicación'}} component={ProfileCardScreen} />
       <Stack.Screen name="MyBackpack" options={{title: 'Mi Mochila'}} component={MyBackpackScreen} />
-      <Stack.Screen name="LocalNotebook" options={{title: 'Libreta'}} component={LocalNotebookScreen} />
-      <Stack.Screen name="LocalSheet" options={{title: 'Libreta'}} component={LocalSheetScreen} />
+      <Stack.Screen name="LocalNotebook" options={{title: 'Libretas'}} component={LocalNotebookScreen} />
+      <Stack.Screen name="LocalSheet" options={{title: 'Hojas'}} component={LocalSheetScreen} />
 
       <Stack.Screen name="Settings" component={SettingsScreen} />
       

@@ -1,10 +1,11 @@
+import { Alert } from 'react-native';
 import { useAppDispatch, useAppSelector, onLoadLocalNotebookList, onLoadCurrentLocalNotebook, onLoadCurrentLocalSheetWatching } from '../../store';
-import { LocalNotebookState, LocalSheetState, NotebookFolder, NotebookStuctureFolders, SheetFolder } from '../../types';
+import { LocalNotebookState, LocalSheetState, NotebookFolder, NotebookStuctureFolders, SheetContent, SheetContentType, SheetFolder } from '../../types';
 import { useLocalStorage } from './useLocalStorage';
 
 export const useMyBackpackStore = () => {
     const { currentLocalNotebook,currentLocalSheetWatching,localNotebookList,localkBookList  } = useAppSelector(state => state.myBackpack);
-    const { getNotebookContent, getNotebooksSaved, getSheetContent } = useLocalStorage();
+    const { getNotebookContent, getNotebooksSaved, getSheetContent, createImageElementFile, createTextElementFile } = useLocalStorage();
     const dispatch = useAppDispatch();
 
     // useEffect(() => {
@@ -46,6 +47,33 @@ export const useMyBackpackStore = () => {
         return true;
     }
 
+    const startDownloadingSheet = async(structure: NotebookStuctureFolders, contents: SheetContent[]): Promise<boolean> => {
+        try {
+            // Crear carpetas necesarias al inicio
+            let results: Array<boolean> = [];
+            for (const content of contents) {
+                let result = false;
+                if(content.type === SheetContentType.Text) {
+                    result = await createTextElementFile(structure, content);
+                    results.push(result);
+                } else if(content.type === SheetContentType.Image) {
+                    result = await createImageElementFile(structure, content);
+                    results.push(result);
+                }
+            }
+            // console.log("Result: ", results);
+            
+            let ok = results.includes(false) ? false : true;
+            if(!ok){
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error("Error en startDownloadingSheet:", error);
+            return false;
+        }
+    }
+
 
  
 
@@ -59,6 +87,7 @@ export const useMyBackpackStore = () => {
         // actions
         startLoadingLocalNotebookList,
         startLoadingCurrentLocalNotebook,
-        startLoadingCurrentLocalSheetWatching
+        startLoadingCurrentLocalSheetWatching,
+        startDownloadingSheet
     };
 };
