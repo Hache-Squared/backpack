@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { FlatList, View } from 'react-native';
@@ -9,11 +9,16 @@ import { useNotebookStore } from '../../shared/hooks';
 import { ImageWithPan, SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo  } from '../../shared/components';
 
 export const SheetContent = () => {
-  const [modalVisible, setModalVisible] = useState(false)
+  const flatListRef = useRef<FlatList>(null);
   const { currentSheetShowing } = useNotebookStore()
+  useEffect(() => {
+    console.log("Hoja renderizada");
+    flatListRef.current?.scrollToOffset({ animated: true, offset: 0 })
+  },[currentSheetShowing])
   return (
     <>
         <FlatList
+          ref={flatListRef}
           data={currentSheetShowing?.content}
           ListFooterComponent={() => (
             <View className='my-14'/>
@@ -53,35 +58,6 @@ export const SheetContent = () => {
           }}
         />
 
-       {
-        /*
-          <View className='w-full flex flex-row items-center justify-between'>
-            <TouchableOpacity
-            onPress={() => setModalVisible(true)}
-            className='p-1 ml-2 mt-2 rounded-lg bg-gray-200'>
-                <Icon name='list-outline' size={40} color={"#111"}/>
-            </TouchableOpacity>
-
-            <View className='mx-2'>
-                <Text className='font-semibold text-md'>Nombre de la libreta / Titulo de la hoja actual </Text>
-            </View>
-        </View>
-        <Modal
-            onRequestClose={() => {
-                setModalVisible(false)
-            }}
-            animationType="fade"
-            transparent={false} 
-            visible={modalVisible} >
-             
-
-            <ImageWithZoomNative/>
-        </Modal>
-        
-        */
-
-       }
-     
     </>
   )
 }
