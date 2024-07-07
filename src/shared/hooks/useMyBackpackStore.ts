@@ -53,7 +53,7 @@ export const useMyBackpackStore = () => {
             let results: Array<boolean> = [];
             for (const content of contents) {
                 let result = false;
-                if(content.type === SheetContentType.Text) {
+                if(content.type === SheetContentType.Text || content.type === SheetContentType.Subtitle) {
                     result = await createTextElementFile(structure, content);
                     results.push(result);
                 } else if(content.type === SheetContentType.Image) {
