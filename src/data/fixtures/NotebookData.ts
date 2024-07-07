@@ -6,7 +6,7 @@ export const menuSheetItemNotebookListExample: InitNotebookState[] = [
         id: '1',
         title: "Libreta de Derivadas",
         menuSheetItemList: [
-            { id: "1", title: "¿Qué es una Derivada" },
+            { id: "1", title: "¿Qué es una Derivada?" },
             { id: "2", title: "Formulas de Derivacion" }
         ]
     },
@@ -15,7 +15,7 @@ export const menuSheetItemNotebookListExample: InitNotebookState[] = [
         id: '2',
         title: "Introducción a Calculo Integral",
         menuSheetItemList: [
-            { id: "3", title: "¿Qué es el Calculo Integral" },
+            { id: "3", title: "¿Qué es el Calculo Integral?" },
             { id: "4", title: "Constante C" }
         ]
     },
@@ -43,7 +43,7 @@ export const menuSheetItemNotebookListExample: InitNotebookState[] = [
 export const currentSheetShowingExample: CurrentSheetShowing[] = [
     {
         id: "1",
-        title: "¿Qué es una Derivada",
+        title: "¿Qué es una Derivada?",
         content: [
             { id: '1', numOrder: 1, type: SheetContentType.Text, content: "Una derivada representa la tasa de cambio instantánea de una función con respecto a una de sus variables. Es un concepto fundamental en el cálculo y en el análisis matemático." },
             { id: '2', numOrder: 2, type: SheetContentType.Subtitle, content: "Definición Formal" },
@@ -85,7 +85,7 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
     },
     {
         id: "3",
-        title: "¿Qué es el Calculo Integral",
+        title: "¿Qué es el Calculo Integral?",
         content: [
             { id: '1', numOrder: 1, type: SheetContentType.Text, content: "El cálculo integral es una rama del cálculo que se centra en las integrales y sus aplicaciones. Es fundamental para entender áreas y acumulación de cantidades." },
             { id: '2', numOrder: 2, type: SheetContentType.Subtitle, content: "Definición de Integral" },

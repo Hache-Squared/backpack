@@ -27,8 +27,16 @@ export const useLocalStorage = () => {
     // notebooks / notebook_id_names / sheet_id_names / files.txt
 
     const getFolderStructureSheet = (structure: NotebookStuctureFolders): string => {
-      return `${notebooksPath}/${structure.notebook_id}_${structure.notebook_title}/${structure.sheet_id}_${structure.sheet_title}`;
+      let notebookTitle = sanitizeFileName(structure.notebook_title);
+      let sheetTitle = sanitizeFileName(structure.sheet_title);
+      return `${notebooksPath}/${structure.notebook_id}_${notebookTitle}/${structure.sheet_id}_${sheetTitle}`;
     }
+
+
+    const sanitizeFileName = (name: string): string => {
+      return name.replace(/[<>:"/\\|?*]+/g, ' ');
+    };
+
     
     const createInitialFolders = async() => {
       try {
