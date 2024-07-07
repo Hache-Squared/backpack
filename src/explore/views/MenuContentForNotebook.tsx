@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useAppTheme, useNotebookStore } from '../../shared/hooks'
 import { Alert, FlatList, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { SheetMenuItem } from '../components';
+import { SheetMenuItem } from '../../shared/components';
 
 interface MenuContentForNotebook {
     onCloseContent: () => void

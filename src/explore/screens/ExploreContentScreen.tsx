@@ -2,7 +2,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { Alert, Button, FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { StackExploreParams } from '../../routes/StackExplore'
-import { BackpackItem } from '../components'
+import { BackpackItem } from '../../shared/components'
 import { useBackpackStore, useExploreStore } from '../../shared/hooks'
 import { HeaderLogo } from '../../shared/components'
 

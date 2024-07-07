@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { FlatList, Text, View } from 'react-native'
-import { BookItem } from '../components'
+import { BookItem } from '../../shared/components'
 import { StackExploreParams } from '../../routes/StackExplore';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useBackpackStore } from '../../shared/hooks';

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Alert, Image, Text, TouchableOpacity, View } from 'react-native'
-import { LinkToAnotherSite } from './PublicationsComponents'
+import { LinkToAnotherSite } from './'
 import { useAppTheme } from '../../shared/hooks'
 
 

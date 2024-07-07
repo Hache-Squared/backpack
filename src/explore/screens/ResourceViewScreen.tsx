@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Dimensions, View } from 'react-native';
-import { BookPdfViewer, DocOfficeViewer } from '../components';
+import { BookPdfViewer, DocOfficeViewer } from '../../shared/components';
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackExploreParams } from '../../routes/StackExplore';
 import { StackNavigationOptions } from '@react-navigation/stack';

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { FlatList, Text, View } from 'react-native'
-import { PublicationItem } from '../components'
+import { PublicationItem } from '../../shared/components'
 import { useBackpackStore } from '../../shared/hooks'
 
 export const PublicationsView = () => {

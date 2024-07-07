@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { ImageWithPan } from '../components/SheetComponents/ImageWithPan';
+
 import { FlatList, View } from 'react-native';
 import { SheetExampleData } from '../../data/SheetExampleData';
 import { SheetContentType } from '../../types/SheetContentTypes';
-import { SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo } from '../components';
+
 import { useNotebookStore } from '../../shared/hooks';
+import { ImageWithPan, SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo  } from '../../shared/components';
 
 export const SheetContent = () => {
   const [modalVisible, setModalVisible] = useState(false)

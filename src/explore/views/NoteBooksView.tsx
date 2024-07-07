@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { FlatList, Text, View } from 'react-native'
-import { NotebookItem } from '../components'
+
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackExploreParams } from '../../routes/StackExplore';
 import { useBackpackStore } from '../../shared/hooks';
 import { menuSheetItemNotebookListExample } from '../../data/fixtures';
+import { NotebookItem } from '../../shared/components';
 
 
 export const NoteBooksView = () => {
