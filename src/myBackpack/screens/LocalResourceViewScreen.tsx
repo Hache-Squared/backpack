@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Dimensions, View } from 'react-native';
-import { BookPdfViewer, DocOfficeViewer } from '../../shared/components';
+import { BookPdfViewer, DocOfficeViewer, LocalBookPdfViewer } from '../../shared/components';
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackExploreParams } from '../../routes/StackExplore';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useAppTheme } from '../../shared/hooks';
+import { useAppTheme, useMyBackpackStore } from '../../shared/hooks';
 
-export const ResourceViewScreen = () => {
+export const LocalResourceViewScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>();
-  const { uriResource = '', data } = useRoute<RouteProp<StackExploreParams, 'ResourceView'>>().params;
+  const { currentBookWatching } = useMyBackpackStore();
+
+
   const { buttons } = useAppTheme();
   const options: StackNavigationOptions = {
     title: 'Viendo Libro',
@@ -26,9 +28,9 @@ export const ResourceViewScreen = () => {
 
   return (
     <View style={styles.container}>
-        <BookPdfViewer uriBook={uriResource} dataForbook={data}/>
-        {/* <DocOfficeViewer uriDoc={'https://www.slideshare.net/slideshow/embed_code/key/qU5u9smJ3IBinM?startSlide=1'}/> */}
-        {/* <DocOfficeViewer uriDoc={'https://ctb.ku.edu/sites/default/files/chapter_files/26.9_1.ppt'}/> */}
+        <LocalBookPdfViewer
+          uriBook={currentBookWatching?.uriDocument ?? ''} 
+          />
     </View>
   )
 }

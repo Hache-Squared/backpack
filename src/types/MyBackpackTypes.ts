@@ -2,10 +2,11 @@ import { BookListItem, NotebookListItem } from "./BackpackTypes";
 import { SheetContent } from "./SheetContentTypes";
 
 export interface MyBackpackContents {
+    currentBookWatching: BookFile | null,
     currentLocalNotebook: LocalNotebookState | null;
     currentLocalSheetWatching: LocalSheetState | null;
     localNotebookList: NotebookListItem[];
-    localkBookList: BookListItem[];
+    localBookList: BookListItem[];
 }
 
 export interface LocalNotebookState {
@@ -32,4 +33,10 @@ export interface NotebookFolder {
 export interface SheetFolder {
     id: string,
     title: string
-  }
+}
+
+export interface BookFile {
+  id: string,
+  title: string,
+  uriDocument: string,
+}

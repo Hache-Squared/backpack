@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import RNFS from 'react-native-fs';
-import { NotebookFolder, NotebookStuctureFolders, SheetContent, SheetContentType, SheetFolder } from '../../types';
+import { BookFile, BookListItem, NotebookFolder, NotebookStuctureFolders, SheetContent, SheetContentType, SheetFolder } from '../../types';
 
 // Task
 /*
@@ -19,6 +19,7 @@ export const useLocalStorage = () => {
     const appBasePath = `${RNFS.DocumentDirectoryPath}/miApp`;
     const notebooksPath = `${appBasePath}/notebooks`;
     const downloadPath = `${RNFS.DocumentDirectoryPath}/temporal`;
+    const booksPath = `${appBasePath}/books`;
 
     useEffect(() => {
       createInitialFolders();
@@ -59,6 +60,12 @@ export const useLocalStorage = () => {
         if (!downloadPathExists) {
           await RNFS.mkdir(downloadPath);
           console.log(`${downloadPath} creado`);
+        }
+
+        const booksPathExists = await RNFS.exists(booksPath);
+        if (!booksPathExists) {
+          await RNFS.mkdir(booksPath);
+          console.log(`${booksPath} creado`);
         }
         
         // console.log("Directorios iniciales creados");
@@ -333,7 +340,50 @@ export const useLocalStorage = () => {
       }
     }
 
+    const getBooks = async (): Promise<BookFile[]> => {
+      try {
+        const folderBooks = `${booksPath}/`
+        const folderArr = await RNFS.readDir(folderBooks);
+        const books = folderArr.map((book) => {
+          let bookData = book?.name?.split('_');
+          let bookId = bookData[0];
+          let bookTitle = bookData[1];
+          let bookUriDocument = `file://${booksPath}/${book.name}`;
 
+          return {
+            id: bookId,
+            title: bookTitle,
+            uriDocument: bookUriDocument
+          }
+        })
+        console.log("books", books);
+        
+        return books;
+        
+      } catch (e) {
+        console.log('error (getBooks) :', e);
+        return [];
+      }
+    }
+
+    const saveBook = async (bookItem: BookListItem, pathCache: string): Promise<boolean> => {
+      try {
+        const sanitizedFileName = sanitizeFileName(bookItem.title)
+        const bookPath = `${booksPath}/${bookItem.id}_${sanitizedFileName}.pdf`
+        
+        const fileExists = await RNFS.exists(bookPath);
+        if (fileExists) {
+          console.log('PDF already exists at the destination');
+          return true;
+        }
+
+        await RNFS.copyFile(pathCache, bookPath);
+        return true;
+      } catch (e) {
+        console.log('error (getBooks) :', e);
+        return false;
+      }
+    }
 
 
 
@@ -346,6 +396,8 @@ export const useLocalStorage = () => {
     createImageElementFile,
     getNotebooksSaved,
     getNotebookContent,
-    getSheetContent
+    getSheetContent,
+    saveBook,
+    getBooks
   }
 }

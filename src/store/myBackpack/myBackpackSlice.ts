@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BackpackContents, BackpackListItem, BookListItem, LocalNotebookState, LocalSheetState, MyBackpackContents, NotebookListItem, PublicationListItem } from "../../types";
+import { BackpackContents, BackpackListItem, BookFile, BookListItem, LocalNotebookState, LocalSheetState, MyBackpackContents, NotebookListItem, PublicationListItem } from "../../types";
 
 
 const initialState: MyBackpackContents = {
-    
+   currentBookWatching: null,
    currentLocalNotebook: null,
    currentLocalSheetWatching: null,
    localNotebookList: [],
-   localkBookList: [],
+   localBookList: [],
 };
 
 export const myBackpackSlice = createSlice({
@@ -19,7 +19,7 @@ export const myBackpackSlice = createSlice({
        },
 
        onLoadLocalBookList: (state, action: PayloadAction<BookListItem[]>) => {
-         state.localkBookList = action.payload;
+         state.localBookList = action.payload;
        },
        onLoadCurrentLocalNotebook: (state, action: PayloadAction<LocalNotebookState>) => {
          state.currentLocalNotebook = action.payload;
@@ -27,10 +27,13 @@ export const myBackpackSlice = createSlice({
        onLoadCurrentLocalSheetWatching: (state, action: PayloadAction<LocalSheetState>) => {
          state.currentLocalSheetWatching = action.payload;
        },
+       onLoadCurrentLocalBookWatching: (state, action: PayloadAction<BookFile>) => {
+         state.currentBookWatching = action.payload;
+       },
 
 
        
     }
 });
 
-export const { onLoadLocalBookList, onLoadLocalNotebookList, onLoadCurrentLocalNotebook,onLoadCurrentLocalSheetWatching } = myBackpackSlice.actions;
+export const { onLoadLocalBookList, onLoadLocalNotebookList, onLoadCurrentLocalNotebook,onLoadCurrentLocalSheetWatching, onLoadCurrentLocalBookWatching } = myBackpackSlice.actions;

@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { ProfileCardScreen, SettingsScreen } from '../profile/screens';
 import { useAppTheme } from '../shared/hooks';
-import { LocalSheetScreen, MyBackpackScreen, LocalNotebookScreen } from '../myBackpack/screens';
+import { LocalSheetScreen, MyBackpackScreen, LocalNotebookScreen, LocalResourceViewScreen } from '../myBackpack/screens';
 
 
 export type StackProfileParams = {
@@ -10,6 +10,7 @@ export type StackProfileParams = {
   LocalNotebook: undefined,
   LocalSheet: undefined,
   Settings: undefined,
+  LocalResourceView: undefined
 }
 
 
@@ -40,6 +41,7 @@ export const StackProfile = () => {
       <Stack.Screen name="MyBackpack" options={{title: 'Mi Mochila'}} component={MyBackpackScreen} />
       <Stack.Screen name="LocalNotebook" options={{title: 'Hojas'}} component={LocalNotebookScreen} />
       <Stack.Screen name="LocalSheet" options={{title: 'Contenido'}} component={LocalSheetScreen} />
+      <Stack.Screen name="LocalResourceView" options={{title: 'Libro En Local'}} component={LocalResourceViewScreen} />
 
       <Stack.Screen name="Settings" component={SettingsScreen} />
       

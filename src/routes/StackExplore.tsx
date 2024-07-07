@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScreen } from '../explore/screens';
 import { useAppTheme } from '../shared/hooks';
 import { HeaderLogo } from '../shared/components';
+import { BookListItem } from '../types';
 
 export type StackExploreParams = {
   ExploreContent: undefined,
@@ -13,6 +14,7 @@ export type StackExploreParams = {
   },
   ResourceView: {
     uriResource: string,
+    data: BookListItem
   },
   Publications: undefined
 }

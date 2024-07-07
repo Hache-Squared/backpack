@@ -1,11 +1,11 @@
 import { Alert } from 'react-native';
-import { useAppDispatch, useAppSelector, onLoadLocalNotebookList, onLoadCurrentLocalNotebook, onLoadCurrentLocalSheetWatching } from '../../store';
-import { LocalNotebookState, LocalSheetState, NotebookFolder, NotebookStuctureFolders, SheetContent, SheetContentType, SheetFolder } from '../../types';
+import { useAppDispatch, useAppSelector, onLoadLocalNotebookList, onLoadCurrentLocalNotebook, onLoadCurrentLocalSheetWatching, onLoadLocalBookList, onLoadCurrentLocalBookWatching } from '../../store';
+import { BookListItem, LocalNotebookState, LocalSheetState, NotebookFolder, NotebookStuctureFolders, SheetContent, SheetContentType, SheetFolder } from '../../types';
 import { useLocalStorage } from './useLocalStorage';
 
 export const useMyBackpackStore = () => {
-    const { currentLocalNotebook,currentLocalSheetWatching,localNotebookList,localkBookList  } = useAppSelector(state => state.myBackpack);
-    const { getNotebookContent, getNotebooksSaved, getSheetContent, createImageElementFile, createTextElementFile } = useLocalStorage();
+    const { currentLocalNotebook,currentLocalSheetWatching,localNotebookList,localBookList, currentBookWatching  } = useAppSelector(state => state.myBackpack);
+    const { getNotebookContent, getNotebooksSaved, getSheetContent, createImageElementFile, getBooks ,createTextElementFile, saveBook } = useLocalStorage();
     const dispatch = useAppDispatch();
 
     // useEffect(() => {
@@ -74,20 +74,38 @@ export const useMyBackpackStore = () => {
         }
     }
 
+    const startDownloadingBook = async(bookItem: BookListItem, pathCache: string): Promise<boolean> => {
+        let ok = await saveBook(bookItem, pathCache)
+        return ok;
+    }
+    
+    const startWatchingBook = async(bookItem: BookListItem) => {
+        dispatch( onLoadCurrentLocalBookWatching(bookItem))
+    }
+
+    const startLoadingBooks = async() => {
+        let books = await getBooks();
+        dispatch(onLoadLocalBookList(books))
+    }
+
 
  
 
     return {
         //properties
+        currentBookWatching,
         currentLocalNotebook,
         currentLocalSheetWatching,
         localNotebookList,
-        localkBookList,
+        localBookList,
 
         // actions
         startLoadingLocalNotebookList,
         startLoadingCurrentLocalNotebook,
         startLoadingCurrentLocalSheetWatching,
-        startDownloadingSheet
+        startDownloadingSheet,
+        startDownloadingBook,
+        startLoadingBooks,
+        startWatchingBook
     };
 };

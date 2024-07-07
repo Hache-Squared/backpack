@@ -3,29 +3,33 @@ import { FlatList, Text, View } from 'react-native'
 import { BookItem } from '../../shared/components'
 import { StackExploreParams } from '../../routes/StackExplore';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useBackpackStore } from '../../shared/hooks';
+import { useMyBackpackStore } from '../../shared/hooks';
+import { BookListItem } from '../../types';
+import { StackProfileParams } from '../../routes/StackProfile';
 
-export const BooksView = () => {
-  const navigation = useNavigation<NavigationProp<StackExploreParams>>();
-  const { currentBackpackBookList, currentBackpack, startLoadingBooks } = useBackpackStore();  
+export const LocalBooksView = () => {
+  const navigation = useNavigation<NavigationProp<StackProfileParams>>();
+  const { startLoadingBooks, localBookList, startWatchingBook } = useMyBackpackStore();  
   useEffect(() => {
-    startLoadingBooks(currentBackpack?.id ?? '');
+    startLoadingBooks();
   }, []);
+
+  const handleOnPressBook = (book: BookListItem) => {
+    startWatchingBook(book);
+    navigation.navigate('LocalResourceView');
+  }
 
   return (
     <>
       <View className='my-2'/>
       <FlatList
-        data={currentBackpackBookList}
+        data={localBookList}
         ItemSeparatorComponent={() => <View className='my-1'/>}
         renderItem={({item, index}) => (
             <BookItem
                 name={item.title}
                 key={item.id}
-                onPress={() => navigation.navigate('ResourceView',{
-                  uriResource: item.uriDocument,
-                  data: item,
-                })}
+                onPress={() => handleOnPressBook(item)}
 
             />
         )}

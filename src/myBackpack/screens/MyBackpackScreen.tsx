@@ -5,6 +5,7 @@ import { useAppTheme, useLocalStorage } from '../../shared/hooks'
 import { usePermissionsStore } from '../../shared/hooks/usePermissionsStore'
 import { SelectViewFromBackpack } from '../../shared/components'
 import { LocalNotebooksView } from '../views/LocalNotebooksView'
+import { LocalBooksView } from '../views/LocalBooksView'
 
 const MyBackpackScreen = () => {
   const { texts } = useAppTheme()
@@ -20,7 +21,7 @@ const MyBackpackScreen = () => {
             <LocalNotebooksView/>
           }
           ViewForBooks={
-            <></>
+            <LocalBooksView/>
           }
           applyPublications={false}
         />
