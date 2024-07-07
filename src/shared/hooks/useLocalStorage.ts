@@ -253,6 +253,9 @@ export const useLocalStorage = () => {
         })
 
         const content = await Promise.all(contentPromises);
+        //Ordenar por numOrder
+
+        content?.sort((a, b) => a?.numOrder - b?.numOrder);
 
         return content;
         
