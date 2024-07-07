@@ -42,15 +42,15 @@ const ProfileCardScreen = () => {
                 ¡Bienvenido A Backpack!
             </Text>
             
-            <Text style={{
+            {/* <Text style={{
               fontWeight:"bold",
               color:texts.labelColor
             }}>
                 {permissionStorageStatus}
-            </Text>
+            </Text> */}
         </View>
         
-        <ButtonInProfile
+        {/* <ButtonInProfile
           title='Habilitar permiso '
           icon='book'
           onPress={() => startRequestStoragePermission()}
@@ -60,25 +60,14 @@ const ProfileCardScreen = () => {
           title='Crear Carpetas'
           icon='book'
           onPress={() => createDirectories()}
-        />
+        /> */}
         <ButtonInProfile
           title='Mi Mochila'
-          icon='book'
+          icon='briefcase'
           onPress={() => navigation.navigate('MyBackpack')}
         />
         
         <SwitchThemeButtons/>
-        
-        <ButtonInProfile
-          title='Libretas Guardadas'
-          icon='book'
-          onPress={() => null}
-        />
-        <ButtonInProfile
-          title='Libros Guardados'
-          icon='library'
-          onPress={() => null}
-        />
 
       </View>
     </ScrollView>
