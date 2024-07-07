@@ -10,6 +10,8 @@ export interface SheetItem {
 }
 
 export interface SheetContent {
+    id: string,
+    numOrder: number,
     type: SheetContentType,
     content: string
 }

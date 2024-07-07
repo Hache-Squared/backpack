@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { ButtonInProfile, SwitchThemeButtons } from '../components'
-import { useAppTheme } from '../../shared/hooks'
+import { useAppTheme, useLocalStorage } from '../../shared/hooks'
 import { usePermissionsStore } from '../../shared/hooks/usePermissionsStore'
 
 const ProfileCardScreen = () => {
   const { texts } = useAppTheme()
   const { permissionStorageStatus, startRequestStoragePermission } = usePermissionsStore()
-  
+  const { createDirectories } = useLocalStorage()
   return (
     <ScrollView>
       
@@ -51,6 +51,12 @@ const ProfileCardScreen = () => {
           title='Habilitar permiso '
           icon='book'
           onPress={() => startRequestStoragePermission()}
+        />
+
+        <ButtonInProfile
+          title='Crear Carpetas'
+          icon='book'
+          onPress={() => createDirectories()}
         />
         
         <SwitchThemeButtons/>
