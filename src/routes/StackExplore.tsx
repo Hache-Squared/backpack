@@ -3,6 +3,9 @@ import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScree
 import { useAppTheme } from '../shared/hooks';
 import { HeaderLogo } from '../shared/components';
 import { BookListItem } from '../types';
+import { useNetInfo } from '@react-native-community/netinfo';
+import { Text, View } from 'react-native';
+import { NoInternet } from '../explore/views';
 
 export type StackExploreParams = {
   ExploreContent: undefined,
@@ -24,6 +27,12 @@ const Stack = createStackNavigator<StackExploreParams>();
 
 export const StackExplore = () => {
   const { screens, themeSeleted } = useAppTheme()
+  const { isInternetReachable } = useNetInfo()
+  if(!isInternetReachable){
+    return(
+      <NoInternet/>
+    )
+  }
   return (
     <Stack.Navigator
     screenOptions={{
