@@ -3,6 +3,7 @@ import { BackpackContents, BackpackListItem, BookListItem, NotebookListItem, Pub
 
 
 const initialState: BackpackContents = {
+    isLoadingBackpack: true,
     currentBackpack: null,
     currentBackpackNotebookList: [],
     currentBackpackBookList: [],
@@ -32,9 +33,24 @@ export const backpackSlice = createSlice({
           state.currentBackpackNotebookList = [];
           state.currentBackpackBookList = [];
           state.currentBackpackPublicationList = [];
+       },
+       onLoadingBackpack: (state) => {
+          state.isLoadingBackpack = true;
+       },
+       onFinishedLoadingBackpack: (state) => {
+          state.isLoadingBackpack = false;
        }
+       
        
     }
 });
 
-export const { onLoadBooks, onLoadNotebooks, onLoadPublications, onLoadCurrentBackpack, onResetBackpackState } = backpackSlice.actions;
+export const { 
+   onLoadBooks, 
+   onLoadNotebooks, 
+   onLoadPublications, 
+   onLoadCurrentBackpack, 
+   onResetBackpackState,  
+   onLoadingBackpack, 
+   onFinishedLoadingBackpack
+} = backpackSlice.actions;

@@ -4,7 +4,8 @@ import { ExploreState } from "../../types/ExploreTypes";
 
 
 const initialState: ExploreState = {
-    backpackList: []
+    backpackList: [],
+    isLoadingExplore: true,
 };
 
 export const exploreSlice = createSlice({
@@ -14,8 +15,14 @@ export const exploreSlice = createSlice({
        onLoadBackpackList: (state, action: PayloadAction<BackpackListItem[]>) => {
           state.backpackList = [ ...action.payload ]
        },
+       onLoadingExplore: (state) => {
+        state.isLoadingExplore = true;
+       },
+       onFinishedLoadingExplore: (state) => {
+        state.isLoadingExplore = false;
+       }
        
     }
 });
 
-export const { onLoadBackpackList} = exploreSlice.actions;
+export const { onLoadBackpackList, onFinishedLoadingExplore, onLoadingExplore } = exploreSlice.actions;

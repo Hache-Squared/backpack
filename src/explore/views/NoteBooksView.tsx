@@ -4,14 +4,12 @@ import { FlatList, Text, View } from 'react-native'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackExploreParams } from '../../routes/StackExplore';
 import { useBackpackStore } from '../../shared/hooks';
-import { menuSheetItemNotebookListExample } from '../../data/fixtures';
-import { NotebookItem } from '../../shared/components';
-import { NoItemsInList } from '../../shared/views';
+import { ActivityIndicatorLoadingList, NotebookItem } from '../../shared/components';
 
 
 export const NoteBooksView = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>();
-  const { currentBackpackNotebookList, currentBackpack, startLoadingNotebooks } = useBackpackStore();  
+  const { currentBackpackNotebookList, currentBackpack, startLoadingNotebooks, isLoadingBackpack } = useBackpackStore();  
   useEffect(() => {
     // console.log("currentBackpackId: ", currentBackpack?.id);
     
@@ -23,7 +21,7 @@ export const NoteBooksView = () => {
       <View className='my-2'/>
       <FlatList
         data={currentBackpackNotebookList}
-        ListEmptyComponent={() => <NoItemsInList/>}
+        ListEmptyComponent={() => <ActivityIndicatorLoadingList isLoading={isLoadingBackpack}/>}
         ItemSeparatorComponent={() => <View className='my-1'/>}
         renderItem={({item, index}) => (
             <NotebookItem

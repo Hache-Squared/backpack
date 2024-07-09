@@ -6,12 +6,12 @@ import { useAppTheme, useBackpackStore } from '../../shared/hooks';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { SelectViewFromBackpack } from '../../shared/components';
 import { NoteBooksView, BooksView, PublicationsView } from '../views';
-import { Alert } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
 
 
 const BackpackScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>();
-  const { buttons } = useAppTheme();
+  const { buttons, primaryColor } = useAppTheme();
   const { id } = useRoute<RouteProp<StackExploreParams, 'Backpack'>>().params;
   const { currentBackpack, startResetingBackpack } = useBackpackStore();
 
@@ -33,7 +33,7 @@ const BackpackScreen = () => {
   return (
     <>
     {
-      currentBackpack && (
+      currentBackpack ? (
 
         <SelectViewFromBackpack
           ViewForNotebooks={
@@ -46,6 +46,8 @@ const BackpackScreen = () => {
             <PublicationsView/>
           }
         />
+      ) : (
+        <ActivityIndicator color={primaryColor} size={'large'} className='my-10'/>
       )
     }
     </>
