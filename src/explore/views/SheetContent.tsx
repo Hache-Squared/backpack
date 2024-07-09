@@ -7,6 +7,7 @@ import { SheetContentType } from '../../types/SheetContentTypes';
 
 import { useNotebookStore } from '../../shared/hooks';
 import { ImageWithPan, SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo  } from '../../shared/components';
+import { NoItemsInList } from '../../shared/views';
 
 export const SheetContent = () => {
   const flatListRef = useRef<FlatList>(null);
@@ -20,6 +21,7 @@ export const SheetContent = () => {
         <FlatList
           ref={flatListRef}
           data={currentSheetShowing?.content}
+          ListEmptyComponent={() => <NoItemsInList/>}
           ListFooterComponent={() => (
             <View className='my-14'/>
           )}

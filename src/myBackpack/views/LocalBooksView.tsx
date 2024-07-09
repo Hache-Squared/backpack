@@ -6,6 +6,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useMyBackpackStore } from '../../shared/hooks';
 import { BookListItem } from '../../types';
 import { StackProfileParams } from '../../routes/StackProfile';
+import { NoItemsInList } from '../../shared/views';
 
 export const LocalBooksView = () => {
   const navigation = useNavigation<NavigationProp<StackProfileParams>>();
@@ -24,6 +25,7 @@ export const LocalBooksView = () => {
       <View className='my-2'/>
       <FlatList
         data={localBookList}
+        ListEmptyComponent={() => <NoItemsInList/>}
         ItemSeparatorComponent={() => <View className='my-1'/>}
         renderItem={({item, index}) => (
             <BookItem

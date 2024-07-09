@@ -7,6 +7,7 @@ import { SheetContentType } from '../../types/SheetContentTypes';
 
 import { useMyBackpackStore, useNotebookStore } from '../../shared/hooks';
 import { ImageWithPan, SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo  } from '../../shared/components';
+import { NoItemsInList } from '../../shared/views';
 
 export const LocalSheetScreen = () => {
   const { currentLocalSheetWatching } = useMyBackpackStore();
@@ -14,6 +15,7 @@ export const LocalSheetScreen = () => {
     <>
         <FlatList
           data={currentLocalSheetWatching?.content}
+          ListEmptyComponent={() => <NoItemsInList/>}
           ListFooterComponent={() => (
             <View className='my-14'/>
           )}

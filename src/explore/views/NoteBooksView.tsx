@@ -6,6 +6,7 @@ import { StackExploreParams } from '../../routes/StackExplore';
 import { useBackpackStore } from '../../shared/hooks';
 import { menuSheetItemNotebookListExample } from '../../data/fixtures';
 import { NotebookItem } from '../../shared/components';
+import { NoItemsInList } from '../../shared/views';
 
 
 export const NoteBooksView = () => {
@@ -22,6 +23,7 @@ export const NoteBooksView = () => {
       <View className='my-2'/>
       <FlatList
         data={currentBackpackNotebookList}
+        ListEmptyComponent={() => <NoItemsInList/>}
         ItemSeparatorComponent={() => <View className='my-1'/>}
         renderItem={({item, index}) => (
             <NotebookItem

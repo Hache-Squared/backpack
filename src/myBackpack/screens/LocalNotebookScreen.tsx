@@ -5,6 +5,7 @@ import { useMyBackpackStore } from '../../shared/hooks';
 import { FlatList, View } from 'react-native';
 import { SheetItem } from '../../shared/components';
 import { SheetFolder } from '../../types';
+import { NoItemsInList } from '../../shared/views';
 
 const LocalNotebookScreen = () => {
   
@@ -24,6 +25,7 @@ const LocalNotebookScreen = () => {
         <View className='my-2'/>
         <FlatList
           data={currentLocalNotebook?.sheets || []}
+          ListEmptyComponent={() => <NoItemsInList/>}
           ItemSeparatorComponent={() => <View className='my-1'/>}
           renderItem={({item, index}) => (
               <SheetItem
