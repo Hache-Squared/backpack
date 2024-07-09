@@ -6,7 +6,8 @@ const initialState: NotebookState = {
     id: '',
     title: '',
     currentSheetShowing: null,
-    menuSheetItemList: []
+    menuSheetItemList: [],
+    isLoadingNotebook: true,
 };
 
 export const notebookSlice = createSlice({
@@ -28,8 +29,14 @@ export const notebookSlice = createSlice({
             state.title =  '';
             state.currentSheetShowing =  null;
             state.menuSheetItemList =  [];
+        },
+        onLoadingNotebook: (state) => {
+            state.isLoadingNotebook = true;
+        },
+        onFinishedLoadingNotebook: (state) => {
+            state.isLoadingNotebook = false;
         }
     }
 });
 
-export const { onLoadSheet, onLoadNotebook, onResetNotebookState } = notebookSlice.actions;
+export const { onLoadSheet, onLoadNotebook, onResetNotebookState, onFinishedLoadingNotebook, onLoadingNotebook } = notebookSlice.actions;

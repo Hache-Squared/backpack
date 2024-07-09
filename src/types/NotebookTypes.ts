@@ -5,6 +5,7 @@ export interface NotebookState {
     title: string;
     menuSheetItemList: SheetItem[];
     currentSheetShowing: CurrentSheetShowing | null;
+    isLoadingNotebook: boolean;
 }
 
 export interface InitNotebookState {
