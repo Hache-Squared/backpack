@@ -1,15 +1,15 @@
 import { ColorsTheme } from "../../types"
 
 export const lightColorsTheme: ColorsTheme = {
-    primaryColor: '#20bf6b',
+    primaryColor: '#2ed573',
     secondaryColor: '#fff',
 
     screens: {
         primaryColor: "#fff",
-        secondaryColor: "#f1f2f6",
+        secondaryColor: "#e8ecf5",
         titleColor: "#111",
     },
-    statusBarColor: '#20bf6b',
+    statusBarColor: '#2ed573',
     buttons: {
         backgroundColor: '#fff',
         textColor: '#111'
@@ -18,22 +18,22 @@ export const lightColorsTheme: ColorsTheme = {
         labelColor: '#111'
     },
     tabBar: {
-        backgroundColor: '#fff',
-        labelColorActive: '#20bf6b',
+        backgroundColor: '#2ed573',
+        labelColorActive: '#fff',
         labelColorInactive: '#111'
     },
     menuNotebookContent: {
         titleBackgroundColor: '#111',
         titleTextColor: '#fff',
-        colorStatusActive: '#BB86FC',
-        colorStatusInactive: '#747d8c',
+        colorStatusActive: '#2ed573',
+        colorStatusInactive: '#fff',
     },
     headerMenuNotebookContent: {
         buttonMenuLabelColor: "#111",
         buttonMenuBackgroundColor: "#d2dae2",
     },
     sheetContent:{
-        sheetTitle: '#BB86FC',
+        sheetTitle: '#2ed573',
         textTitleColor: '#111',
         textSubtitleColor: '#111',
         textColor: '#111',

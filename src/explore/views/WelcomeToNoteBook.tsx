@@ -4,7 +4,7 @@ import { useAppTheme, useNotebookStore } from '../../shared/hooks'
 const welcomeNotebookImg  = require('../../assets/illustrations/notebook_welcome.png')
 export const WelcomeToNoteBook = () => {
   const { title } = useNotebookStore();
-  const { primaryColor, texts, buttons } = useAppTheme();
+  const { primaryColor, texts, secondaryColor } = useAppTheme();
   const { menuSheetItemList, startLoadingSheet } = useNotebookStore();
   const handleClickStart = () => {
     let first = menuSheetItemList?.[0];
@@ -23,13 +23,13 @@ export const WelcomeToNoteBook = () => {
             <Text style={{color: texts.labelColor}} className='text-lg text-center'>---- O ----</Text>
             <TouchableOpacity 
             onPress={handleClickStart}
-            className='w-10/12 rounded-sm my-2 py-2'
+            className='w-10/12 rounded-full my-2 py-2'
             style={{backgroundColor: primaryColor}}
             >
               <Text 
               className='text-lg text-center'
               style={{
-                color: buttons.textColor,
+                color: secondaryColor,
                 fontWeight: 'bold'
               }}
               >

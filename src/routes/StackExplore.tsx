@@ -26,7 +26,7 @@ export type StackExploreParams = {
 const Stack = createStackNavigator<StackExploreParams>();
 
 export const StackExplore = () => {
-  const { screens, themeSeleted } = useAppTheme()
+  const { screens, secondaryColor } = useAppTheme()
   const { isInternetReachable } = useNetInfo()
   if(!isInternetReachable){
     return(
@@ -46,7 +46,7 @@ export const StackExplore = () => {
           elevation: 0,
           borderColor: 'transparent',
           shadowColor: 'transparent',
-          backgroundColor: screens.secondaryColor,
+          backgroundColor: secondaryColor,
       },
       cardStyle: {
         backgroundColor: screens.secondaryColor

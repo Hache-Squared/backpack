@@ -14,15 +14,15 @@ type selectedView = 'notebooks' | 'books' | 'publications';
 
 
 export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewForBooks, ViewForNotebooks, ViewForPublications, applyPublications = true }) => {
-  const { buttons, screens,primaryColor } = useAppTheme()
+  const { buttons, screens,secondaryColor } = useAppTheme()
   const [selectedView, setSelectedView] = useState<selectedView>('notebooks')
   return (
     <View className='w-full flex flex-col'>
       <View 
       style={{
-        backgroundColor: screens.secondaryColor,
+        backgroundColor: secondaryColor,
         borderBottomWidth: 2,
-        borderBottomColor: 'gray'
+        borderBottomColor: secondaryColor
 
       }}
       className='w-full flex flex-row justify-end mb-3'>
@@ -30,16 +30,16 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
             iconName='book-outline'
             onPress={() => setSelectedView('notebooks')}
             title='Libretas'
-            backgroundColor={selectedView === 'notebooks' ? buttons.textColor : screens.secondaryColor}
-            textColor={selectedView === 'notebooks' ? screens.secondaryColor : buttons.textColor}
+            backgroundColor={selectedView === 'notebooks' ? buttons.textColor : secondaryColor}
+            textColor={selectedView === 'notebooks' ? secondaryColor : buttons.textColor}
           />
           
           <ButtonSelectView
             iconName='library-outline'
             onPress={() => setSelectedView('books')}
             title='Libros'
-            backgroundColor={selectedView === 'books' ? buttons.textColor : screens.secondaryColor}
-            textColor={selectedView === 'books' ? screens.secondaryColor : buttons.textColor}
+            backgroundColor={selectedView === 'books' ? buttons.textColor : secondaryColor}
+            textColor={selectedView === 'books' ? secondaryColor : buttons.textColor}
           />
           
           {
@@ -49,8 +49,8 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
                 iconName='albums-outline'
                 onPress={() => setSelectedView('publications')}
                 title='Publicaciones'
-                backgroundColor={selectedView === 'publications'? buttons.textColor : screens.secondaryColor}
-                textColor={selectedView === 'publications'? screens.secondaryColor : buttons.textColor}
+                backgroundColor={selectedView === 'publications'? buttons.textColor : secondaryColor}
+                textColor={selectedView === 'publications'? secondaryColor : buttons.textColor}
               />
             )
           }
@@ -87,7 +87,7 @@ const ButtonSelectView: FC<ButtonSelectViewProps> = ({iconName, backgroundColor,
     <TouchableOpacity
     onPress={onPress}
     style={{ backgroundColor: backgroundColor }}
-    className='  flex-1 flex-row flex-nowrap items-center justify-center py-2'
+    className=' rounded-md flex-1 flex-row flex-nowrap items-center justify-center py-2'
     >
       <Icon name={iconName} size={25} color={textColor} />
       <Text
