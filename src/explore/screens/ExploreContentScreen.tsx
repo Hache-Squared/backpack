@@ -2,7 +2,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { Alert, Button, FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { StackExploreParams } from '../../routes/StackExplore'
-import { ActivityIndicatorLoadingList, BackpackItem } from '../../shared/components'
+import { ActivityIndicatorLoadingList, BackpackItem, LoadingLogo } from '../../shared/components'
 import { useBackpackStore, useExploreStore } from '../../shared/hooks'
 import { HeaderLogo } from '../../shared/components'
 import { NoItemsInList } from '../../shared/views'
@@ -32,21 +32,27 @@ const ExploreContentScreen = () => {
   }
 
   return (
-    <View>
-      
-      <FlatList
-        data={backpackList}
-        ListEmptyComponent={() => <ActivityIndicatorLoadingList isLoading={isLoadingExplore}/>}
-        numColumns={2}
-        contentContainerStyle={{ gap: 10, margin:5 }}
-        columnWrapperStyle={{ gap: 10, margin:5 }}
-        renderItem={({ item, index }) => (
-          <BackpackItem 
-            name={item.title}
-            onPress={() => handleClickBackpack(item.id)}
-            />
-        )}
-      />
+    <View  className='flex-1 items-center justify-center'>
+      {
+        isLoadingExplore ? 
+        <LoadingLogo/>  
+        : (
+
+          <FlatList
+            data={backpackList}
+            ListEmptyComponent={() => <NoItemsInList/>}
+            numColumns={2}
+            contentContainerStyle={{ gap: 10, margin:5 }}
+            columnWrapperStyle={{ gap: 10, margin:5 }}
+            renderItem={({ item, index }) => (
+              <BackpackItem 
+                name={item.title}
+                onPress={() => handleClickBackpack(item.id)}
+                />
+            )}
+          />
+        )
+      }
 
     </View>
   )

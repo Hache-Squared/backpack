@@ -16,4 +16,5 @@ export * from './HeaderLogo'
 export * from './PublicationsComponents'
 export * from './ResourceComponents'
 export * from './ActivityIndicatorLoadingList'
+export * from './LoadingLogo'
 

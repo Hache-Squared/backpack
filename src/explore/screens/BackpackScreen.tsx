@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { StackExploreParams } from '../../routes/StackExplore';
 import { useAppTheme, useBackpackStore } from '../../shared/hooks';
 import { StackNavigationOptions } from '@react-navigation/stack';
-import { SelectViewFromBackpack } from '../../shared/components';
+import { LoadingLogo, SelectViewFromBackpack } from '../../shared/components';
 import { NoteBooksView, BooksView, PublicationsView } from '../views';
 import { ActivityIndicator, Alert } from 'react-native';
 
@@ -47,7 +47,7 @@ const BackpackScreen = () => {
           }
         />
       ) : (
-        <ActivityIndicator color={primaryColor} size={'large'} className='my-10'/>
+        <LoadingLogo/>
       )
     }
     </>

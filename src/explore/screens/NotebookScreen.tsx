@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { ActivityIndicator, SafeAreaView, Text, View } from 'react-native'
-import { FullSpaceInScreen } from '../../shared/components'
+import { FullSpaceInScreen, LoadingLogo } from '../../shared/components'
 import { NoteBookContent } from '../views'
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { StackExploreParams } from '../../routes/StackExplore'
@@ -23,7 +23,7 @@ const NotebookScreen = () => {
         {
           isLoadingNotebook ? (
             
-              <ActivityIndicator color={primaryColor} size={'large'} className='my-10'/>
+              <LoadingLogo/>
             
           ) : (
             <NoteBookContent/>
