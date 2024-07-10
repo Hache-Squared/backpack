@@ -28,16 +28,21 @@ export const NoteBookContent = () => {
                 className='font-semibold text-md'>{currentSheetShowing ? `${currentSheetShowing?.title}` : ""}
                 </Text>
             </View>
-            {
+            {/* {
                 currentSheetShowing && (
                     <SheetDownloadButton/>
                 )
-            }
+            } */}
         </View>
         {
             currentSheetShowing ? 
             (
-                <SheetContent/>
+                <>
+                    <SheetContent/>
+                    <View className='absolute bottom-7 right-7'>
+                        <SheetDownloadButton/>
+                    </View>
+                </>
             ) : <WelcomeToNoteBook/>
         }
 

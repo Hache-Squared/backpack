@@ -1,10 +1,10 @@
 import React from 'react'
-import { Alert, View } from 'react-native';
+import { Alert, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppTheme, useBackpackStore, useMyBackpackStore, useNotebookStore } from '../../hooks';
 import { NotebookStuctureFolders } from '../../../types';
 export const SheetDownloadButton = () => {
-  const { buttons } = useAppTheme()
+  const { buttons,primaryColor, secondaryColor } = useAppTheme()
   const { currentSheetShowing,id: notebookId, title: notebookTitle = 'libreta_sin_nombre' } = useNotebookStore();
   const { startDownloadingSheet } = useMyBackpackStore();
 
@@ -45,12 +45,14 @@ export const SheetDownloadButton = () => {
     
   }
   return (
-    <View className='flex-1'>
+    <TouchableOpacity 
+    onPress={handleAlertDownload}
+    style={{ backgroundColor: primaryColor}}
+    className='w-[45px] h-[45px] rounded-md items-center justify-center'>
         <Icon 
-            onPress={handleAlertDownload}
             name="cloud-download" 
-            size={40} 
-            color={buttons.textColor} />
-    </View>
+            size={35} 
+            color={secondaryColor} />
+    </TouchableOpacity>
   )
 }
