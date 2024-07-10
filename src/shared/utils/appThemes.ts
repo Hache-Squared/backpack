@@ -69,7 +69,7 @@ export const darkColorsTheme: ColorsTheme = {
         titleBackgroundColor: '#111',
         titleTextColor: '#fff',
         colorStatusActive: '#BB86FC',
-        colorStatusInactive: '#747d8c',
+        colorStatusInactive: '#FFF',
     },
     headerMenuNotebookContent: {
         buttonMenuLabelColor: "#d2dae2",

@@ -11,7 +11,7 @@ interface MenuContentForNotebook {
 export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseContent }) => {
 
   const { menuNotebookContent, headerMenuNotebookContent, screens } = useAppTheme()
-  const { menuSheetItemList, title, startLoadingSheet } = useNotebookStore()
+  const { menuSheetItemList, title, startLoadingSheet, currentSheetShowing } = useNotebookStore()
   const handleSheetToLoad = (id: string) => {
     startLoadingSheet(id)
     onCloseContent()
@@ -42,7 +42,12 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
             menuSheetItemList.map((sheet, index) => (
                 <SheetMenuItem 
                 onPress={() => handleSheetToLoad(sheet.id)}
-                colorStatus={index < 5? menuNotebookContent.colorStatusActive : menuNotebookContent.colorStatusInactive}
+                colorStatus={
+                    (sheet?.id === currentSheetShowing?.id) ? 
+                    menuNotebookContent.colorStatusActive 
+                    : 
+                    menuNotebookContent.colorStatusInactive
+                }
                 title={sheet.title} key={sheet.title}/>
             ))
         }
