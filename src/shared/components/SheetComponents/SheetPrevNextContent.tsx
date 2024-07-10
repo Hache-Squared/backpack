@@ -20,7 +20,7 @@ export const SheetPrevNextContent  = () => {
                 <TouchableOpacity 
                 
                 onPress={() => handleChangeContent(currentSheetShowing?.prev?.id)}
-                className='flex-1 flex-row flex-nowrap items-center  p-0.5  '>
+                className='flex-1 flex-row flex-nowrap items-center justify-start p-0.5  '>
                     <Icon name='chevron-back' size={40} color={primaryColor}/>
                     <Text style={{color: primaryColor}} className='font-semibold text-xs'>{currentSheetShowing?.prev?.title}</Text>
                 </TouchableOpacity>
@@ -31,7 +31,7 @@ export const SheetPrevNextContent  = () => {
                 <TouchableOpacity 
                 onPress={() => handleChangeContent(currentSheetShowing?.next?.id)}
                 
-                className='flex-1 flex-row flex-nowrap items-center  p-0.5 '>
+                className='flex-1 flex-row flex-nowrap items-center justify-end p-0.5 '>
                     <Text style={{color: primaryColor}}  className='font-semibold text-xs'>{currentSheetShowing?.next?.title}</Text>
                     <Icon name='chevron-forward' size={40} color={primaryColor}/>
                 </TouchableOpacity>
