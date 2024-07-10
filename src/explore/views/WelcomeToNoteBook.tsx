@@ -15,9 +15,11 @@ export const WelcomeToNoteBook = () => {
   return (
 
     <ScrollView>
-        <View className='flex-1 items-center'>
-            <Text style={{color: primaryColor}} className='text-lg'>Bienvenid@</Text>
-            <Image source={welcomeNotebookImg} className='w-full object-contain'/>
+        <View className='flex-1 items-center gap-5'>
+            <Image source={welcomeNotebookImg} 
+            style={{width: '100%', height: 280}}  // Replace with actual image dimensions
+            className='w-full object-contain'/>
+            <Text style={{color: primaryColor}} className='text-3xl font-semibold'>Bienvenid@</Text>
             <Text style={{color: texts.labelColor}} className='text-lg text-center'>Estas viendo el contenido de la libreta <Text style={{color: primaryColor}}> {title}</Text></Text>
             <Text style={{color: texts.labelColor}} className='text-lg text-center'>Ve al menu y selecciona la hoja a mostrar</Text>
             <Text style={{color: texts.labelColor}} className='text-lg text-center'>---- O ----</Text>

@@ -16,7 +16,7 @@ export const NoInternet = () => {
             <Image source={imageNoWifi} className='w-full object-cover'/>
             <Text 
             className='w-full text-lg text-center font-semibold'
-            style={{color: primaryColor}}>Sin Internet</Text>
+            style={{color: primaryColor}}>Comprueba tu conexión a internet.</Text>
         </View>
     
   )
