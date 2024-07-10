@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StackExplore } from './StackExplore';
 import { StackProfile } from './StackProfile';
 import { Alert, StatusBar, Text } from 'react-native';
@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 export const TabNavigator = () => {
   const { tabBar, statusBarColor } = useAppTheme()
   const navigation = useNavigation()
-  const theme = useMemo(() => {
+  const theme: BottomTabNavigationOptions = useMemo(() => {
     return {
       headerShown:false,
       tabBarLabelStyle: {
@@ -23,8 +23,16 @@ export const TabNavigator = () => {
           elevation: 0,
           backgroundColor: tabBar.backgroundColor,
           // borderTopRightRadius: 15,
-          // borderTopLeftRadius: 15
+          // borderTopLeftRadius: 15,
+
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24,
+          borderLeftWidth: 0.2,
+          borderRightWidth: 0.2,
+          position: 'absolute'
+          // overflow: 'hidden',
       },
+      
       tabBarIconStyle: {
         // color: tabBar.labelColorActive
       },
