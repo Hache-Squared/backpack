@@ -35,7 +35,8 @@ export const notebookSlice = createSlice({
         },
         onFinishedLoadingNotebook: (state) => {
             state.isLoadingNotebook = false;
-        }
+        },
+
     }
 });
 

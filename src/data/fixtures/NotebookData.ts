@@ -59,7 +59,9 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '12', numOrder: 12, type: SheetContentType.Text, content: "El teorema de Rolle y el teorema del valor medio son importantes resultados teóricos que utilizan derivadas." },
             { id: '13', numOrder: 13, type: SheetContentType.Text, content: "Las derivadas parciales se utilizan para funciones de varias variables y son cruciales en el cálculo multivariable." },
             { id: '14', numOrder: 14, type: SheetContentType.Text, content: "El concepto de derivada también se extiende a las funciones vectoriales y matriciales." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
     {
         id: "2",
@@ -81,7 +83,9 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '14', numOrder: 14, type: SheetContentType.Text, content: "Las derivadas de las funciones exponenciales y logarítmicas son: (e^x)' = e^x, (a^x)' = a^x * ln(a), (ln(x))' = 1/x, (log_a(x))' = 1 / (x*ln(a))." },
             { id: '15', numOrder: 15, type: SheetContentType.YoutubeVideo, content: "KSPFmQQvM7I" },
             { id: '16', numOrder: 16, type: SheetContentType.Text, content: "Es fundamental dominar estas fórmulas para poder resolver problemas de cálculo diferencial de manera eficiente y precisa." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
     {
         id: "3",
@@ -104,7 +108,9 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '15', numOrder: 15, type: SheetContentType.Image, content: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Integral_example.png/220px-Integral_example.png" },
             { id: '16', numOrder: 16, type: SheetContentType.YoutubeVideo, content: "TFaUnAtaan4" },
             { id: '17', numOrder: 17, type: SheetContentType.Text, content: "El cálculo integral tiene aplicaciones en diversas áreas como la física, la ingeniería, la economía y las ciencias naturales, permitiendo el cálculo de áreas, volúmenes, y otras cantidades acumuladas." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
     {
         id: "4",
@@ -124,7 +130,9 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '12', numOrder: 12, type: SheetContentType.Text, content: "En aplicaciones físicas, la constante de integración puede representar condiciones iniciales o de borde específicas del problema que se está resolviendo." },
             { id: '13', numOrder: 13, type: SheetContentType.YoutubeVideo, content: "d1_mn8dclX4" },
             { id: '14', numOrder: 14, type: SheetContentType.Text, content: "Entender la constante de integración es esencial para resolver integrales indefinidas correctamente y aplicar el cálculo en situaciones prácticas." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
     {
         id: "5",
@@ -146,7 +154,9 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '14', numOrder: 14, type: SheetContentType.Text, content: "React Native también permite el uso de código nativo cuando se necesita optimizar el rendimiento o utilizar funcionalidades específicas de la plataforma." },
             { id: '15', numOrder: 15, type: SheetContentType.Image, content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ18Gt9viR2yfaYTVjyutOeMAGk6sFTje4g2A&s" },
             { id: '16', numOrder: 16, type: SheetContentType.Text, content: "Aplicaciones populares como Facebook, Instagram, y Airbnb han sido desarrolladas utilizando React Native, lo que demuestra su capacidad para manejar aplicaciones complejas y de alto rendimiento." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
     {
         id: "6",
@@ -168,7 +178,9 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '14', numOrder: 14, type: SheetContentType.Text, content: "Capacidad para integrar código nativo de forma sencilla cuando se necesita optimizar el rendimiento o utilizar funcionalidades específicas de la plataforma." },
             { id: '15', numOrder: 15, type: SheetContentType.Image, content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWiWY0E_du9TYa4Nd-XDhDJNjUrU6r6h31JQ&s" },
             { id: '16', numOrder: 16, type: SheetContentType.Text, content: "Aplicaciones populares como Google Ads, Alibaba, y Reflectly han sido desarrolladas utilizando Flutter, demostrando su capacidad para manejar aplicaciones de alto rendimiento y complejas." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
     {
         id: "7",
@@ -192,7 +204,9 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '16', numOrder: 16, type: SheetContentType.Text, content: "Muchas grandes empresas, incluyendo Facebook, Instagram y Airbnb, han adoptado React Native para el desarrollo de sus aplicaciones móviles, lo que demuestra su efectividad y capacidad." },
             { id: '17', numOrder: 17, type: SheetContentType.Image, content: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" },
             { id: '18', numOrder: 18, type: SheetContentType.Text, content: "React Native sigue evolucionando con nuevas características y mejoras, gracias a una comunidad activa y al soporte continuo de Facebook." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
     {
         id: "8",
@@ -213,6 +227,8 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
             { id: '13', numOrder: 13, type: SheetContentType.Text, content: "La combinación de View y Text permite crear interfaces de usuario ricas y complejas, manteniendo la simplicidad y eficiencia en el código." },
             { id: '14', numOrder: 14, type: SheetContentType.Image, content: "https://i.ytimg.com/vi/9cYRdJPLuAk/maxresdefault.jpg" },
             { id: '15', numOrder: 15, type: SheetContentType.Text, content: "React Native ofrece una amplia gama de otros componentes nativos que se pueden combinar con View y Text para construir aplicaciones completas y funcionales." }
-        ]
+        ],
+        prev: null,
+        next: null,
     },
 ];

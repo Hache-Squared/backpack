@@ -19,11 +19,12 @@ const NotebookScreen = () => {
    },[])
   return (
     <FullSpaceInScreen>
-      <SafeAreaView>
+      <SafeAreaView className='flex-1'>
         {
           isLoadingNotebook ? (
-            
+            <View className='flex-1 items-center justify-center '>
               <LoadingLogo/>
+            </View>
             
           ) : (
             <NoteBookContent/>

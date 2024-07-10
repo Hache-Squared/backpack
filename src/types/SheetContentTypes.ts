@@ -2,6 +2,8 @@ export interface CurrentSheetShowing {
     id: string;
     title: string;
     content: SheetContent[];
+    prev: SheetItem | null;
+    next: SheetItem | null;
 }
 
 export interface SheetItem {

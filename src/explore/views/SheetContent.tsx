@@ -6,7 +6,7 @@ import { SheetExampleData } from '../../data/SheetExampleData';
 import { SheetContentType } from '../../types/SheetContentTypes';
 
 import { useNotebookStore } from '../../shared/hooks';
-import { ImageWithPan, SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo  } from '../../shared/components';
+import { ImageWithPan, SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo, SheetPrevNextContent  } from '../../shared/components';
 import { NoItemsInList } from '../../shared/views';
 
 export const SheetContent = () => {
@@ -23,7 +23,11 @@ export const SheetContent = () => {
           data={currentSheetShowing?.content}
           ListEmptyComponent={() => <NoItemsInList/>}
           ListFooterComponent={() => (
-            <View className='my-14'/>
+            
+              <View className='w-full  my-14  h-12'>
+                <SheetPrevNextContent/>
+              </View>
+            
           )}
           renderItem={({item, index}) => {
             if(item?.type === SheetContentType.Image){
