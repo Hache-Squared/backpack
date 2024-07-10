@@ -9,8 +9,8 @@ export const SwitchThemeButtons = () => {
   return (
     <>
          <View
-      style={{backgroundColor: screens.secondaryColor}}
-      className='w-full flex flex-row justify-end '>
+      // style={{backgroundColor: screens.secondaryColor}}
+      className='w-full flex flex-row justify-around '>
           <ButtonSelectTheme
             iconName='sunny-outline'
             onPress={() => changeTheme('light')}
@@ -56,7 +56,7 @@ interface ButtonSelectThemeProps {
       <TouchableOpacity
       onPress={onPress}
       style={{ backgroundColor: backgroundColor }}
-      className='w-6/12  flex flex-row flex-nowrap items-center justify-center py-2'
+      className='w-2/5 rounded-lg flex flex-row flex-nowrap items-center justify-center py-2'
       >
         <Icon name={iconName} size={25} color={textColor} />
         <Text

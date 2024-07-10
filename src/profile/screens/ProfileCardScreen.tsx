@@ -2,75 +2,80 @@ import React, { useEffect } from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { ButtonInProfile, SwitchThemeButtons } from '../components'
 import { useAppTheme, useLocalStorage } from '../../shared/hooks'
-import { usePermissionsStore } from '../../shared/hooks/usePermissionsStore'
 import { StackProfileParams } from '../../routes/StackProfile'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
+const welcomeNotebookImg  = require('../../assets/logos/slogan_fime.png')
 
 const ProfileCardScreen = () => {
-  const { texts } = useAppTheme()
-  const { permissionStorageStatus, startRequestStoragePermission } = usePermissionsStore()
-  const { createDirectories } = useLocalStorage()
+  const { texts, primaryColor, secondaryColor, screens } = useAppTheme()
   const navigation = useNavigation<NavigationProp<StackProfileParams>>();
   return (
-    <ScrollView>
-      
-      <View className='w-full -red-300'>
-      <View style={{
-        width:"100%",
-        height:200,
-        alignItems:"center",
-        justifyContent:"center",
-        borderRadius: 50,
-        margin:10,
-        // backgroundColor:"#fff"
-    }}>
-      {
-        /*
-        
-        <Image source={{uri: ''}} style={{
-           width:150,
-           height:150,
-           objectFit:'contain'
+    <ScrollView className='flex-1'>
+
+    
+      <View 
+      style={{backgroundColor: screens.secondaryColor}}
+      className='flex-1  flex-col items-center gap-2 my-2'>
+        <Image source={welcomeNotebookImg} style={{
+          width:200,
+          height:200,
+          objectFit:'contain'
         }}/>
-        
-        */
-      }
-            <Text style={{
-              fontWeight:"bold",
-              color:texts.labelColor
-            }}>
-                ¡Bienvenido A Backpack!
-            </Text>
+        <View 
+        style={{backgroundColor: screens.primaryColor}}
+        className='w-10/12 flex flex-col gap-2 bg-white py-4 rounded-2xl items-center justify-center'>
+          <Text style={{
+            fontWeight:"bold",
+            color:texts.labelColor
+          }}>
+              ¡Bienvenido A Backpack!
+          </Text>
             
-            {/* <Text style={{
-              fontWeight:"bold",
-              color:texts.labelColor
-            }}>
-                {permissionStorageStatus}
-            </Text> */}
+          <ButtonInProfile
+          
+            title='Mi Mochila'
+            icon='briefcase'
+            onPress={() => navigation.navigate('MyBackpack')}
+          />
+          
+          <SwitchThemeButtons/>
         </View>
-        
-        {/* <ButtonInProfile
-          title='Habilitar permiso '
-          icon='book'
-          onPress={() => startRequestStoragePermission()}
-        />
 
-        <ButtonInProfile
-          title='Crear Carpetas'
-          icon='book'
-          onPress={() => createDirectories()}
-        /> */}
-        <ButtonInProfile
-          title='Mi Mochila'
-          icon='briefcase'
-          onPress={() => navigation.navigate('MyBackpack')}
-        />
-        
-        <SwitchThemeButtons/>
+        <View 
+        style={{backgroundColor: screens.primaryColor}}
+        className='w-10/12 flex flex-col bg-white py-4 rounded-2xl items-center justify-center'>
+          <Text 
+          className='font-semibold m-2'
+          style={{ color:texts.labelColor }}>
+              Backpack es una aplicación móvil diseñada para que los estudiantes de la Facultad de Ingeniería Mecánica y Eléctrica puedan acceder a recursos y publicaciones sobre temas importantes de sus materias de forma sencilla.
+          </Text>
 
+        </View>
+
+        <View 
+        style={{backgroundColor: screens.primaryColor}}
+        className='w-10/12 flex flex-col bg-white py-4 rounded-2xl items-center justify-center'>
+          <Text 
+          className='font-semibold m-2'
+          style={{ color:texts.labelColor }}>
+              Instructora: Dra. NORMA EDITH MARIN MARTINEZ
+          </Text>
+          <Text 
+          className='font-semibold m-2'
+          style={{ color:texts.labelColor }}>
+              AGHH - 2127874
+          </Text>
+          <Text 
+          className='font-semibold m-2'
+          style={{ color:texts.labelColor }}>
+              ARP - 2127873
+          </Text>
+
+        </View>
       </View>
-    </ScrollView>
+
+      <View className='h-6 my-10'/>
+      </ScrollView>
   )
 }
 

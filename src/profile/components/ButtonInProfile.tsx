@@ -9,21 +9,21 @@ interface ButtonInProfileProps {
     icon: string
   }
 export const ButtonInProfile: FC<ButtonInProfileProps> = ( {icon, onPress, title } ) => {
-    const { buttons } = useAppTheme()
+    const { buttons, primaryColor, secondaryColor,texts } = useAppTheme()
     return(
       <TouchableOpacity 
         onPress={onPress}
-        style={{ backgroundColor: buttons.backgroundColor }}
-        className='w-full self-center py-1 my-0.5 flex-row flex-nowrap items-center justify-around'
+        style={{ backgroundColor: primaryColor }}
+        className='w-8/12 rounded-3xl py-5 self-center my-4 flex-row flex-nowrap items-center justify-around'
       >
-               <Icon name={icon} size={40} color={buttons.textColor} />
               <Text 
               className="font-semibold text-lg"
               style={{
-                color: buttons.textColor
+                color: texts.labelColor
               }}>
                   {title}
               </Text>
+               <Icon name={icon} size={40} color={texts.labelColor} />
       </TouchableOpacity>
     )
   }
