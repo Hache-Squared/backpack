@@ -13,8 +13,9 @@ export const useExploreStore = () => {
     const startLoadingBackpackList = async () => {
         // console.log("Hola iniciando carga de mochila");
         dispatch( onLoadingExplore() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 2000) })
         dispatch(onLoadBackpackList(backpackListExample));
-        dispatch( onFinishedLoadingExplore() );
+        // dispatch( onFinishedLoadingExplore() );
     };
     
     return {

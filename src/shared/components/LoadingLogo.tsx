@@ -22,7 +22,7 @@ const bounce = {
 export const LoadingLogo = () => {
   const { themeSeleted } = useAppTheme()
   return (
-    <View className={'flex-1 items-center justify-center'}>
+    <View className={' items-center justify-center'}>
 
         <Animatable.Image 
         animation={bounce} 

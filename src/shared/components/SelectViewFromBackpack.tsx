@@ -14,13 +14,18 @@ type selectedView = 'notebooks' | 'books' | 'publications';
 
 
 export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewForBooks, ViewForNotebooks, ViewForPublications, applyPublications = true }) => {
-  const { buttons, screens } = useAppTheme()
+  const { buttons, screens,primaryColor } = useAppTheme()
   const [selectedView, setSelectedView] = useState<selectedView>('notebooks')
   return (
     <View className='w-full flex flex-col'>
       <View 
-      style={{backgroundColor: screens.secondaryColor}}
-      className='w-full flex flex-row justify-end '>
+      style={{
+        backgroundColor: screens.secondaryColor,
+        borderBottomWidth: 2,
+        borderBottomColor: 'gray'
+
+      }}
+      className='w-full flex flex-row justify-end mb-3'>
           <ButtonSelectView
             iconName='book-outline'
             onPress={() => setSelectedView('notebooks')}

@@ -4,7 +4,8 @@ import { FlatList, Text, View } from 'react-native'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackExploreParams } from '../../routes/StackExplore';
 import { useBackpackStore } from '../../shared/hooks';
-import { ActivityIndicatorLoadingList, NotebookItem } from '../../shared/components';
+import { ActivityIndicatorLoadingList, LoadingLogo, NotebookItem } from '../../shared/components';
+import { NoItemsInList } from '../../shared/views';
 
 
 export const NoteBooksView = () => {
@@ -19,21 +20,27 @@ export const NoteBooksView = () => {
   return (
     <>
       <View className='my-2'/>
-      <FlatList
-        data={currentBackpackNotebookList}
-        ListEmptyComponent={() => <ActivityIndicatorLoadingList isLoading={isLoadingBackpack}/>}
-        ItemSeparatorComponent={() => <View className='my-1'/>}
-        renderItem={({item, index}) => (
-            <NotebookItem
-                name={item.title}
-                key={item.id}
-                onPress={() => navigation.navigate('Notebook', {
-                  id: item.id
-                })}
-            />
-        )}
-        ListFooterComponent={() => <View className='my-10' />}
-      />
+      {
+        isLoadingBackpack ? (
+          <LoadingLogo/>
+        ) : (
+          <FlatList
+            data={currentBackpackNotebookList}
+            ListEmptyComponent={() => <NoItemsInList/>}
+            ItemSeparatorComponent={() => <View className='my-1'/>}
+            renderItem={({item, index}) => (
+                <NotebookItem
+                    name={item.title}
+                    key={item.id}
+                    onPress={() => navigation.navigate('Notebook', {
+                      id: item.id
+                    })}
+                />
+            )}
+            ListFooterComponent={() => <View className='my-10' />}
+          />
+        )
+      }
     </>
   )
 }

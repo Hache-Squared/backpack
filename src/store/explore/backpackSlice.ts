@@ -16,23 +16,28 @@ export const backpackSlice = createSlice({
     reducers: {
        onLoadCurrentBackpack: (state, action: PayloadAction<BackpackListItem>) => {
           state.currentBackpack = { ...action.payload }
+          state.isLoadingBackpack = false;
        },
 
 
        onLoadNotebooks: (state, action: PayloadAction<NotebookListItem[]>) => {
             state.currentBackpackNotebookList = [...action.payload]
+            state.isLoadingBackpack = false;
        },
        onLoadBooks: (state, action: PayloadAction<BookListItem[]>) => {
             state.currentBackpackBookList = [...action.payload]
+            state.isLoadingBackpack = false;
        },
        onLoadPublications: (state, action: PayloadAction<PublicationListItem[]>) => {
             state.currentBackpackPublicationList = [...action.payload]
+            state.isLoadingBackpack = false;
        },
        onResetBackpackState: (state) => {
           state.currentBackpack = null;
           state.currentBackpackNotebookList = [];
           state.currentBackpackBookList = [];
           state.currentBackpackPublicationList = [];
+          state.isLoadingBackpack = false;
        },
        onLoadingBackpack: (state) => {
           state.isLoadingBackpack = true;

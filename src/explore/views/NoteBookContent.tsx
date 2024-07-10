@@ -9,16 +9,18 @@ import { SheetDownloadButton } from '../../shared/components/SheetComponents/She
 
 export const NoteBookContent = () => {
    const [modalVisible, setModalVisible] = useState(false);
-   const { sheetContent, headerMenuNotebookContent } = useAppTheme();
+   const { sheetContent, headerMenuNotebookContent, screens } = useAppTheme();
    const { title, currentSheetShowing } = useNotebookStore();
    
   return (
     <>
-        <View className='w-full flex flex-row items-center justify-between'>
+        <View 
+        style={{ backgroundColor: screens.primaryColor}}
+        className='w-full flex flex-row items-center justify-between'>
             <TouchableOpacity 
             onPress={() => setModalVisible(true)}
             style={{ backgroundColor: headerMenuNotebookContent.buttonMenuBackgroundColor}}
-            className='p-1 ml-2 mt-2 rounded-lg '>
+            className='p-0.5 ml-2 my-1 rounded-lg '>
                 <Icon name='list-outline' size={40} color={headerMenuNotebookContent.buttonMenuLabelColor}/>
             </TouchableOpacity>
 

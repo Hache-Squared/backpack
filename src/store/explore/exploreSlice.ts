@@ -14,6 +14,7 @@ export const exploreSlice = createSlice({
     reducers: {
        onLoadBackpackList: (state, action: PayloadAction<BackpackListItem[]>) => {
           state.backpackList = [ ...action.payload ]
+          state.isLoadingExplore = false;
        },
        onLoadingExplore: (state) => {
         state.isLoadingExplore = true;
