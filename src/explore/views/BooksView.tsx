@@ -23,8 +23,8 @@ export const BooksView = () => {
         (
           <FlatList
             data={currentBackpackBookList}
-            ListEmptyComponent={() => <NoItemsInList/>}
-            ItemSeparatorComponent={() => <View className='my-1'/>}
+            // ListEmptyComponent={() => <NoItemsInList/>}
+            ItemSeparatorComponent={() => <View className='my-1 h-1'/>}
             renderItem={({item, index}) => (
                 <BookItem
                     name={item.title}

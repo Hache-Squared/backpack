@@ -46,7 +46,7 @@ export const StackExplore = () => {
           elevation: 0,
           borderColor: 'transparent',
           shadowColor: 'transparent',
-          backgroundColor: screens.primaryColor,
+          backgroundColor: screens.secondaryColor,
       },
       cardStyle: {
         backgroundColor: screens.secondaryColor

@@ -11,7 +11,7 @@ export const useNotebookStore = () => {
 
     const startLoadingNotebook = async(id: string) => {
         dispatch( onLoadingNotebook() );
-        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 2000) })
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
         const notebook = menuSheetItemNotebookListExample.find(notebook => notebook.id === id)
         if(notebook) {
             dispatch( onLoadNotebook(notebook) ) 
@@ -21,7 +21,7 @@ export const useNotebookStore = () => {
 
     const startLoadingSheet = async(id: string) => {
         dispatch( onLoadingNotebook() );
-        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 2000) })
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
         const sheetIndex = currentSheetShowingExample.findIndex(sheet => sheet.id === id)
 
         const previous = sheetIndex > 0 ? currentSheetShowingExample[sheetIndex - 1] : null;

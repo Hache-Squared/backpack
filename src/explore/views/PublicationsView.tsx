@@ -21,8 +21,8 @@ export const PublicationsView = () => {
         ) : (
           <FlatList
             data={currentBackpackPublicationList}
-            ListEmptyComponent={() => <NoItemsInList/>}
-            ItemSeparatorComponent={() => <View className='my-1'/>}
+            // ListEmptyComponent={() => <NoItemsInList/>}
+            ItemSeparatorComponent={() => <View className='my-1 h-1'/>}
             renderItem={({item, index}) => (
               <PublicationItem
                   key={item.id}

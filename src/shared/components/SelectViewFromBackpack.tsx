@@ -30,16 +30,16 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
             iconName='book-outline'
             onPress={() => setSelectedView('notebooks')}
             title='Libretas'
-            backgroundColor={selectedView === 'notebooks' ? buttons.textColor : buttons.backgroundColor}
-            textColor={selectedView === 'notebooks' ? buttons.backgroundColor : buttons.textColor}
+            backgroundColor={selectedView === 'notebooks' ? buttons.textColor : screens.secondaryColor}
+            textColor={selectedView === 'notebooks' ? screens.secondaryColor : buttons.textColor}
           />
           
           <ButtonSelectView
             iconName='library-outline'
             onPress={() => setSelectedView('books')}
             title='Libros'
-            backgroundColor={selectedView === 'books' ? buttons.textColor : buttons.backgroundColor}
-            textColor={selectedView === 'books' ? buttons.backgroundColor : buttons.textColor}
+            backgroundColor={selectedView === 'books' ? buttons.textColor : screens.secondaryColor}
+            textColor={selectedView === 'books' ? screens.secondaryColor : buttons.textColor}
           />
           
           {
@@ -49,8 +49,8 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
                 iconName='albums-outline'
                 onPress={() => setSelectedView('publications')}
                 title='Publicaciones'
-                backgroundColor={selectedView === 'publications'? buttons.textColor : buttons.backgroundColor}
-                textColor={selectedView === 'publications'? buttons.backgroundColor : buttons.textColor}
+                backgroundColor={selectedView === 'publications'? buttons.textColor : screens.secondaryColor}
+                textColor={selectedView === 'publications'? screens.secondaryColor : buttons.textColor}
               />
             )
           }

@@ -45,16 +45,16 @@ export const lightColorsTheme: ColorsTheme = {
 }
 
 export const darkColorsTheme: ColorsTheme = {
-    primaryColor: '#BB86FC',
+    primaryColor: '#2ed573',
     secondaryColor: '#111',
     screens: {
         primaryColor: "#000000",
         secondaryColor: "#121212",
         titleColor: "#fff",
     },
-    statusBarColor: '#BB86FC',
+    statusBarColor: '#2ed573',
     buttons: {
-        backgroundColor: '#111',
+        backgroundColor: '#2f3542',
         textColor: '#fff'
     },
     texts: {
@@ -62,13 +62,13 @@ export const darkColorsTheme: ColorsTheme = {
     },
     tabBar: {
         backgroundColor: '#111',
-        labelColorActive: '#BB86FC',
+        labelColorActive: '#2ed573',
         labelColorInactive: '#fff'
     },
     menuNotebookContent: {
         titleBackgroundColor: '#111',
         titleTextColor: '#fff',
-        colorStatusActive: '#BB86FC',
+        colorStatusActive: '#2ed573',
         colorStatusInactive: '#FFF',
     },
     headerMenuNotebookContent: {
@@ -76,7 +76,7 @@ export const darkColorsTheme: ColorsTheme = {
         buttonMenuBackgroundColor: "#111",
     },
     sheetContent:{
-        sheetTitle: '#BB86FC',
+        sheetTitle: '#2ed573',
         textTitleColor: '#fff',
         textSubtitleColor: '#fff',
         textColor: '#fff',

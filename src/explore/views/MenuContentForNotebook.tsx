@@ -18,13 +18,13 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
   }
   return (
 
-    <SafeAreaView className='flex-1' style={{backgroundColor: screens.primaryColor}}>
+    <SafeAreaView className='flex-1' style={{backgroundColor: 'rgba(1,1,1,0.9)'}}>
     <View className='w-full flex flex-row items-center justify-end '>
         <TouchableOpacity
         onPress={onCloseContent}
         style={{ backgroundColor: headerMenuNotebookContent.buttonMenuBackgroundColor}}
         className='p-1 mr-2 mt-2 rounded-lg '>
-            <Icon name='close-circle-outline' size={40} color={headerMenuNotebookContent.buttonMenuLabelColor}/>
+            <Icon name='close' size={40} color={headerMenuNotebookContent.buttonMenuLabelColor}/>
         </TouchableOpacity>
     </View>
     <ScrollView>

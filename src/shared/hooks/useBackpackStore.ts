@@ -12,20 +12,19 @@ export const useBackpackStore = () => {
     // },[currentBackpack]);
 
     const startLoadingCurrentBackpack = async (id: string) => {
-        // dispatch( onLoadingBackpack() );
-        // await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 2000) })
+
         const backpackItem = backpackListExample.find(item => item.id === id);
         if (backpackItem) {
             dispatch(onLoadCurrentBackpack({
                 ...backpackItem
             }));
         }
-        // dispatch( onFinishedLoadingBackpack() );
+        
     };
 
     const startLoadingNotebooks = async (backpackId: string) => {
         dispatch( onLoadingBackpack() );
-        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 2000) })
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
         const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
         if(backpack) {
             dispatch(onLoadNotebooks(backpack.currentBackpackNotebookList));
@@ -35,7 +34,7 @@ export const useBackpackStore = () => {
 
     const startLoadingBooks = async (backpackId: string) => {
         dispatch( onLoadingBackpack() );
-        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 2000) })
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
         const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
         if(backpack) {
             dispatch(onLoadBooks(backpack.currentBackpackBookList));
@@ -45,7 +44,7 @@ export const useBackpackStore = () => {
 
     const startLoadingPublications = async (backpackId: string) => {
         dispatch( onLoadingBackpack() );
-        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 2000) })
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
         const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
         if(backpack) {
             dispatch(onLoadPublications(backpack.currentBackpackPublicationList));
