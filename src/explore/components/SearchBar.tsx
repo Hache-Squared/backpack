@@ -28,9 +28,13 @@ export const SearchBar = () => {
                 color: primaryColor
             }}
             value={searchText}
-            placeholder='Ingrese un nombre de materia'
+            placeholder='Ingrese el nombre de una materia'
             placeholderTextColor={primaryColor}
             onChangeText={(text) => setSearchText(text)}
+            returnKeyType='search'
+            onSubmitEditing={() => {
+                handleSearchNotebook();
+            }}
         />
         <TouchableOpacity onPress={handleSearchNotebook}>
             <Icon name='search' size={40} color={primaryColor}/>

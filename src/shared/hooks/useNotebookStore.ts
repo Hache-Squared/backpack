@@ -56,7 +56,7 @@ export const useNotebookStore = () => {
         // Filtrar todos los elementos que contengan todas las palabras de búsqueda en el título
         const filteredItems = menuSheetItemNotebookListExample.filter((notebook) => {
             const titleWords = notebook.title.toLowerCase().split(/\s+/);
-            return searchWords.every((word) => titleWords.some((titleWord) => titleWord.includes(word)));
+            return searchWords.some((word) => titleWords.some((titleWord) => titleWord.includes(word)));
         });
 
         
