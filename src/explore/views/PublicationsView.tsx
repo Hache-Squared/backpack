@@ -11,13 +11,13 @@ export const PublicationsView = () => {
   }, []);
   return (
     <>
-      <View className='my-2'/>
+      
       {
         isLoadingBackpack ? (
-          // <View className='flex-1'>
+          
             
             <LoadingLogo/>
-          // </View>
+           
         ) : (
           <FlatList
             data={currentBackpackPublicationList}
@@ -31,7 +31,7 @@ export const PublicationsView = () => {
                   link={item.link}
                   />
             )}
-            ListFooterComponent={() => <View className='my-10' />}
+            ListFooterComponent={() => <View className='my-10 h-10' />}
             
           />
         )

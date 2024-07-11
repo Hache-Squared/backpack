@@ -1,7 +1,7 @@
 
 
 export interface BackpackContents {
-    isLoadingBackpack: boolean;
+    isLoadingBackpack?: boolean;
     currentBackpack: BackpackListItem | null;
     currentBackpackNotebookList: NotebookListItem[];
     currentBackpackBookList: BookListItem[];

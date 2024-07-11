@@ -15,7 +15,7 @@ export const BooksView = () => {
 
   return (
     <>
-      <View className='my-2'/>
+      {/* <View className='my-2'/> */}
       {
         isLoadingBackpack ? (
           <LoadingLogo/>
@@ -36,7 +36,7 @@ export const BooksView = () => {
     
                 />
             )}
-            ListFooterComponent={() => <View className='my-10' />}
+            ListFooterComponent={() => <View className='my-10 h-10' />}
           />
         )
       }

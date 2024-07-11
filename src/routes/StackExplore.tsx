@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScreen } from '../explore/screens';
 import { useAppTheme } from '../shared/hooks';
-import { HeaderLogo } from '../shared/components';
+import { HeaderLeftGradient, HeaderLogo } from '../shared/components';
 import { BookListItem } from '../types';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { Text, View } from 'react-native';
@@ -49,8 +49,10 @@ export const StackExplore = () => {
           backgroundColor: secondaryColor,
       },
       cardStyle: {
-        backgroundColor: screens.secondaryColor
-      }
+        backgroundColor: screens.secondaryColor,
+
+      },
+      headerLeft: () => <HeaderLeftGradient/>,
     }}
     >
       <Stack.Screen name="ExploreContent" options={{title: 'Explorar Contenido'}} component={ExploreContentScreen} />

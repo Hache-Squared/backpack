@@ -4,17 +4,13 @@ export * from './SheetItem';
 export * from './NotebookItem';
 export * from './SheetMenuItem';
 export * from './SheetComponents';
-
 export * from './PublicationItem';
-
 export * from './SelectViewFromBackpack'
 export * from './FullSpaceInScreen'
 export * from './LoadingComponent'
 export * from './HeaderLogo'
-
-
 export * from './PublicationsComponents'
 export * from './ResourceComponents'
 export * from './ActivityIndicatorLoadingList'
 export * from './LoadingLogo'
-
+export * from './HeaderLeftGradient'

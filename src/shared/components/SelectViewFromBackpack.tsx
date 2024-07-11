@@ -1,7 +1,10 @@
 import React, { FC, ReactElement, ReactNode, useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-import { useAppTheme } from '../hooks'
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
+import { useAppTheme, useBackpackStore } from '../hooks'
 import Icon from 'react-native-vector-icons/Ionicons'
+const imageBackgroundLight = require('../../assets/logos/oso_fime_gris_light.png');
+const imageBackgroundDark = require('../../assets/logos/oso_fime_gris_dark.png');
+const imageTransparent = require('../../assets/logos/transparent.png');
 
 interface SelectViewFromBackpackProps {
   ViewForNotebooks:  ReactElement,
@@ -14,10 +17,11 @@ type selectedView = 'notebooks' | 'books' | 'publications';
 
 
 export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewForBooks, ViewForNotebooks, ViewForPublications, applyPublications = true }) => {
-  const { buttons, screens,secondaryColor } = useAppTheme()
+  const { buttons, screens,secondaryColor, themeSeleted } = useAppTheme()
   const [selectedView, setSelectedView] = useState<selectedView>('notebooks')
+  const { isLoadingBackpack} = useBackpackStore()
   return (
-    <View className='w-full flex flex-col'>
+    <>
       <View 
       style={{
         backgroundColor: secondaryColor,
@@ -57,7 +61,18 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
           
           
       </View>
+      <ImageBackground  
+        imageStyle={{ width: isLoadingBackpack ? 0 : "100%", height: isLoadingBackpack ? 0 : 450 }} 
+        resizeMode='contain' 
+        source={ isLoadingBackpack ? ( imageTransparent ) : 
+        (
+          themeSeleted === 'light' ?
+          imageBackgroundLight
+          : imageBackgroundDark
+        )}
+      >
 
+      
       {
         selectedView === 'notebooks' ?
         ( ViewForNotebooks ) : 
@@ -68,9 +83,9 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
         : null
       }
 
+      </ImageBackground>
 
-
-    </View>
+    </>
   )
 }
 interface ButtonSelectViewProps {
