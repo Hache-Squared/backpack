@@ -60,7 +60,7 @@ const ExploreContentScreen = () => {
                 <Text 
                 className=' font-semibold text-3xl text-center'
                 style={{color: texts.labelColor}}>
-                  Mochilas
+                  Planes De Estudio
                 </Text>
               </View>
             )}

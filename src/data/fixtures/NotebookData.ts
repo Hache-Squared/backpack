@@ -4,24 +4,24 @@ import { CurrentSheetShowing, InitNotebookState, SheetContentType, SheetItem } f
 export const menuSheetItemNotebookListExample: InitNotebookState[] = [
     {
         id: '1',
-        title: "Libreta de Derivadas",
+        title: "Cálculo Diferencial",
         menuSheetItemList: [
-            { id: "1", title: "¿Qué es una Derivada?" },
-            { id: "2", title: "Formulas de Derivacion" }
+            { id: "1", title: "¿Qué es una derivada?" },
+            { id: "2", title: "Fórmulas de Derivación" }
         ]
     },
     {
 
         id: '2',
-        title: "Introducción a Calculo Integral",
+        title: "Cálculo Integral",
         menuSheetItemList: [
-            { id: "3", title: "¿Qué es el Calculo Integral?" },
+            { id: "3", title: "¿Qué es el Cálculo Integral?" },
             { id: "4", title: "Constante C" }
         ]
     },
     {
         id: '3',
-        title: "Aplicaciones Hibridas",
+        title: "Aplicaciones Híbridas",
         menuSheetItemList: [
             { id: "5", title: "React Native" },
             { id: "6", title: "Flutter" }
@@ -32,8 +32,8 @@ export const menuSheetItemNotebookListExample: InitNotebookState[] = [
         id: '4',
         title: "Introducción a React Native",
         menuSheetItemList: [
-            { id: "7", title: "Introducción a React Native" },
-            { id: "8", title: "Componentes en React Native ( View y Text) " }
+            { id: "7", title: "Fundamentos de React Native" },
+            { id: "8", title: "Componentes en React Native (View y Text)" }
         ]
     }
     
@@ -43,7 +43,7 @@ export const menuSheetItemNotebookListExample: InitNotebookState[] = [
 export const currentSheetShowingExample: CurrentSheetShowing[] = [
     {
         id: "1",
-        title: "¿Qué es una Derivada?",
+        title: "¿Qué es una derivada?",
         content: [
             { id: '1', numOrder: 1, type: SheetContentType.Text, content: "Una derivada representa la tasa de cambio instantánea de una función con respecto a una de sus variables. Es un concepto fundamental en el cálculo y en el análisis matemático." },
             { id: '2', numOrder: 2, type: SheetContentType.Subtitle, content: "Definición Formal" },
@@ -65,7 +65,7 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
     },
     {
         id: "2",
-        title: "Formulas de Derivacion",
+        title: "Fórmulas de Derivación",
         content: [
             { id: '1', numOrder: 1, type: SheetContentType.Text, content: "Las fórmulas de derivación son reglas que nos permiten encontrar la derivada de una función sin tener que recurrir al límite del cociente incremental." },
             { id: '2', numOrder: 2, type: SheetContentType.Subtitle, content: "Regla de la Potencia" },
@@ -89,7 +89,7 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
     },
     {
         id: "3",
-        title: "¿Qué es el Calculo Integral?",
+        title: "¿Qué es el Cálculo Integral?",
         content: [
             { id: '1', numOrder: 1, type: SheetContentType.Text, content: "El cálculo integral es una rama del cálculo que se centra en las integrales y sus aplicaciones. Es fundamental para entender áreas y acumulación de cantidades." },
             { id: '2', numOrder: 2, type: SheetContentType.Subtitle, content: "Definición de Integral" },
@@ -184,7 +184,7 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
     },
     {
         id: "7",
-        title: "Introducción a React Native",
+        title: "Fundamentos de React Native",
         content: [
             { id: '1', numOrder: 1, type: SheetContentType.Text, content: "React Native es un framework de desarrollo de aplicaciones móviles que permite a los desarrolladores usar React junto con las capacidades nativas de las plataformas iOS y Android." },
             { id: '2', numOrder: 2, type: SheetContentType.Subtitle, content: "Historia y Origen" },
@@ -210,7 +210,7 @@ export const currentSheetShowingExample: CurrentSheetShowing[] = [
     },
     {
         id: "8",
-        title: "Componentes en React Native ( View y Text) ",
+        title: "Componentes en React Native (View y Text)",
         content: [
             { id: '1', numOrder: 1, type: SheetContentType.Text, content: "React Native utiliza una serie de componentes nativos para construir la interfaz de usuario de las aplicaciones móviles. Dos de los componentes más fundamentales son View y Text." },
             { id: '2', numOrder: 2, type: SheetContentType.Subtitle, content: "Componente View" },

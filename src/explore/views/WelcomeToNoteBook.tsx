@@ -20,8 +20,8 @@ export const WelcomeToNoteBook = () => {
             style={{width: '100%', height: 280}}  // Replace with actual image dimensions
             className='w-full object-contain'/>
             <Text style={{color: primaryColor}} className='text-3xl font-semibold'>Bienvenid@</Text>
-            <Text style={{color: texts.labelColor}} className='text-lg text-center'>Estas viendo el contenido de la libreta <Text style={{color: primaryColor}}> {title}</Text></Text>
-            <Text style={{color: texts.labelColor}} className='text-lg text-center'>Ve al menu y selecciona la hoja a mostrar</Text>
+            <Text style={{color: texts.labelColor}} className='text-lg text-center'>Estás viendo el contenido de la materia <Text style={{color: primaryColor}}> {title}</Text></Text>
+            <Text style={{color: texts.labelColor}} className='text-lg text-center'>Ve al menú y selecciona el tema a mostrar.</Text>
             <Text style={{color: texts.labelColor}} className='text-lg text-center'>---- O ----</Text>
             <TouchableOpacity 
             onPress={handleClickStart}
