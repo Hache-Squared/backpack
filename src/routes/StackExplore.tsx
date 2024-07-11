@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScreen } from '../explore/screens';
+import { BackpackScreen, ExploreContentScreen, NotebookScreen, ResourceViewScreen, SearchNotebookResultsScreen } from '../explore/screens';
 import { useAppTheme } from '../shared/hooks';
 import { HeaderLeftGradient, HeaderLogo } from '../shared/components';
 import { BookListItem } from '../types';
@@ -9,6 +9,9 @@ import { NoInternet } from '../explore/views';
 
 export type StackExploreParams = {
   ExploreContent: undefined,
+  SearchNotebookResults: {
+    searchText: string,
+  },
   Backpack: {
     id: string,
   },
@@ -59,6 +62,7 @@ export const StackExplore = () => {
       <Stack.Screen name="Backpack" component={BackpackScreen} />
       <Stack.Screen name="Notebook" component={NotebookScreen} />
       <Stack.Screen name="ResourceView" options={{title: 'Viendo Libro'}} component={ResourceViewScreen} />
+      <Stack.Screen name="SearchNotebookResults" options={{title: 'Resultados'}} component={SearchNotebookResultsScreen} />
       
     </Stack.Navigator>
   );

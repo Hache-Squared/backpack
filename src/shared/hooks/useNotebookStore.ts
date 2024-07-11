@@ -46,6 +46,23 @@ export const useNotebookStore = () => {
         dispatch( onResetNotebookState() )
         dispatch( onFinishedLoadingNotebook() );
     }
+
+    const startSearchNotebooks = async(searchText: string) => {
+        dispatch( onLoadingNotebook() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        // Convertir el texto de búsqueda en un array de palabras
+        const searchWords = searchText.trim().toLowerCase().split(/\s+/);
+
+        // Filtrar todos los elementos que contengan todas las palabras de búsqueda en el título
+        const filteredItems = menuSheetItemNotebookListExample.filter((notebook) => {
+            const titleWords = notebook.title.toLowerCase().split(/\s+/);
+            return searchWords.every((word) => titleWords.some((titleWord) => titleWord.includes(word)));
+        });
+
+        
+        dispatch( onFinishedLoadingNotebook() );
+        return filteredItems;
+    }
     
     return {
         //props
@@ -58,6 +75,7 @@ export const useNotebookStore = () => {
         //actions
         startLoadingNotebook,
         startLoadingSheet,
-        startResetingNotebook
+        startResetingNotebook,
+        startSearchNotebooks
     }
 }

@@ -6,6 +6,7 @@ import { ActivityIndicatorLoadingList, BackpackItem, LoadingLogo } from '../../s
 import { useAppTheme, useBackpackStore, useExploreStore } from '../../shared/hooks'
 import { HeaderLogo } from '../../shared/components'
 import { NoItemsInList } from '../../shared/views'
+import { SearchBar } from '../components'
 const imageBackgroundLight = require('../../assets/logos/oso_fime_gris_light.png');
 const imageBackgroundDark = require('../../assets/logos/oso_fime_gris_dark.png');
 
@@ -50,18 +51,19 @@ const ExploreContentScreen = () => {
         isLoadingExplore ? 
         <LoadingLogo/>  
         : (
-
+          <>
           <FlatList
             data={backpackList}
             ListEmptyComponent={() => <NoItemsInList/>}
             ItemSeparatorComponent={() => <View className='my-1 h-1'/>}
             ListHeaderComponent={() => (
-              <View className='my-1 py-2'>
+              <View className='w-full items-center my-1 py-2'>
                 <Text 
-                className=' font-semibold text-3xl text-center'
+                className='my-2 font-semibold text-3xl text-center'
                 style={{color: texts.labelColor}}>
                   Planes De Estudio
                 </Text>
+                <SearchBar/>
               </View>
             )}
             // numColumns={1}
@@ -74,6 +76,7 @@ const ExploreContentScreen = () => {
                 />
             )}
           />
+          </>
         )
       }
 

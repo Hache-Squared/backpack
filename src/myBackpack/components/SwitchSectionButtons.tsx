@@ -14,7 +14,7 @@ export const SwitchSectionButtons = () => {
           <ButtonSelectTheme
             iconName='book-outline'
             onPress={() => changeTheme('light')}
-            title='Libretas'
+            title='Materias'
             backgroundColor={themeSeleted === 'light' ? primaryColor : buttons.backgroundColor}
             textColor={themeSeleted === 'light' ? secondaryColor : buttons.textColor}
           />

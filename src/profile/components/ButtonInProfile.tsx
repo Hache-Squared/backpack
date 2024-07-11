@@ -19,11 +19,11 @@ export const ButtonInProfile: FC<ButtonInProfileProps> = ( {icon, onPress, title
               <Text 
               className="font-semibold text-lg"
               style={{
-                color: texts.labelColor
+                color: '#fff'
               }}>
                   {title}
               </Text>
-               <Icon name={icon} size={40} color={texts.labelColor} />
+               <Icon name={icon} size={40} color={'#fff'} />
       </TouchableOpacity>
     )
   }
