@@ -45,7 +45,7 @@ const ProfileCardScreen = () => {
         style={{backgroundColor: screens.primaryColor}}
         className='w-10/12 flex flex-col bg-white py-4 rounded-2xl items-center justify-center'>
           <Text 
-          className='font-semibold m-2'
+          className=' m-2'
           style={{ color:texts.labelColor }}>
               Backpack es una aplicación móvil diseñada para que los estudiantes de la Facultad de Ingeniería Mecánica y Eléctrica puedan acceder a recursos y publicaciones sobre temas importantes de sus materias de forma sencilla.
           </Text>

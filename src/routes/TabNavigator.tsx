@@ -54,8 +54,8 @@ export const TabNavigator = () => {
       <Tab.Navigator
           screenOptions={theme}
           >
-        <Tab.Screen name="Explore" options={{ title: 'Explorar', tabBarIcon: ({ color }) => ( <Icon name="school-outline" size={30} color={color} />) }} component={StackExplore} />
-        <Tab.Screen name="Profile" options={{ title: 'Perfil',   tabBarIcon: ({ color }) => ( <Icon name="happy-outline" size={30} color={color} /> ) }} component={StackProfile} />
+        <Tab.Screen name="Explore" options={{ title: 'Explorar', tabBarIcon: ({ color }) => ( <Icon name="school" size={30} color={color} />) }} component={StackExplore} />
+        <Tab.Screen name="Profile" options={{ title: 'Perfil',   tabBarIcon: ({ color }) => ( <Icon name="accessibility" size={30} color={color} /> ) }} component={StackProfile} />
       </Tab.Navigator>
     </>
   );

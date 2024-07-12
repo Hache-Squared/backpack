@@ -17,7 +17,7 @@ type selectedView = 'notebooks' | 'books' | 'publications';
 
 
 export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewForBooks, ViewForNotebooks, ViewForPublications, applyPublications = true }) => {
-  const { buttons, screens,secondaryColor, themeSeleted } = useAppTheme()
+  const { buttons, screens,secondaryColor, themeSeleted, selectViewFromBackpackColors } = useAppTheme()
   const [selectedView, setSelectedView] = useState<selectedView>('notebooks')
   const { isLoadingBackpack} = useBackpackStore()
   return (
@@ -34,16 +34,16 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
             iconName='book-outline'
             onPress={() => setSelectedView('notebooks')}
             title='Materias'
-            backgroundColor={selectedView === 'notebooks' ? buttons.textColor : secondaryColor}
-            textColor={selectedView === 'notebooks' ? secondaryColor : buttons.textColor}
+            backgroundColor={selectedView === 'notebooks' ? selectViewFromBackpackColors.backgroundColor : secondaryColor}
+            textColor={selectedView === 'notebooks' ? selectViewFromBackpackColors.textColor : buttons.textColor}
           />
           
           <ButtonSelectView
             iconName='library-outline'
             onPress={() => setSelectedView('books')}
             title='Libros'
-            backgroundColor={selectedView === 'books' ? buttons.textColor : secondaryColor}
-            textColor={selectedView === 'books' ? secondaryColor : buttons.textColor}
+            backgroundColor={selectedView === 'books' ? selectViewFromBackpackColors.backgroundColor : secondaryColor}
+            textColor={selectedView === 'books' ? selectViewFromBackpackColors.textColor : buttons.textColor}
           />
           
           {
@@ -53,8 +53,8 @@ export const SelectViewFromBackpack: FC<SelectViewFromBackpackProps> = ({ ViewFo
                 iconName='albums-outline'
                 onPress={() => setSelectedView('publications')}
                 title='Publicaciones'
-                backgroundColor={selectedView === 'publications'? buttons.textColor : secondaryColor}
-                textColor={selectedView === 'publications'? secondaryColor : buttons.textColor}
+                backgroundColor={selectedView === 'publications'? selectViewFromBackpackColors.backgroundColor : secondaryColor}
+                textColor={selectedView === 'publications'? selectViewFromBackpackColors.textColor : buttons.textColor}
               />
             )
           }

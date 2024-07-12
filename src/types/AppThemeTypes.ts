@@ -42,6 +42,10 @@ export interface ColorsTheme {
       backgroundColor: string;
       textColor: string;
     };
+    selectViewFromBackpackColors: {
+      backgroundColor: string;
+      textColor: string;
+    }
   }
   
   export type ThemeSelected = 'light' | 'dark';

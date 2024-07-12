@@ -18,8 +18,8 @@ export const lightColorsTheme: ColorsTheme = {
         labelColor: '#111'
     },
     tabBar: {
-        backgroundColor: '#008605',
-        labelColorActive: '#fff',
+        backgroundColor: '#fff',
+        labelColorActive: '#008605',
         labelColorInactive: '#111'
     },
     menuNotebookContent: {
@@ -42,6 +42,10 @@ export const lightColorsTheme: ColorsTheme = {
         backgroundColor: '#fff',
         textColor: '#111',
     },
+    selectViewFromBackpackColors: {
+        backgroundColor: '#dfe6e9',
+        textColor: '#111',
+    }
 }
 
 export const darkColorsTheme: ColorsTheme = {
@@ -85,4 +89,8 @@ export const darkColorsTheme: ColorsTheme = {
         backgroundColor: '#111',
         textColor: '#fff',
     },
+    selectViewFromBackpackColors: {
+        backgroundColor: '#dfe6e9',
+        textColor: '#111',
+    }
 }

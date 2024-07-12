@@ -1,17 +1,20 @@
 import React from 'react'
 import { useAppTheme } from '../hooks';
-import { Image } from 'react-native';
+import { Image, Dimensions } from 'react-native';
 
-const logoWhite = require('../../assets/logos/oso_fime_blanco.png');
+const logoSlogan = require('../../assets/logos/slogan_fime.png');
 const logoBlack = require('../../assets/logos/oso_fime_negro.png');
 export const HeaderLogo = () => {
   const { themeSeleted } = useAppTheme()
   return (
     <Image source={
-        themeSeleted === 'light'
-        ? logoBlack : logoWhite
+      logoSlogan
     } 
     className='object-contain overflow-hidden'
-    style={{width: 40, height: 40}} />
+    style={{
+      // width: Dimensions.get('screen').width * 0.8, 
+      width: 100,
+      height: 35
+    }} />
   )
 }
