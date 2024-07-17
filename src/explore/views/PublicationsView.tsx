@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
-import { FlatList, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { ActivityIndicatorLoadingList, LoadingLogo, PublicationItem } from '../../shared/components'
-import { useBackpackStore } from '../../shared/hooks'
+import { useAppTheme, useBackpackStore } from '../../shared/hooks'
 import { NoItemsInList } from '../../shared/views'
+import { AddPublicationView } from './AddPublicationView'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export const PublicationsView = () => {
   const { currentBackpackPublicationList, currentBackpack, startLoadingPublications,isLoadingBackpack } = useBackpackStore();
+  const [modalVisible, setModalVisible] = useState(false);
+  const { texts, themeSeleted, buttons, primaryColor, screens } = useAppTheme()
   useEffect(() => {
     startLoadingPublications(currentBackpack?.id ?? '');
   }, []);
@@ -20,6 +24,19 @@ export const PublicationsView = () => {
            
         ) : (
           <FlatList
+          ListHeaderComponent={() => (
+            <View className='flex-1 items-end justify-center my-3'>
+              
+            <TouchableOpacity
+              className='rounded-full p-3 items-center justify-center'
+              style={{ position: 'relative',  right: 10, width: 60, height:60, backgroundColor: primaryColor}}
+              onPress={() => {
+                setModalVisible(true)   
+              }}>
+                <Icon name="add" size={30} color={"#fff"} />
+            </TouchableOpacity>
+            </View>
+          )}
             data={currentBackpackPublicationList}
             // ListEmptyComponent={() => <NoItemsInList/>}
             ItemSeparatorComponent={() => <View className='my-0.5 h-0.5'/>}
@@ -36,6 +53,19 @@ export const PublicationsView = () => {
           />
         )
       }
+      <Modal
+        onRequestClose={() => {
+            setModalVisible(false)
+        }}
+        animationType="fade"
+        transparent={false} 
+        visible={modalVisible} >
+
+          <AddPublicationView onCloseContent={() => setModalVisible(false)}/>
+            {/* <MenuContentForNotebook 
+                onCloseContent={() => setModalVisible(false)}
+            /> */}
+      </Modal>
     </>
   )
 }
