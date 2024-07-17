@@ -107,7 +107,7 @@ const ExploreContentScreen = () => {
         onPress={() => {
           setModalVisible(true)   
         }}>
-          <Icon name="add" size={30} color={screens.titleColor} />
+          <Icon name="add" size={30} color={"#fff"} />
       </TouchableOpacity>
     </>
   )

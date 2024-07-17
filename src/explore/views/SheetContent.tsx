@@ -1,17 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { FlatList, View } from 'react-native';
+import { FlatList, Modal, TouchableOpacity, View } from 'react-native';
 import { SheetExampleData } from '../../data/SheetExampleData';
 import { SheetContentType } from '../../types/SheetContentTypes';
 
-import { useNotebookStore } from '../../shared/hooks';
+import { useAppTheme, useNotebookStore } from '../../shared/hooks';
 import { ImageWithPan, SheetContentSubtitle, SheetContentText, SheetContentYoutubeVideo, SheetPrevNextContent  } from '../../shared/components';
 import { NoItemsInList } from '../../shared/views';
+import { NewContentForSheetView } from './NewContentForSheetView';
 
 export const SheetContent = () => {
   const flatListRef = useRef<FlatList>(null);
   const { currentSheetShowing } = useNotebookStore()
+  const [modalVisible, setModalVisible] = useState(false);
+  const {primaryColor} = useAppTheme()
   useEffect(() => {
     console.log("Hoja renderizada");
     flatListRef.current?.scrollToOffset({ animated: true, offset: 0 })

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CurrentSheetShowing, InitNotebookState, NotebookState, SheetItem } from "../../types";
+import { CurrentSheetShowing, InitNotebookState, NotebookState, SheetContent, SheetItem } from "../../types";
 import { currentSheetShowingExample } from "../../data/fixtures";
 
 
@@ -20,6 +20,17 @@ export const notebookSlice = createSlice({
             state.currentSheetShowing = {
                 ...action.payload
             };
+        },
+        onAddContentToSheet: (state, action: PayloadAction<SheetContent>) => {
+            if(state.currentSheetShowing){
+                state.currentSheetShowing = {
+                    ...state.currentSheetShowing,
+                    content: [
+                       ...state.currentSheetShowing.content,
+                        {...action.payload}
+                    ]
+                };
+            }
         },
         onLoadNotebook: (state, action: PayloadAction<InitNotebookState>) => {
             state.id = action.payload.id;
@@ -48,4 +59,4 @@ export const notebookSlice = createSlice({
     }
 });
 
-export const { onLoadSheet, onLoadNotebook, onAddSheetContentListItem, onResetNotebookState, onFinishedLoadingNotebook, onLoadingNotebook, onAddMenuSheetItemList } = notebookSlice.actions;
+export const { onLoadSheet, onLoadNotebook,onAddContentToSheet, onAddSheetContentListItem, onResetNotebookState, onFinishedLoadingNotebook, onLoadingNotebook, onAddMenuSheetItemList } = notebookSlice.actions;

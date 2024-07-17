@@ -1,7 +1,7 @@
 import React from 'react'
-import { onAddMenuSheetItemList, onAddSheetContentListItem, onFinishedLoadingNotebook, onLoadingNotebook, onLoadNotebook, onLoadSheet, onResetNotebookState, useAppDispatch, useAppSelector } from '../../store'
+import { onAddContentToSheet, onAddMenuSheetItemList, onAddSheetContentListItem, onFinishedLoadingNotebook, onLoadingNotebook, onLoadNotebook, onLoadSheet, onResetNotebookState, useAppDispatch, useAppSelector } from '../../store'
 import { currentSheetShowingExample, menuSheetItemNotebookListExample } from '../../data/fixtures'
-import { CurrentSheetShowing, SheetItem } from '../../types'
+import { CurrentSheetShowing, SheetContent, SheetContentType, SheetItem } from '../../types'
 
 
 
@@ -59,6 +59,21 @@ export const useNotebookStore = () => {
         dispatch( onFinishedLoadingNotebook() );
         
     }
+    const startAddingContentToSheet = async(item: Partial<SheetContent>) => {
+        dispatch( onLoadingNotebook() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        let content: SheetContent = {
+            id: '' + (currentSheetShowing?.content.length ?? 0) + 1,
+            numOrder: (currentSheetShowing?.content.length ?? 0) + 1,
+            content: item.content ?? '',
+            type: item.type ?? SheetContentType.Text,
+            
+            
+        }
+        dispatch(onAddContentToSheet(content) )
+        
+        dispatch( onFinishedLoadingNotebook() );
+    }
 
     const startResetingNotebook = async() => { 
         dispatch( onLoadingNotebook() );
@@ -96,6 +111,7 @@ export const useNotebookStore = () => {
         startLoadingSheet,
         startResetingNotebook,
         startSearchNotebooks,
-        startAddingMenuSheetItemList
+        startAddingMenuSheetItemList,
+        startAddingContentToSheet
     }
 }
