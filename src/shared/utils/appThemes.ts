@@ -26,7 +26,7 @@ export const lightColorsTheme: ColorsTheme = {
         titleBackgroundColor: '#111',
         titleTextColor: '#fff',
         colorStatusActive: '#008605',
-        colorStatusInactive: '#fff',
+        colorStatusInactive: 'gray',
     },
     headerMenuNotebookContent: {
         buttonMenuLabelColor: "#111",

@@ -28,17 +28,17 @@ const ProfileCardScreen = () => {
             fontWeight:"bold",
             color:texts.labelColor
           }}>
-              ¡Bienvenido A Backpack!
+              ¡Bienvenido!
           </Text>
             
           <ButtonInProfile
           
-            title='Mi Mochila'
+            title='Mis Descargas'
             icon='briefcase'
             onPress={() => navigation.navigate('MyBackpack')}
           />
           
-          <SwitchThemeButtons/>
+          {/* <SwitchThemeButtons/> */}
         </View>
 
         <View 

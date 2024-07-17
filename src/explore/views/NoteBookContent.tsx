@@ -54,7 +54,7 @@ export const NoteBookContent = () => {
                 setModalVisible(false)
             }}
             animationType="fade"
-            transparent={true} 
+            // transparent={true} 
             visible={modalVisible} >
 
                 <MenuContentForNotebook 

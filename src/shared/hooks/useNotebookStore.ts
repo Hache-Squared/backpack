@@ -1,12 +1,12 @@
 import React from 'react'
-import { onFinishedLoadingNotebook, onLoadingNotebook, onLoadNotebook, onLoadSheet, onResetNotebookState, useAppDispatch, useAppSelector } from '../../store'
+import { onAddMenuSheetItemList, onAddSheetContentListItem, onFinishedLoadingNotebook, onLoadingNotebook, onLoadNotebook, onLoadSheet, onResetNotebookState, useAppDispatch, useAppSelector } from '../../store'
 import { currentSheetShowingExample, menuSheetItemNotebookListExample } from '../../data/fixtures'
-import { CurrentSheetShowing } from '../../types'
+import { CurrentSheetShowing, SheetItem } from '../../types'
 
 
 
 export const useNotebookStore = () => {
-    const { currentSheetShowing, menuSheetItemList, title, id, isLoadingNotebook } = useAppSelector(state => state.notebook)
+    const { currentSheetShowing, currentSheetContentList,menuSheetItemList, title, id, isLoadingNotebook } = useAppSelector(state => state.notebook)
     const dispatch = useAppDispatch()
 
     const startLoadingNotebook = async(id: string) => {
@@ -19,14 +19,33 @@ export const useNotebookStore = () => {
         dispatch( onFinishedLoadingNotebook() );
     }
 
+    const startAddingMenuSheetItemList = async(sheet: Partial<SheetItem>) => {
+        let newSheet: SheetItem = {
+            id: '' + menuSheetItemList.length +  1,
+            title: sheet.title || 'Nueva Sección',
+        }
+        dispatch( onLoadingNotebook() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        dispatch( onAddMenuSheetItemList(newSheet) ) 
+        dispatch( onAddSheetContentListItem({
+            id: '' + newSheet.id,
+            title: newSheet.title || 'Nueva Sección',
+            content: [],
+            prev: null,
+            next: null
+        }) ) 
+
+        dispatch( onFinishedLoadingNotebook() );
+    }
+
     const startLoadingSheet = async(id: string) => {
         dispatch( onLoadingNotebook() );
         await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
-        const sheetIndex = currentSheetShowingExample.findIndex(sheet => sheet.id === id)
+        const sheetIndex = currentSheetContentList.findIndex(sheet => sheet.id === id)
 
-        const previous = sheetIndex > 0 ? currentSheetShowingExample[sheetIndex - 1] : null;
-        const current = currentSheetShowingExample[sheetIndex];
-        const next = sheetIndex < currentSheetShowingExample.length - 1 ? currentSheetShowingExample[sheetIndex + 1] : null;
+        const previous = sheetIndex > 0 ? currentSheetContentList[sheetIndex - 1] : null;
+        const current = currentSheetContentList[sheetIndex];
+        const next = sheetIndex < currentSheetContentList.length - 1 ? currentSheetShowingExample[sheetIndex + 1] : null;
 
         const sheet:CurrentSheetShowing  = {
             id: current.id,
@@ -76,6 +95,7 @@ export const useNotebookStore = () => {
         startLoadingNotebook,
         startLoadingSheet,
         startResetingNotebook,
-        startSearchNotebooks
+        startSearchNotebooks,
+        startAddingMenuSheetItemList
     }
 }

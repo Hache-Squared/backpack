@@ -1,8 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useAppTheme, useNotebookStore } from '../../shared/hooks'
-import { Alert, FlatList, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, FlatList, Modal, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SheetMenuItem } from '../../shared/components';
+import { AddSheetView } from './AddSheetView';
 
 interface MenuContentForNotebook {
     onCloseContent: () => void
@@ -12,13 +13,14 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
 
   const { menuNotebookContent, headerMenuNotebookContent, screens } = useAppTheme()
   const { menuSheetItemList, title, startLoadingSheet, currentSheetShowing } = useNotebookStore()
+  const [modalVisible, setModalVisible] = useState(false);
   const handleSheetToLoad = (id: string) => {
     startLoadingSheet(id)
     onCloseContent()
   }
   return (
 
-    <SafeAreaView className='flex-1' style={{backgroundColor: 'rgba(1,1,1,0.9)'}}>
+    <SafeAreaView className='flex-1' >
     <View className='w-full flex flex-row items-center justify-end '>
         <TouchableOpacity
         onPress={onCloseContent}
@@ -51,12 +53,34 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
                 title={sheet.title} key={sheet.title}/>
             ))
         }
-    
+        <TouchableOpacity 
+            onPress={() => setModalVisible(true)}
+            style={{ backgroundColor: headerMenuNotebookContent.buttonMenuBackgroundColor}}
+            className='p-0.5 ml-2 my-1 rounded-lg self-start flex-row flex-nowrap items-center justify-center'>
+                <Icon name='add' size={40} color={menuNotebookContent.colorStatusActive}/>
+                <Text 
+                style={{ color: menuNotebookContent.colorStatusActive}}
+                className='font-semibold m-2'>
+                    Añadir nuevo subtema
+                </Text>
+            </TouchableOpacity>
             
         </View>
     </ScrollView>
 
+    <Modal
+        onRequestClose={() => {
+            setModalVisible(false)
+        }}
+        animationType="fade"
+        transparent={false} 
+        visible={modalVisible} >
 
+          <AddSheetView onCloseContent={() => setModalVisible(false)}/>
+            {/* <MenuContentForNotebook 
+                onCloseContent={() => setModalVisible(false)}
+            /> */}
+      </Modal>
     
 </SafeAreaView>
 
