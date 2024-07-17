@@ -8,7 +8,7 @@ export const requestPermission = async() : Promise<PermissionStatus> => {
     if( Platform.OS === 'ios') {
         status = await request( PERMISSIONS.IOS.PHOTO_LIBRARY );
     }else if( Platform.OS === 'android') {
-        status = await request( PERMISSIONS.ANDROID.ACCESS_MEDIA_LOCATION );
+        status = await request( PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE );
     } else {
         throw new Error('Unsupported platform');
     }

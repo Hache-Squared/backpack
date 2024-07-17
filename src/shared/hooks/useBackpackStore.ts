@@ -1,9 +1,10 @@
-import { onLoadCurrentBackpack, onLoadBooks, onLoadNotebooks, onLoadPublications, useAppDispatch, useAppSelector, onResetBackpackState, onLoadingBackpack, onFinishedLoadingBackpack } from '../../store';
+import { onLoadCurrentBackpack, onLoadBooks, onLoadNotebooks, onLoadPublications, useAppDispatch, useAppSelector, onResetBackpackState, onLoadingBackpack, onFinishedLoadingBackpack, onAddNotebook, onAddBook, onAddPublication } from '../../store';
 import {  backpackListContentExample, backpackListExample } from '../../data/fixtures';
 import { useEffect } from 'react';
+import { BookListItem, NotebookListItem, PublicationListItem } from '../../types';
 
 export const useBackpackStore = () => {
-    const { currentBackpack, currentBackpackNotebookList, currentBackpackBookList, currentBackpackPublicationList, isLoadingBackpack } = useAppSelector(state => state.backpack);
+    const { currentBackpack, currentBackpackNotebookList,currentBackpackBookList, currentBackpackPublicationList, isLoadingBackpack } = useAppSelector(state => state.backpack);
     const { backpackList, backpackContents } = useAppSelector(state => state.explore);
     const dispatch = useAppDispatch();
 
@@ -58,6 +59,41 @@ export const useBackpackStore = () => {
         dispatch( onResetBackpackState() );
         // dispatch( onFinishedLoadingBackpack() );
     };
+    const startAddingNotebookItem = async (item: Partial<NotebookListItem>) => {
+        // console.log("Hola iniciando carga de mochila");
+        let data: NotebookListItem = {
+            id: '' + currentBackpackNotebookList.length +  1,
+            title: item.title || 'Nueva Mochila',
+        }
+        dispatch( onLoadingBackpack() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        dispatch(onAddNotebook(data));
+    };
+
+    const startAddingBookItem = async (item: Partial<BookListItem>) => {
+        // console.log("Hola iniciando carga de mochila");
+        let data: BookListItem = {
+            id: '' + currentBackpackBookList.length +  1,
+            title: item.title || 'Nueva Mochila',
+            uriDocument: item.uriDocument || ''
+        }
+        dispatch( onLoadingBackpack() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        dispatch(onAddBook(data));
+    };
+
+    const startAddingPublicationItem = async (item: Partial<PublicationListItem>) => {
+        // console.log("Hola iniciando carga de mochila");
+        let data: PublicationListItem = {
+            id: '' + currentBackpackPublicationList.length +  1,
+            title: item.title || 'Nueva Mochila',
+            image: item.image || '',
+            link: item.link || ''
+        }
+        dispatch( onLoadingBackpack() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        dispatch(onAddPublication(data));
+    };
 
     return {
         // props
@@ -73,6 +109,9 @@ export const useBackpackStore = () => {
         startLoadingNotebooks,
         startLoadingBooks,
         startLoadingPublications,
-        startResetingBackpack
+        startResetingBackpack,
+        startAddingNotebookItem,
+        startAddingBookItem,
+        startAddingPublicationItem,
     };
 };

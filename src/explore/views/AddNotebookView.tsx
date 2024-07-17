@@ -1,27 +1,27 @@
 import React, { FC, useState } from 'react'
 import { Dimensions, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { useAppTheme, useExploreStore } from '../../shared/hooks';
+import { useAppTheme, useBackpackStore, useExploreStore } from '../../shared/hooks';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-interface AddBackpackViewProps {
+interface AddNotebookViewProps {
     onCloseContent: () => void
 }
 
-export const AddBackpackView: FC<AddBackpackViewProps> = ({onCloseContent}) => {
-    const [nameBackpack, setNameBackpack] = useState('')
+export const AddNotebookView: FC<AddNotebookViewProps> = ({onCloseContent}) => {
+    const [nameNotebook, setNameNotebook] = useState('')
     const { primaryColor, secondaryColor, headerMenuNotebookContent, screens } = useAppTheme();
-    const { startAddingBackpackItem } = useExploreStore()
-    const handleAddBackpack = () => {
+    const { startAddingNotebookItem } = useBackpackStore()
+    const handleAddNotebook = () => {
         // add backpack logic
         
-        if(nameBackpack.trim().length <= 0) {
+        if(nameNotebook.trim().length <= 0) {
             return;
         }
-        startAddingBackpackItem({
-            title: nameBackpack,
-            image: ''
+        startAddingNotebookItem({
+            title: nameNotebook,
+            
         })
-        setNameBackpack('')
+        setNameNotebook('')
         onCloseContent()
     }
 
@@ -39,7 +39,7 @@ export const AddBackpackView: FC<AddBackpackViewProps> = ({onCloseContent}) => {
 
             <Text 
             style={{ color: screens.titleColor }}  
-            className='w-full text-lg text-center my-2 font-bold'>Agregar Plan De Estudio</Text>
+            className='w-full text-lg text-center my-2 font-bold'>Crear tema</Text>
             
             <TextInput 
                 className='self-center shadow-md shadow-slate-300 p-3 rounded-lg my-5'
@@ -49,10 +49,10 @@ export const AddBackpackView: FC<AddBackpackViewProps> = ({onCloseContent}) => {
                     color: primaryColor,
                     textAlign: 'center'
                 }}
-                value={nameBackpack} 
-                placeholder='Ingrese el nombre del plan de estudio'
+                value={nameNotebook} 
+                placeholder='Ingrese el nombre del tema'
                 placeholderTextColor={primaryColor}
-                onChangeText={(text) => setNameBackpack(text)}
+                onChangeText={(text) => setNameNotebook(text)}
                 returnKeyType='done'
                 
                 onSubmitEditing={() => {
@@ -60,7 +60,7 @@ export const AddBackpackView: FC<AddBackpackViewProps> = ({onCloseContent}) => {
                 }}
             />
             <TouchableOpacity 
-                onPress={handleAddBackpack} 
+                onPress={handleAddNotebook} 
                 className='w-10/12 rounded-full my-2 py-2 self-center'
                 style={{backgroundColor: primaryColor}}
                 >

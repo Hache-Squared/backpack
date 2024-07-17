@@ -937,6 +937,8 @@ PODS:
     - React-debug
   - react-native-blob-util (0.19.9):
     - React-Core
+  - react-native-document-picker (9.3.0):
+    - React-Core
   - react-native-netinfo (11.3.2):
     - React-Core
   - react-native-pdf (6.7.5):
@@ -1325,6 +1327,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - react-native-blob-util (from `../node_modules/react-native-blob-util`)
+  - react-native-document-picker (from `../node_modules/react-native-document-picker`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
@@ -1431,6 +1434,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   react-native-blob-util:
     :path: "../node_modules/react-native-blob-util"
+  react-native-document-picker:
+    :path: "../node_modules/react-native-document-picker"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pdf:
@@ -1538,6 +1543,7 @@ SPEC CHECKSUMS:
   React-logger: 29fa3e048f5f67fe396bc08af7606426d9bd7b5d
   React-Mapbuffer: bf56147c9775491e53122a94c423ac201417e326
   react-native-blob-util: 18b510205c080a453574a7d2344d64673d0ad9af
+  react-native-document-picker: 5b97e24a7f1a1e4a50a72c540a043f32d29a70a2
   react-native-netinfo: 076df4f9b07f6670acf4ce9a75aac8d34c2e2ccc
   react-native-pdf: 103940c90d62adfd259f63cca99c7c0c306b514c
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
