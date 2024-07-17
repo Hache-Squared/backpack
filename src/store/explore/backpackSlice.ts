@@ -32,6 +32,20 @@ export const backpackSlice = createSlice({
             state.currentBackpackPublicationList = [...action.payload]
             state.isLoadingBackpack = false;
        },
+       
+      onAddNotebook: (state, action: PayloadAction<NotebookListItem>) => {
+         state.currentBackpackNotebookList = [...state.currentBackpackNotebookList, action.payload]
+         state.isLoadingBackpack = false;
+      },
+      onAddBook: (state, action: PayloadAction<BookListItem>) => {
+            state.currentBackpackBookList = [...state.currentBackpackBookList, action.payload]
+            state.isLoadingBackpack = false;
+      },
+      onAddPublication: (state, action: PayloadAction<PublicationListItem>) => {
+            state.currentBackpackPublicationList = [...state.currentBackpackPublicationList, action.payload]
+            state.isLoadingBackpack = false;
+      },
+
        onResetBackpackState: (state) => {
           state.currentBackpack = null;
           state.currentBackpackNotebookList = [];
@@ -57,5 +71,8 @@ export const {
    onLoadCurrentBackpack, 
    onResetBackpackState,  
    onLoadingBackpack, 
-   onFinishedLoadingBackpack
+   onFinishedLoadingBackpack,
+   onAddNotebook,
+   onAddBook,
+   onAddPublication
 } = backpackSlice.actions;

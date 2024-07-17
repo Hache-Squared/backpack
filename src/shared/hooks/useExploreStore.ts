@@ -1,7 +1,8 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { backpackListExample} from '../../data/fixtures'
-import { onFinishedLoadingExplore, onLoadBackpackList, onLoadingExplore } from '../../store/explore'
+import { onFinishedLoadingExplore, onBackpackAdded,onLoadBackpackList, onLoadingExplore } from '../../store/explore'
+import { BackpackListItem } from '../../types'
 
 
 
@@ -17,6 +18,19 @@ export const useExploreStore = () => {
         dispatch(onLoadBackpackList(backpackListExample));
         // dispatch( onFinishedLoadingExplore() );
     };
+
+    const startAddingBackpackItem = async (item: Partial<BackpackListItem>) => {
+        // console.log("Hola iniciando carga de mochila");
+        let data: BackpackListItem = {
+            id: '' + backpackList.length +  1,
+            title: item.title || 'Nueva Mochila',
+            image: item.image || ''
+        }
+        dispatch( onLoadingExplore() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        dispatch(onBackpackAdded(data));
+        // dispatch( onFinishedLoadingExplore() );
+    };
     
     return {
         //props
@@ -24,6 +38,8 @@ export const useExploreStore = () => {
         backpackList,
         
         //actions
-        startLoadingBackpackList
+        startLoadingBackpackList,
+        startAddingBackpackItem,
+        
     }
 }

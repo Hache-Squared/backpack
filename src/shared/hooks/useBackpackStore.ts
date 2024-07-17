@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 export const useBackpackStore = () => {
     const { currentBackpack, currentBackpackNotebookList, currentBackpackBookList, currentBackpackPublicationList, isLoadingBackpack } = useAppSelector(state => state.backpack);
+    const { backpackList, backpackContents } = useAppSelector(state => state.explore);
     const dispatch = useAppDispatch();
 
     // useEffect(() => {
@@ -13,7 +14,7 @@ export const useBackpackStore = () => {
 
     const startLoadingCurrentBackpack = async (id: string) => {
 
-        const backpackItem = backpackListExample.find(item => item.id === id);
+        const backpackItem = backpackList.find(item => item.id === id);
         if (backpackItem) {
             dispatch(onLoadCurrentBackpack({
                 ...backpackItem
@@ -25,7 +26,7 @@ export const useBackpackStore = () => {
     const startLoadingNotebooks = async (backpackId: string) => {
         dispatch( onLoadingBackpack() );
         await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
-        const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
+        const backpack = backpackContents.find(backpack => backpack.currentBackpack?.id === backpackId);
         if(backpack) {
             dispatch(onLoadNotebooks(backpack.currentBackpackNotebookList));
         }
@@ -35,7 +36,7 @@ export const useBackpackStore = () => {
     const startLoadingBooks = async (backpackId: string) => {
         dispatch( onLoadingBackpack() );
         await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
-        const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
+        const backpack = backpackContents.find(backpack => backpack.currentBackpack?.id === backpackId);
         if(backpack) {
             dispatch(onLoadBooks(backpack.currentBackpackBookList));
         }
@@ -45,7 +46,7 @@ export const useBackpackStore = () => {
     const startLoadingPublications = async (backpackId: string) => {
         dispatch( onLoadingBackpack() );
         await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
-        const backpack = backpackListContentExample.find(backpack => backpack.currentBackpack?.id === backpackId);
+        const backpack = backpackContents.find(backpack => backpack.currentBackpack?.id === backpackId);
         if(backpack) {
             dispatch(onLoadPublications(backpack.currentBackpackPublicationList));
         }

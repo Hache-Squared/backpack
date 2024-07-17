@@ -1,22 +1,24 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
-import { Alert, Button, FlatList, ImageBackground, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Alert, Button, FlatList, ImageBackground, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { StackExploreParams } from '../../routes/StackExplore'
 import { ActivityIndicatorLoadingList, BackpackItem, LoadingLogo } from '../../shared/components'
 import { useAppTheme, useBackpackStore, useExploreStore } from '../../shared/hooks'
 import { HeaderLogo } from '../../shared/components'
 import { NoItemsInList } from '../../shared/views'
 import { SearchBar } from '../components'
+import { AddBackpackView } from '../views'
 const imageBackgroundLight = require('../../assets/logos/oso_fime_gris_light.png');
 const imageBackgroundDark = require('../../assets/logos/oso_fime_gris_dark.png');
-
 const imageTransparent = require('../../assets/logos/transparent.png');
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const ExploreContentScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()
   const { backpackList, startLoadingBackpackList, isLoadingExplore } = useExploreStore();
   const { startLoadingCurrentBackpack } = useBackpackStore();
-  const { texts, themeSeleted } = useAppTheme()
+  const { texts, themeSeleted, buttons, primaryColor, screens } = useAppTheme()
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     navigation.setOptions({
@@ -38,6 +40,8 @@ const ExploreContentScreen = () => {
   }
 
   return (
+    <>
+    
     <ImageBackground  
         imageStyle={{ width: isLoadingExplore ? 0 : "100%", height: isLoadingExplore ? 0 : 500 }} 
         resizeMode='contain' 
@@ -80,7 +84,32 @@ const ExploreContentScreen = () => {
         )
       }
 
+      
+
+      <Modal
+        onRequestClose={() => {
+            setModalVisible(false)
+        }}
+        animationType="fade"
+        transparent={false} 
+        visible={modalVisible} >
+
+          <AddBackpackView onCloseContent={() => setModalVisible(false)}/>
+            {/* <MenuContentForNotebook 
+                onCloseContent={() => setModalVisible(false)}
+            /> */}
+      </Modal>
+
     </ImageBackground>
+    <TouchableOpacity 
+        className='rounded-full p-3'
+        style={{ position: 'absolute', bottom: 100, right: 30, zIndex: 10, backgroundColor: primaryColor}}
+        onPress={() => {
+          setModalVisible(true)   
+        }}>
+          <Icon name="add" size={30} color={screens.titleColor} />
+      </TouchableOpacity>
+    </>
   )
 }
 
