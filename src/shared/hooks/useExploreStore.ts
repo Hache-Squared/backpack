@@ -1,13 +1,14 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { backpackListExample} from '../../data/fixtures'
-import { onFinishedLoadingExplore, onBackpackAdded,onLoadBackpackList, onLoadingExplore } from '../../store/explore'
+import { onFinishedLoadingExplore, onBackpackAdded,onLoadBackpackList, onLoadingExplore, onUserState } from '../../store/explore'
 import { BackpackListItem } from '../../types'
+import { UserLoginState } from '../../types/ExploreTypes'
 
 
 
 export const useExploreStore = () => {
-    const { backpackList, isLoadingExplore} = useAppSelector(state => state.explore)
+    const { backpackList, isLoadingExplore, isUserAdmin} = useAppSelector(state => state.explore)
     const dispatch = useAppDispatch()
 
 
@@ -31,15 +32,22 @@ export const useExploreStore = () => {
         dispatch(onBackpackAdded(data));
         // dispatch( onFinishedLoadingExplore() );
     };
+
+    const startLoginUser = async (user: UserLoginState) => {
+        dispatch( onLoadingExplore() );
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(true), 700) })
+        dispatch(onUserState(user));
+    }
     
     return {
         //props
         isLoadingExplore,
         backpackList,
+        isUserAdmin,
         
         //actions
         startLoadingBackpackList,
         startAddingBackpackItem,
-        
+        startLoginUser
     }
 }

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {  BackpackListItem } from "../../types";
-import { ExploreState } from "../../types/ExploreTypes";
+import { ExploreState, UserLoginState } from "../../types/ExploreTypes";
 import { backpackListContentExample } from "../../data/fixtures";
 
 
@@ -9,6 +9,8 @@ const initialState: ExploreState = {
     backpackContents: backpackListContentExample,
     isLoadingExplore: true,
     isUserAdmin: false, 
+    username: "",
+    password: "",
 };
 
 export const exploreSlice = createSlice({
@@ -25,8 +27,11 @@ export const exploreSlice = createSlice({
        onFinishedLoadingExplore: (state) => {
         state.isLoadingExplore = false;
        },
-       onUserAdminState: (state,action: PayloadAction<boolean> ) => {
-        state.isUserAdmin = false;
+       onUserState: (state,action: PayloadAction<UserLoginState> ) => {
+        state.username = action.payload.user;
+        state.password = action.payload.password;
+        state.isUserAdmin = action.payload.isAdmin ?? true;
+        state.isLoadingExplore = false;
        },
 
        onBackpackAdded: (state,action: PayloadAction<BackpackListItem> ) => {
@@ -51,7 +56,7 @@ export const {
      onLoadBackpackList,
      onFinishedLoadingExplore, 
      onLoadingExplore,
-     onUserAdminState,
+     onUserState,
      onBackpackAdded
 
     } = exploreSlice.actions;

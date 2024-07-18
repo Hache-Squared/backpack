@@ -5,6 +5,7 @@ import { TabNavigator } from './routes/TabNavigator';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { PermissionsChecker } from './shared/components/PermissionsChecker';
+import { StackLogin } from './routes/StackLogin';
 function App(): React.JSX.Element {
 
   return (
@@ -12,7 +13,8 @@ function App(): React.JSX.Element {
 
       <NavigationContainer>
         <PermissionsChecker>
-          <TabNavigator/>
+          {/* <TabNavigator/> */}
+          <StackLogin/>
         </PermissionsChecker>
       </NavigationContainer>
     </Provider>
