@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import { Modal, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useAppTheme, useNotebookStore } from '../../shared/hooks';
+import { useAppTheme, useExploreStore, useNotebookStore } from '../../shared/hooks';
 import { MenuContentForNotebook, NewContentForSheetView, SheetContent } from './';
 import { WelcomeToNoteBook } from './WelcomeToNoteBook';
 import { SheetDownloadButton } from '../../shared/components/SheetComponents/SheetDownloadButton';
@@ -13,7 +13,7 @@ export const NoteBookContent = () => {
    const [modalVisibleAddContent, setModalVisibleAddContent] = useState(false);
    const { sheetContent, headerMenuNotebookContent, screens,primaryColor } = useAppTheme();
    const { title, currentSheetShowing } = useNotebookStore();
-   
+   const { isUserAdmin } = useExploreStore()
   return (
     <>
         <View 
@@ -52,17 +52,21 @@ export const NoteBookContent = () => {
                             </>
                         )
                     }
-                    <View className='absolute bottom-28 left-4'>
-                        <TouchableOpacity
-                        className='w-[45px] h-[45px] rounded-md items-center justify-center'
-                        style={{ backgroundColor: primaryColor}}
-                        // style={{ position: 'absolute',  left: 10, width: 60, height:60, backgroundColor: primaryColor}}
-                        onPress={() => {
-                            setModalVisibleAddContent(true)   
-                        }}>
-                            <Icon name="add" size={30} color={"#fff"} />
-                        </TouchableOpacity>
-                    </View>
+
+                    {
+                        isUserAdmin &&
+                        <View className='absolute bottom-28 left-4'>
+                            <TouchableOpacity
+                            className='w-[45px] h-[45px] rounded-md items-center justify-center'
+                            style={{ backgroundColor: primaryColor}}
+                            // style={{ position: 'absolute',  left: 10, width: 60, height:60, backgroundColor: primaryColor}}
+                            onPress={() => {
+                                setModalVisibleAddContent(true)   
+                            }}>
+                                <Icon name="add" size={30} color={"#fff"} />
+                            </TouchableOpacity>
+                        </View>
+                    }
                 </>
             ) : <WelcomeToNoteBook/>
         }

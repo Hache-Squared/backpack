@@ -3,7 +3,7 @@ import { FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackExploreParams } from '../../routes/StackExplore';
-import { useAppTheme, useBackpackStore } from '../../shared/hooks';
+import { useAppTheme, useBackpackStore, useExploreStore } from '../../shared/hooks';
 import { ActivityIndicatorLoadingList, LoadingLogo, NotebookItem } from '../../shared/components';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AddNotebookView } from './AddNotebookView';
@@ -13,6 +13,7 @@ export const NoteBooksView = () => {
   const { currentBackpackNotebookList, currentBackpack, startLoadingNotebooks, isLoadingBackpack } = useBackpackStore();  
   const { texts, themeSeleted, buttons, primaryColor, screens } = useAppTheme()
   const [modalVisible, setModalVisible] = useState(false);
+  const { isUserAdmin } = useExploreStore()
   useEffect(() => {
     // console.log("currentBackpackId: ", currentBackpack?.id);
     
@@ -31,15 +32,17 @@ export const NoteBooksView = () => {
             // ListEmptyComponent={() => <NoItemsInList/>}
             ListHeaderComponent={() => (
               <View className='flex-1 items-end justify-center my-3'>
-                
-              <TouchableOpacity
-                className='rounded-full p-3 items-center justify-center'
-                style={{ position: 'relative',  right: 10, width: 60, height:60, backgroundColor: primaryColor}}
-                onPress={() => {
-                  setModalVisible(true)   
-                }}>
-                  <Icon name="add" size={30} color={"#fff"} />
-              </TouchableOpacity>
+              {  
+              isUserAdmin &&
+                <TouchableOpacity
+                  className='rounded-full p-3 items-center justify-center'
+                  style={{ position: 'relative',  right: 10, width: 60, height:60, backgroundColor: primaryColor}}
+                  onPress={() => {
+                    setModalVisible(true)   
+                  }}>
+                    <Icon name="add" size={30} color={"#fff"} />
+                </TouchableOpacity>
+              }
               </View>
             )}
             ItemSeparatorComponent={() => <View className='my-1 h-1'/>}

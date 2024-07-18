@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { ActivityIndicatorLoadingList, LoadingLogo, PublicationItem } from '../../shared/components'
-import { useAppTheme, useBackpackStore } from '../../shared/hooks'
+import { useAppTheme, useBackpackStore, useExploreStore } from '../../shared/hooks'
 import { NoItemsInList } from '../../shared/views'
 import { AddPublicationView } from './AddPublicationView'
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -10,6 +10,7 @@ export const PublicationsView = () => {
   const { currentBackpackPublicationList, currentBackpack, startLoadingPublications,isLoadingBackpack } = useBackpackStore();
   const [modalVisible, setModalVisible] = useState(false);
   const { texts, themeSeleted, buttons, primaryColor, screens } = useAppTheme()
+  const { isUserAdmin } = useExploreStore()
   useEffect(() => {
     startLoadingPublications(currentBackpack?.id ?? '');
   }, []);
@@ -27,14 +28,17 @@ export const PublicationsView = () => {
           ListHeaderComponent={() => (
             <View className='flex-1 items-end justify-center my-3'>
               
-            <TouchableOpacity
-              className='rounded-full p-3 items-center justify-center'
-              style={{ position: 'relative',  right: 10, width: 60, height:60, backgroundColor: primaryColor}}
-              onPress={() => {
-                setModalVisible(true)   
-              }}>
-                <Icon name="add" size={30} color={"#fff"} />
-            </TouchableOpacity>
+            {
+              isUserAdmin &&
+              <TouchableOpacity
+                className='rounded-full p-3 items-center justify-center'
+                style={{ position: 'relative',  right: 10, width: 60, height:60, backgroundColor: primaryColor}}
+                onPress={() => {
+                  setModalVisible(true)   
+                }}>
+                  <Icon name="add" size={30} color={"#fff"} />
+              </TouchableOpacity>
+            }
             </View>
           )}
             data={currentBackpackPublicationList}

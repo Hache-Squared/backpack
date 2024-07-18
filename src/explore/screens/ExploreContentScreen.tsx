@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const ExploreContentScreen = () => {
   const navigation = useNavigation<NavigationProp<StackExploreParams>>()
-  const { backpackList, startLoadingBackpackList, isLoadingExplore } = useExploreStore();
+  const { backpackList, startLoadingBackpackList, isLoadingExplore, isUserAdmin } = useExploreStore();
   const { startLoadingCurrentBackpack } = useBackpackStore();
   const { texts, themeSeleted, buttons, primaryColor, screens } = useAppTheme()
   const [modalVisible, setModalVisible] = useState(false);
@@ -101,7 +101,10 @@ const ExploreContentScreen = () => {
       </Modal>
 
     </ImageBackground>
-    <TouchableOpacity 
+
+     {
+      isUserAdmin &&  
+      <TouchableOpacity 
         className='rounded-full p-3'
         style={{ position: 'absolute', bottom: 100, right: 30, zIndex: 10, backgroundColor: primaryColor}}
         onPress={() => {
@@ -109,6 +112,7 @@ const ExploreContentScreen = () => {
         }}>
           <Icon name="add" size={30} color={"#fff"} />
       </TouchableOpacity>
+      }
     </>
   )
 }

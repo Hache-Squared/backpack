@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { useAppTheme, useNotebookStore } from '../../shared/hooks'
+import { useAppTheme, useExploreStore, useNotebookStore } from '../../shared/hooks'
 import { Alert, FlatList, Modal, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SheetMenuItem } from '../../shared/components';
@@ -14,6 +14,7 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
   const { menuNotebookContent, headerMenuNotebookContent, screens } = useAppTheme()
   const { menuSheetItemList, title, startLoadingSheet, currentSheetShowing } = useNotebookStore()
   const [modalVisible, setModalVisible] = useState(false);
+  const { isUserAdmin } = useExploreStore()
   const handleSheetToLoad = (id: string) => {
     startLoadingSheet(id)
     onCloseContent()
@@ -53,17 +54,21 @@ export const MenuContentForNotebook: FC<MenuContentForNotebook> = ({ onCloseCont
                 title={sheet.title} key={sheet.title}/>
             ))
         }
-        <TouchableOpacity 
-            onPress={() => setModalVisible(true)}
-            style={{ backgroundColor: headerMenuNotebookContent.buttonMenuBackgroundColor}}
-            className='p-0.5 ml-2 my-1 rounded-lg self-start flex-row flex-nowrap items-center justify-center'>
-                <Icon name='add' size={40} color={menuNotebookContent.colorStatusActive}/>
-                <Text 
-                style={{ color: menuNotebookContent.colorStatusActive}}
-                className='font-semibold m-2'>
-                    Añadir nuevo subtema
-                </Text>
-            </TouchableOpacity>
+
+            {
+                isUserAdmin && 
+                <TouchableOpacity 
+                onPress={() => setModalVisible(true)}
+                style={{ backgroundColor: headerMenuNotebookContent.buttonMenuBackgroundColor}}
+                className='p-0.5 ml-2 my-1 rounded-lg self-start flex-row flex-nowrap items-center justify-center'>
+                    <Icon name='add' size={40} color={menuNotebookContent.colorStatusActive}/>
+                    <Text 
+                    style={{ color: menuNotebookContent.colorStatusActive}}
+                    className='font-semibold m-2'>
+                        Añadir nuevo subtema
+                    </Text>
+                </TouchableOpacity>
+            }
             
         </View>
     </ScrollView>
