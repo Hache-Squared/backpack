@@ -71,7 +71,7 @@ export const AddNotebookView: FC<AddNotebookViewProps> = ({onCloseContent}) => {
                     fontWeight: 'bold'
                 }}
                 >
-                    Registrar
+                    Aceptar
                 </Text>
             </TouchableOpacity>
         </View>

@@ -144,7 +144,7 @@ export const AddPublicationView: FC<AddPublicationViewProps> = ({onCloseContent}
                     fontWeight: 'bold'
                 }}
                 >
-                    Registrar
+                    Aceptar
                 </Text>
             </TouchableOpacity>
             

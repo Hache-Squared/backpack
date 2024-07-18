@@ -98,10 +98,11 @@ export const AddBookView: FC<AddBookViewProps> = ({onCloseContent}) => {
                 className='text-lg text-center'
                 style={{
                     color: "#ffffff",
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    marginLeft: 5
                 }}
                 >
-                    Seleccionar Pdf
+                    Seleccionar PDF
                 </Text>
             </TouchableOpacity>
             {
@@ -124,7 +125,7 @@ export const AddBookView: FC<AddBookViewProps> = ({onCloseContent}) => {
                     fontWeight: 'bold'
                 }}
                 >
-                    Registrar
+                    Aceptar
                 </Text>
             </TouchableOpacity>
             

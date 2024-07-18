@@ -132,8 +132,8 @@ const LoginScreen = () => {
         <View className='w-11/12 self-center  rounded-lg p-3'>
           <Text className='font-bold text-lg text-black'>
             {
-              typeProfileValue === 'Teacher' ? 'Numero De Empleado:'
-              : typeProfileValue === 'Student' ? 'Matricula Estudiantil'
+              typeProfileValue === 'Teacher' ? 'Número De Empleado:'
+              : typeProfileValue === 'Student' ? 'Matrícula Estudiantil'
               : 'Credenciales'
             }
             
@@ -143,8 +143,8 @@ const LoginScreen = () => {
             style={{ height: 50, borderColor: 'gray', borderWidth: 1, color: primaryColor }}
             value={userText}
             placeholder={
-                typeProfileValue === 'Teacher' ? 'Numero De Empleado:'
-                : typeProfileValue === 'Student' ? 'Matricula Estudiantil'
+                typeProfileValue === 'Teacher' ? 'Número De Empleado:'
+                : typeProfileValue === 'Student' ? 'Matrícula Estudiantil'
                 : 'Credenciales'
             }
             placeholderTextColor={primaryColor}

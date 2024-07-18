@@ -135,7 +135,7 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
           typeElement === SheetContentType.Text && (
 
             <View className='w-11/12 self-center border-2 border-black my-4 rounded-lg p-3'>
-              <Text className='font-bold text-lg text-black'>Inserte el texto simple:</Text>
+              <Text className='font-bold text-lg text-black'>Ingrese el texto simple:</Text>
               <TextInput
                 style={{ height: 40, borderColor: 'gray', borderWidth: 1, color: primaryColor }}
                 value={typeElementText}
@@ -151,7 +151,7 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
           typeElement === SheetContentType.Subtitle && (
 
             <View className='w-11/12 self-center border-2 border-black my-4 rounded-lg p-3'>
-              <Text className='font-bold text-lg text-black'>Subtitulo:</Text>
+              <Text className='font-bold text-lg text-black'>Ingrese el subtitulo:</Text>
               <TextInput
                 style={{ height: 40, borderColor: 'gray', borderWidth: 1, color: primaryColor }}
                 value={typeElementSubtitle}

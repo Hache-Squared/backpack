@@ -38,7 +38,7 @@ export const AddSheetView: FC<AddSheetViewProps> = ({onCloseContent}) => {
 
             <Text 
             style={{ color: screens.titleColor }}  
-            className='w-full text-lg text-center my-2 font-bold'>Agregar un subtema nuevo</Text>
+            className='w-full text-lg text-center my-2 font-bold'>Añadir un subtema nuevo</Text>
             
             <TextInput 
                 className='self-center shadow-md shadow-slate-300 p-1.5 rounded-full my-5 border-2'
@@ -70,7 +70,7 @@ export const AddSheetView: FC<AddSheetViewProps> = ({onCloseContent}) => {
                     fontWeight: 'bold'
                 }}
                 >
-                    Registrar
+                    Aceptar
                 </Text>
             </TouchableOpacity>
         </View>
