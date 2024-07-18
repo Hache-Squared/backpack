@@ -47,7 +47,7 @@ const ProfileCardScreen = () => {
           <Text 
           className=' m-2'
           style={{ color:texts.labelColor }}>
-              Backpack es una aplicación móvil diseñada para que los estudiantes de la Facultad de Ingeniería Mecánica y Eléctrica puedan acceder a recursos y publicaciones sobre temas importantes de sus materias de forma sencilla.
+              Esta aplicación móvil fue diseñada para que los estudiantes de la Facultad de Ingeniería Mecánica y Eléctrica puedan acceder a recursos y publicaciones sobre temas importantes de sus materias de forma sencilla.
           </Text>
 
         </View>

@@ -82,7 +82,7 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
         <Text className='w-full text-center font-bold text-black text-2xl'>Añadir Elemento</Text>
 
         <RNPickerSelect
-          placeholder={{ label: 'Seleccione el tipo de elemento',value: typeElement,  color: '#fff', }}
+          placeholder={{ label: 'Seleccione el tipo de elemento',value: typeElement,  color: '#111' }}
            textInputProps={{
             placeholderTextColor: '#111',
             

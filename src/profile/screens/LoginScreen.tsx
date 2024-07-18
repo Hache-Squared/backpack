@@ -78,7 +78,7 @@ const LoginScreen = () => {
       <View className='w-11/12 self-center'>
 
         <RNPickerSelect
-          placeholder={{ label: 'Selecciona tu rol',value: typeProfileValue,  color: '#fff', }}
+          placeholder={{ label: 'Selecciona tu rol',value: typeProfileValue,  color: '#111', }}
             textInputProps={{
             placeholderTextColor: '#111',          
           }}
