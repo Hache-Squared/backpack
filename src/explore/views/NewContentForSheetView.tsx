@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Dimensions, Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
-import RNPickerSelect from 'react-native-picker-select';
+import RNPickerSelect, { PickerStyle } from 'react-native-picker-select';
 import { SheetContentType } from '../../types';
 import { useAppTheme, useNotebookStore } from '../../shared/hooks';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -79,13 +79,49 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
         <View className='w-10/12 justify-center self-center'>
 
         
-        <Text className='w-full text-center font-bold text-black'>Añadir Elemento</Text>
+        <Text className='w-full text-center font-bold text-black text-2xl'>Añadir Elemento</Text>
 
         <RNPickerSelect
-          placeholder={{ label: 'Seleccione el tipo de elemento', value: null, color: 'gray' }}
-          // style={{ iconContainer: {
-          //   width: Dimensions.get('screen').width * 0.9
-          // } }}
+          placeholder={{ label: 'Seleccione el tipo de elemento',value: typeElement,  color: '#fff', }}
+           textInputProps={{
+            placeholderTextColor: '#111',
+            
+           }}
+           
+          style={{
+            placeholder: {
+              color: '#111'
+            },
+            viewContainer: {
+              borderWidth: 1,
+              borderColor: '#111',
+              borderRadius: 10,
+              paddingHorizontal: 5,
+              paddingVertical: 3,
+            },
+
+            inputIOS: {
+              color: 'black',
+            },
+            inputAndroid: {
+              color: 'black',
+            },
+            iconContainer: {
+              width: 30,
+              height: '100%',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              top: 4,
+              right: 12
+              // backgroundColor: "#111" 
+            }
+          }}
+          Icon={(props) => {
+            return (
+                <Icon {...props} name="caret-down" size={24} color="green" />
+            );
+          }}
           onValueChange={(value: SheetContentType) => setTypeElement(value)}
           value={typeElement}
           items={[
@@ -98,11 +134,12 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
         {
           typeElement === SheetContentType.Text && (
 
-            <View className='w-full'>
-              <Text>Inserte el texto simple:</Text>
+            <View className='w-11/12 self-center border-2 border-black my-4 rounded-lg p-3'>
+              <Text className='font-bold text-lg text-black'>Inserte el texto simple:</Text>
               <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1, color: primaryColor }}
                 value={typeElementText}
+                
                 onChangeText={(text) => setTypeElementText(text)}
               />
               <ButtonAddElement onPress={handleAddText}/>
@@ -113,10 +150,10 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
         {
           typeElement === SheetContentType.Subtitle && (
 
-            <View className='w-full'>
-              <Text>Subtitulo:</Text>
+            <View className='w-11/12 self-center border-2 border-black my-4 rounded-lg p-3'>
+              <Text className='font-bold text-lg text-black'>Subtitulo:</Text>
               <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1, color: primaryColor }}
                 value={typeElementSubtitle}
                 onChangeText={(text) => setTypeElementSubtitle(text)}
               />
@@ -128,19 +165,21 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
         {
           typeElement === SheetContentType.Image && (
 
-            <View className='w-full'>
-              
+            <View className='w-11/12 self-center border-2 border-black my-4 rounded-lg p-3'>
+              <Text className='font-bold text-lg text-black'>Adjunte la imagen:</Text>
               <TouchableOpacity 
                 onPress={pickImage} 
                 className='w-10/12 rounded-full my-2 py-2 self-center flex flex-row flex-nowrap items-center justify-center'
                 style={{backgroundColor: "#3498db"}}
                 >
-                <Icon name='image' size={40} color={"#fff"}/>
+                <Icon name='image' size={30} color={"#fff"}/>
                 <Text 
-                className='text-lg text-center'
+                className='text-base text-center'
                 style={{
                     color: "#ffffff",
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    marginLeft: 5
+
                 }}
                 >
                     Seleccionar Imagen
@@ -153,8 +192,9 @@ export const NewContentForSheetView: FC<NewContentForSheetViewProps> = ({ onClo
 
                     <Image
                     source={{ uri: imageUri}}
-                    style={{ width: Dimensions.get('screen').width * 0.9, height: 220 }}  
-                    className='object-contain'/>
+                    
+                    style={{ width: Dimensions.get('screen').width * 0.7, height: 200 }}  
+                    className='object-contain rounded-lg'/>
                   </View>
                 )
             }
@@ -188,7 +228,7 @@ const ButtonAddElement: FC<ButtonAddElementProps> = ({onPress, title}) => {
           color: secondaryColor,
           fontWeight: 'bold'
       }}
-      >Agregar</Text>
+      >Aceptar</Text>
     </TouchableOpacity>)
   
     }

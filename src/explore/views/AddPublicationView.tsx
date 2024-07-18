@@ -73,10 +73,10 @@ export const AddPublicationView: FC<AddPublicationViewProps> = ({onCloseContent}
             
             
             <TextInput 
-                className='self-center shadow-md shadow-slate-300 p-3 rounded-lg '
+                className='self-center shadow-md shadow-slate-300 p-1.5 rounded-full my-2 border-2'
                 style={{
                     width: Dimensions.get('screen').width * 0.88, 
-                    height: 80,
+                    height: 60,
                     color: primaryColor,
                     textAlign: 'center'
                 }}
@@ -91,10 +91,10 @@ export const AddPublicationView: FC<AddPublicationViewProps> = ({onCloseContent}
                 }}
             />
             <TextInput 
-                className='self-center shadow-md shadow-slate-300 p-3 rounded-lg'
+                className='self-center shadow-md shadow-slate-300 p-1.5 rounded-full my-2 border-2'
                 style={{
                     width: Dimensions.get('screen').width * 0.88, 
-                    height: 80,
+                    height: 60,
                     color: primaryColor,
                     textAlign: 'center'
                 }}
@@ -111,7 +111,7 @@ export const AddPublicationView: FC<AddPublicationViewProps> = ({onCloseContent}
             <TouchableOpacity 
                 onPress={pickImage} 
                 className='w-10/12 rounded-full my-2 py-2 self-center flex flex-row flex-nowrap items-center justify-center'
-                style={{backgroundColor: "#3498db"}}
+                style={{backgroundColor: "#0984e3"}}
                 >
                 <Icon name='image' size={40} color={"#fff"}/>
                 <Text 

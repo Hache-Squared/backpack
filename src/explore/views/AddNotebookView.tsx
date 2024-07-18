@@ -42,10 +42,10 @@ export const AddNotebookView: FC<AddNotebookViewProps> = ({onCloseContent}) => {
             className='w-full text-lg text-center my-2 font-bold'>Crear tema</Text>
             
             <TextInput 
-                className='self-center shadow-md shadow-slate-300 p-3 rounded-lg my-5'
+                className='self-center shadow-md shadow-slate-300 p-1.5 rounded-full my-5 border-2'
                 style={{
                     width: Dimensions.get('screen').width * 0.88, 
-                    height: 80,
+                    height: 60,
                     color: primaryColor,
                     textAlign: 'center'
                 }}
